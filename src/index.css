@@ -1,0 +1,402 @@
+@import url(./assets/styles/ticketH.css);
+@import url(./assets/styles/loading.css);
+/* @import url(./assets/styles/scrolling.css); */
+
+html,
+body {
+   /* overflow-x: hidden; */
+   scroll-behavior: smooth;
+}
+
+/* Tipografias */
+@font-face {
+   font-family: Dashing;
+   /* font-style: normal;
+   font-weight: 200 700;
+   font-display: swap; */
+   src: url("./assets/fonts/Dashing.otf") format("opentype");
+}
+
+/* Familia Anodina */
+@font-face {
+   font-family: Anodina-ExtraLight;
+   src: url("./assets/fonts/Anodina-ExtraLight.otf") format("opentype");
+}
+@font-face {
+   font-family: Anodina-Light;
+   src: url("./assets/fonts/Anodina-Light.otf") format("opentype");
+}
+@font-face {
+   font-family: Anodina-Regular;
+   src: url("./assets/fonts/Anodina-Regular.otf") format("opentype");
+}
+@font-face {
+   font-family: Anodina-Bold;
+   src: url("./assets/fonts/Anodina-Bold.otf") format("opentype");
+}
+@font-face {
+   font-family: Anodina-ExtraBold;
+   src: url("./assets/fonts/Anodina-ExtraBold.otf") format("opentype");
+}
+
+/* Familia Marcellus */
+@font-face {
+   font-family: Marcellus;
+   src: url("./assets/fonts/Marcellus-Regular.ttf") format("opentype");
+}
+
+/* Familia Mayoritte */
+@font-face {
+   font-family: Mayoritte;
+   src: url("./assets/fonts/Mayoritte.ttf") format("opentype");
+}
+@font-face {
+   font-family: Mayoritte-Swash;
+   src: url("./assets/fonts/Mayoritte-Swash.ttf") format("opentype");
+}
+
+/* Familia TT Drugs */
+@font-face {
+   font-family: TT-Drugs-Trial-Bold;
+   src: url("./assets/fonts/TT-Drugs-Trial-Bold.otf") format("opentype");
+}
+
+/* Familia Avenir LT Pro */
+@font-face {
+   font-family: AvenirLTPro-Black;
+   src: url("./assets/fonts/AvenirLTPro/AvenirLTPro-Black.otf") format("opentype");
+}
+@font-face {
+   font-family: AvenirLTPro-BlackOblique;
+   src: url("./assets/fonts/AvenirLTPro/AvenirLTPro-BlackOblique.otf") format("opentype");
+}
+@font-face {
+   font-family: AvenirLTPro-Book;
+   src: url("./assets/fonts/AvenirLTPro/AvenirLTPro-Book.otf") format("opentype");
+}
+@font-face {
+   font-family: AvenirLTPro-BookOblique;
+   src: url("./assets/fonts/AvenirLTPro/AvenirLTPro-BookOblique.otf") format("opentype");
+}
+@font-face {
+   font-family: AvenirLTPro-Heavy;
+   src: url("./assets/fonts/AvenirLTPro/AvenirLTPro-Heavy.otf") format("opentype");
+}
+@font-face {
+   font-family: AvenirLTPro-HeavyOblique;
+   src: url("./assets/fonts/AvenirLTPro/AvenirLTPro-HeavyOblique.otf") format("opentype");
+}
+@font-face {
+   font-family: AvenirLTPro-Light;
+   src: url("./assets/fonts/AvenirLTPro/AvenirLTPro-Light.otf") format("opentype");
+}
+@font-face {
+   font-family: AvenirLTPro-LightOblique;
+   src: url("./assets/fonts/AvenirLTPro/AvenirLTPro-LightOblique.otf") format("opentype");
+}
+@font-face {
+   font-family: AvenirLTPro-Medium;
+   src: url("./assets/fonts/AvenirLTPro/AvenirLTPro-Medium.otf") format("opentype");
+}
+@font-face {
+   font-family: AvenirLTPro-MediumOblique;
+   src: url("./assets/fonts/AvenirLTPro/AvenirLTPro-MediumOblique.otf") format("opentype");
+}
+@font-face {
+   font-family: AvenirLTPro-Oblique;
+   src: url("./assets/fonts/AvenirLTPro/AvenirLTPro-Oblique.otf") format("opentype");
+}
+@font-face {
+   font-family: AvenirLTPro-Roman;
+   src: url("./assets/fonts/AvenirLTPro/AvenirLTPro-Roman.otf") format("opentype");
+}
+
+/* Familia Zapf Humanist */
+@font-face {
+   font-family: ZapfHumanist-Bold;
+   src: url("./assets/fonts/zapfHumanist/Zapf Humanist-Bold.otf") format("opentype");
+}
+@font-face {
+   font-family: ZapfHumanist-BoldItalic;
+   src: url("./assets/fonts/zapfHumanist/Zapf Humanist-BoldItalic.otf") format("opentype");
+}
+@font-face {
+   font-family: ZapfHumanist-Italic;
+   src: url("./assets/fonts/zapfHumanist/Zapf Humanist-Italic.otf") format("opentype");
+}
+@font-face {
+   font-family: ZapfHumanist-Roman;
+   src: url("./assets/fonts/zapfHumanist/Zapf Humanist-Roman.otf") format("opentype");
+}
+@font-face {
+   font-family: ZapfHumanist-SemiBold;
+   src: url("./assets/fonts/zapfHumanist/Zapf Humanist-SemiBold.otf") format("opentype");
+}
+@font-face {
+   font-family: ZapfHumanist-SemiBoldItalic;
+   src: url("./assets/fonts/zapfHumanist/Zapf Humanist-SemiBoldItalic.otf") format("opentype");
+}
+@font-face {
+   font-family: ZapfHumanist-Ultra;
+   src: url("./assets/fonts/zapfHumanist/Zapf Humanist-Ultra.otf") format("opentype");
+}
+@font-face {
+   font-family: ZapfHumanist-UltraItalic;
+   src: url("./assets/fonts/zapfHumanist/Zapf Humanist-UltraItalic.otf") format("opentype");
+}
+
+@import "tailwindcss";
+/* @custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); */
+
+/* Tipografias para Tailwind */
+@theme {
+   /* Fuentes existentes */
+   --font-dashing: Dashing;
+   --font-anodina-extralight: Anodina-ExtraLight;
+   --font-anodina-light: Anodina-Light;
+   --font-anodina-regular: Anodina-Regular;
+   --font-anodina-bold: Anodina-Bold;
+   --font-anodina-extrabold: Anodina-ExtraBold;
+   --font-marcellus: Marcellus;
+   --font-mayoritte: Mayoritte;
+   --font-mayoritte-swash: Mayoritte-Swash;
+   --font-tt-drugs-bold: TT-Drugs-Trial-Bold;
+   
+   /* Nuevas fuentes Avenir LT Pro */
+   --font-avenir-black: AvenirLTPro-Black;
+   --font-avenir-black-oblique: AvenirLTPro-BlackOblique;
+   --font-avenir-book: AvenirLTPro-Book;
+   --font-avenir-book-oblique: AvenirLTPro-BookOblique;
+   --font-avenir-heavy: AvenirLTPro-Heavy;
+   --font-avenir-heavy-oblique: AvenirLTPro-HeavyOblique;
+   --font-avenir-light: AvenirLTPro-Light;
+   --font-avenir-light-oblique: AvenirLTPro-LightOblique;
+   --font-avenir-medium: AvenirLTPro-Medium;
+   --font-avenir-medium-oblique: AvenirLTPro-MediumOblique;
+   --font-avenir-oblique: AvenirLTPro-Oblique;
+   --font-avenir-roman: AvenirLTPro-Roman;
+   
+   /* Nuevas fuentes Zapf Humanist */
+   --font-zapf-bold: ZapfHumanist-Bold;
+   --font-zapf-bold-italic: ZapfHumanist-BoldItalic;
+   --font-zapf-italic: ZapfHumanist-Italic;
+   --font-zapf-roman: ZapfHumanist-Roman;
+   --font-zapf-semibold: ZapfHumanist-SemiBold;
+   --font-zapf-semibold-italic: ZapfHumanist-SemiBoldItalic;
+   --font-zapf-ultra: ZapfHumanist-Ultra;
+   --font-zapf-ultra-italic: ZapfHumanist-UltraItalic;
+}
+
+/* Animaciones personalizadas */
+@theme {
+   --animate-slide-in: slide-in 2s ease;
+   @keyframes slide-in {
+      0% {
+         transform: translateX(-100vw);
+      }
+      100% {
+         transform: translateX(0);
+      }
+   }
+
+   --animate-fade-in: fade-in 1s ease-in-out;
+   @keyframes fade-in {
+      from {
+         opacity: 0;
+      }
+      to {
+         opacity: 1;
+      }
+   }
+
+   --animate-slide-up: slide-up 0.8s ease-out;
+   @keyframes slide-up {
+      from {
+         transform: translateY(20px);
+         opacity: 0;
+      }
+      to {
+         transform: translateY(0);
+         opacity: 1;
+      }
+   }
+}
+
+/* Temas */
+@plugin "daisyui" {
+   /* themes: light --default, dark --prefersdark; */
+   themes: all;
+}
+@plugin "daisyui/theme" {
+   name: "light";
+   default: true;
+   prefersdark: false;
+   color-scheme: "light";
+   --color-base-100: #F7F7F7; /* Fondo claro principal */
+   --color-base-200: #B8B6AF; /* Gris claro como fondo secundario */
+   --color-base-300: #FFFFFF; /* Blanco puro para fondos terciarios */
+   --color-base-content: #130D0E; /* Negro como color de texto principal */
+   
+   --color-primary: #9B2242; /* Guinda Principal */
+   --color-primary-content: #F7F7F7; /* Texto claro sobre guinda */
+   
+   --color-secondary: #651D32; /* Guinda Secundario */
+   --color-secondary-content: #F7F7F7; /* Texto claro sobre guinda secundario */
+   
+   --color-accent: #474C55; /* Gris Cool como acento */
+   --color-accent-content: #F7F7F7; /* Texto claro sobre gris cool */
+   
+   --color-neutral: #130D0E; /* Negro como neutral */
+   --color-neutral-content: #F7F7F7; /* Texto claro sobre negro */
+   
+   --color-info: #474C55; /* Gris Cool para info */
+   --color-info-content: #F7F7F7;
+   
+   --color-success: #727372; /* Gris para success */
+   --color-success-content: #F7F7F7;
+   
+   --color-warning: #B8B6AF; /* Gris claro para warning */
+   --color-warning-content: #130D0E;
+   
+   --color-error: #9B2242; /* Guinda Principal para error */
+   --color-error-content: #F7F7F7;
+   
+   --radius-selector: 1rem;
+   --radius-field: 1rem;
+   --radius-box: 2rem;
+   --size-selector: 0.25rem;
+   --size-field: 0.25rem;
+   --border: 1.5px;
+   --depth: 0;
+   --noise: 0;
+}
+@plugin "daisyui/theme" {
+   name: "dark";
+   default: false;
+   prefersdark: true;
+   color-scheme: "dark";
+   --color-base-100: #130D0E; /* Negro como fondo principal */
+   --color-base-200: #474C55; /* Gris Cool como fondo secundario */
+   --color-base-300: #651D32; /* Guinda Secundario como fondo terciario */
+   --color-base-content: #F7F7F7; /* Texto claro sobre fondos oscuros */
+   
+   --color-primary: #9B2242; /* Guinda Principal */
+   --color-primary-content: #F7F7F7; /* Texto claro sobre guinda */
+   
+   --color-secondary: #B8B6AF; /* Gris claro como secundario */
+   --color-secondary-content: #130D0E; /* Texto oscuro sobre gris claro */
+   
+   --color-accent: #727372; /* Gris como acento */
+   --color-accent-content: #F7F7F7; /* Texto claro sobre gris */
+   
+   --color-neutral: #474C55; /* Gris Cool como neutral */
+   --color-neutral-content: #F7F7F7; /* Texto claro sobre gris cool */
+   
+   --color-info: #727372; /* Gris para info */
+   --color-info-content: #F7F7F7;
+   
+   --color-success: #B8B6AF; /* Gris claro para success */
+   --color-success-content: #130D0E;
+   
+   --color-warning: #651D32; /* Guinda Secundario para warning */
+   --color-warning-content: #F7F7F7;
+   
+   --color-error: #9B2242; /* Guinda Principal para error */
+   --color-error-content: #F7F7F7;
+   
+   --radius-selector: 1rem;
+   --radius-field: 1rem;
+   --radius-box: 2rem;
+   --size-selector: 0.25rem;
+   --size-field: 0.25rem;
+   --border: 1.5px;
+   --depth: 0;
+   --noise: 0;
+}
+
+/* Efecto de papel rasgado */
+.torn-paper-effect {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  /* background-image: url('./assets/images/torn-paper-edge.png'); */
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 20;
+}
+
+/* Elementos decorativos */
+.decorative-element {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.6;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.top-left {
+  top: 50px;
+  left: 20px;
+  background-image: url('./assets/images/decorative-corner-1.png');
+  transform: rotate(-15deg);
+}
+
+.top-right {
+  top: 50px;
+  right: 20px;
+  background-image: url('./assets/images/decorative-corner-2.png');
+  transform: rotate(15deg);
+}
+
+.middle-left {
+  top: 50%;
+  left: 10px;
+  background-image: url('./assets/images/decorative-flower-1.png');
+}
+
+.middle-right {
+  top: 50%;
+  right: 10px;
+  background-image: url('./assets/images/decorative-flower-2.png');
+}
+
+.bottom-left {
+  bottom: 50px;
+  left: 20px;
+  background-image: url('./assets/images/decorative-corner-3.png');
+  transform: rotate(-5deg);
+}
+
+.bottom-right {
+  bottom: 50px;
+  right: 20px;
+  background-image: url('./assets/images/decorative-corner-4.png');
+  transform: rotate(5deg);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .decorative-element {
+    width: 80px;
+    height: 80px;
+  }
+
+  .top-left, .bottom-left {
+    left: 5px;
+  }
+
+  .top-right, .bottom-right {
+    right: 5px;
+  }
+
+  .middle-left, .middle-right {
+    display: none;
+  }
+}

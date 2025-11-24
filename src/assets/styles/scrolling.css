@@ -1,0 +1,36 @@
+.dense-scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+}
+
+.dense-content {
+  height: 5000vh; /* Altura exagerada para scroll largo */
+}
+
+.dense-section {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+
+/* .scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.content {
+  height: 200vh;
+  position: relative;
+}
+
+.section {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  transform: translateY(calc(var(--scroll) * -0.5)); /* Mueve el 50% más lento *
+} */

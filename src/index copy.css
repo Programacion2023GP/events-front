@@ -1,0 +1,272 @@
+@import url(./assets/styles/ticketH.css);
+@import url(./assets/styles/loading.css);
+/* @import url(./assets/styles/scrolling.css); */
+
+html,
+body {
+   /* overflow-x: hidden; */
+   scroll-behavior: smooth;
+}
+
+/* Tipografias */
+@font-face {
+   font-family: Dashing;
+   /* font-style: normal;
+   font-weight: 200 700;
+   font-display: swap; */
+   src: url("./assets/fonts/Dashing.otf") format("opentype");
+}
+@font-face {
+   font-family: Anodina-ExtraLight;
+   src: url("./assets/fonts/Anodina-ExtraLight.otf") format("opentype");
+}
+@font-face {
+   font-family: Anodina-Light;
+   src: url("./assets/fonts/Anodina-Light.otf") format("opentype");
+}
+@font-face {
+   font-family: Anodina-Regular;
+   src: url("./assets/fonts/Anodina-Regular.otf") format("opentype");
+}
+@font-face {
+   font-family: Anodina-Bold;
+   src: url("./assets/fonts/Anodina-Bold.otf") format("opentype");
+}
+@font-face {
+   font-family: Anodina-ExtraBold;
+   src: url("./assets/fonts/Anodina-ExtraBold.otf") format("opentype");
+}
+@font-face {
+   font-family: Marcellus;
+   src: url("./assets/fonts/Marcellus-Regular.ttf") format("opentype");
+}
+@font-face {
+   font-family: Mayoritte;
+   src: url("./assets/fonts/Mayoritte.ttf") format("opentype");
+}
+@font-face {
+   font-family: Mayoritte-Swash;
+   src: url("./assets/fonts/Mayoritte-Swash.ttf") format("opentype");
+}
+
+@font-face {
+   font-family: TT-Drugs-Trial-Bold;
+   src: url("./assets/fonts/TT-Drugs-Trial-Bold.otf") format("opentype");
+}
+
+
+@import "tailwindcss";
+/* @custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); */
+/* Tipografias */
+@theme {
+   --font-dashing: Dashing;
+   --font-anodina-extralight: Anodina-ExtraLight;
+   --font-anodina-light: Anodina-Light;
+   --font-anodina-regular: Anodina-Regular;
+   --font-anodina-bold: Anodina-Bold;
+   --font-anodina-extrabold: Anodina-ExtraBold;
+   --font-marcellus: Marcellus;
+   --font-mayoritte: Mayoritte;
+   --font-mayoritte-swash: Mayoritte-Swash;
+   --font-tt-drugs-bold: TT-Drugs-Trial-Bold;
+}
+
+/* Animaciones personalizadas */
+@theme {
+   --animate-slide-in: slide-in 2s ease;
+   @keyframes slide-in {
+      0% {
+         transform: translateX(-100vw);
+      }
+      100% {
+         transform: translateX(0);
+      }
+   }
+
+   --animate-fade-in: fade-in 1s ease-in-out;
+   @keyframes fade-in {
+      from {
+         opacity: 0;
+      }
+      to {
+         opacity: 1;
+      }
+   }
+
+   --animate-slide-up: slide-up 0.8s ease-out;
+   @keyframes slide-up {
+      from {
+         transform: translateY(20px);
+         opacity: 0;
+      }
+      to {
+         transform: translateY(0);
+         opacity: 1;
+      }
+   }
+}
+
+/* Temas */
+@plugin "daisyui" {
+   /* themes: light --default, dark --prefersdark; */
+   themes: all;
+}
+@plugin "daisyui/theme" {
+   name: "light";
+   default: true;
+   prefersdark: false;
+   color-scheme: "light";
+   --color-base-100: oklch(100% 0 0);
+   --color-base-200: oklch(98% 0 0);
+   --color-base-300: oklch(95% 0 0);
+   --color-base-content: oklch(21% 0.006 285.885);
+   --color-primary: #698474;
+   --color-primary-content: #252c25;
+   /* --color-primary: #252c25;
+   --color-primary-content: #cbc8c3; */
+   --color-secondary: #b28121;
+   --color-secondary-content: #121318;
+   --color-accent: #a1d6b2;
+   --color-accent-content: oklch(38% 0.063 188.416);
+   --color-neutral: #121318;
+   --color-neutral-content: oklch(92% 0.004 286.32);
+   --color-info: #37afe1;
+   --color-info-content: oklch(29% 0.066 243.157);
+   --color-success: #aacb73;
+   --color-success-content: oklch(26% 0.051 172.552);
+   --color-warning: #ff9d3d;
+   --color-warning-content: oklch(27% 0.077 45.635);
+   --color-error: #fa7070;
+   --color-error-content: oklch(27% 0.105 12.094);
+   --radius-selector: 1rem;
+   --radius-field: 1rem;
+   --radius-box: 2rem;
+   --size-selector: 0.25rem;
+   --size-field: 0.25rem;
+   --border: 1.5px;
+   --depth: 0
+   --noise: 0;
+}
+@plugin "daisyui/theme" {
+   name: "dark";
+   default: false;
+   prefersdark: true;
+   color-scheme: "dark";
+   --color-wedding: "#F7F7F7"; /* f8f5f2 */
+   --color-base-100: oklch(25.33% 0.016 252.42);
+   --color-base-200: oklch(23.26% 0.014 253.1);
+   --color-base-300: oklch(21.15% 0.012 254.09);
+   --color-base-content: oklch(97.807% 0.029 256.847);
+   --color-primary: #b28121;
+   --color-primary-content: oklch(96% 0.018 272.314);
+   --color-secondary: #e5b168;
+   --color-secondary-content: #121318;
+   --color-accent: #29c7ac;
+   --color-accent-content: oklch(38% 0.063 188.416);
+   --color-neutral: #0c0f14;
+   --color-neutral-content: oklch(92% 0.004 286.32);
+   --color-info: #37afe1;
+   --color-info-content: oklch(29% 0.066 243.157);
+   --color-success: #03c988;
+   --color-success-content: oklch(37% 0.077 168.94);
+   --color-warning: #ffac41;
+   --color-warning-content: oklch(41% 0.112 45.904);
+   --color-error: #c70d3a;
+   --color-error-content: oklch(96% 0.015 12.422);
+   --radius-selector: 1rem;
+   --radius-field: 1rem;
+   --radius-box: 2rem;
+   --size-selector: 0.25rem;
+   --size-field: 0.25rem;
+   --border: 1.5px;
+   --depth: 0;
+   --noise: 0;
+}
+
+/* Efecto de papel rasgado */
+.torn-paper-effect {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  /* background-image: url('./assets/images/torn-paper-edge.png'); */
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 20;
+}
+
+/* Elementos decorativos */
+.decorative-element {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.6;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.top-left {
+  top: 50px;
+  left: 20px;
+  background-image: url('./assets/images/decorative-corner-1.png');
+  transform: rotate(-15deg);
+}
+
+.top-right {
+  top: 50px;
+  right: 20px;
+  background-image: url('./assets/images/decorative-corner-2.png');
+  transform: rotate(15deg);
+}
+
+.middle-left {
+  top: 50%;
+  left: 10px;
+  background-image: url('./assets/images/decorative-flower-1.png');
+}
+
+.middle-right {
+  top: 50%;
+  right: 10px;
+  background-image: url('./assets/images/decorative-flower-2.png');
+}
+
+.bottom-left {
+  bottom: 50px;
+  left: 20px;
+  background-image: url('./assets/images/decorative-corner-3.png');
+  transform: rotate(-5deg);
+}
+
+.bottom-right {
+  bottom: 50px;
+  right: 20px;
+  background-image: url('./assets/images/decorative-corner-4.png');
+  transform: rotate(5deg);
+}
+
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .decorative-element {
+    width: 80px;
+    height: 80px;
+  }
+
+  .top-left, .bottom-left {
+    left: 5px;
+  }
+
+  .top-right, .bottom-right {
+    right: 5px;
+  }
+
+  .middle-left, .middle-right {
+    display: none;
+  }
+}

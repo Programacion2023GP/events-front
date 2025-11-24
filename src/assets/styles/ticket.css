@@ -1,0 +1,68 @@
+/* Estilos para el boleto de invitación */
+.ticket-container {
+   border-radius: 2rem;
+   position: relative;
+   background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+   border: 2px solid #e2e8f0;
+}
+
+.ticket-container::before {
+   content: "";
+   position: absolute;
+   top: -10px;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 60px;
+   height: 20px;
+   background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 5px,
+      #cbd5e1 5px,
+      #cbd5e1 10px
+   );
+   border-radius: 10px;
+}
+
+.ticket-container::after {
+   content: "";
+   position: absolute;
+   bottom: -10px;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 60px;
+   height: 20px;
+   background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 5px,
+      #cbd5e1 5px,
+      #cbd5e1 10px
+   );
+   border-radius: 10px;
+}
+
+/* Animaciones para los elementos interactivos */
+.form-control input:focus,
+.form-control textarea:focus {
+   transform: scale(1.02);
+   transition: transform 0.2s ease;
+}
+
+/* Efectos hover para las tarjetas de asistencia */
+.card:hover {
+   transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+   .ticket-container {
+      margin: 1rem;
+      border-radius: 1.5rem;
+   }
+
+   .px-12 {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+   }
+}

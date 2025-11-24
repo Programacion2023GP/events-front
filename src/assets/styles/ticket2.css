@@ -1,0 +1,29 @@
+.ticket-border {
+   border: 4px dashed #e11d48; /* rose-600 */
+   border-radius: 20px;
+   padding: 2rem;
+   background-color: #fffafc;
+   position: relative;
+}
+
+.ticket-border::before,
+.ticket-border::after {
+   content: "";
+   width: 25px;
+   height: 25px;
+   background: #f7f7f7;
+   border-radius: 50%;
+   position: absolute;
+}
+
+.ticket-border::before {
+   top: -13px;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+.ticket-border::after {
+   bottom: -13px;
+   left: 50%;
+   transform: translateX(-50%);
+}

@@ -1,0 +1,86 @@
+/* Estilos para el boleto horizontal */
+.ticket-horizontal {
+   border-radius: 1.5rem;
+   position: relative;
+   /* background: linear-gradient(90deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%); */
+   /* border: 2px solid #e2e8f0; */
+   min-height: 500px;
+}
+
+/* Efectos decorativos en los extremos */
+.ticket-horizontal::before {
+   content: "";
+   position: absolute;
+   left: -10px;
+   top: 50%;
+   transform: translateY(-50%);
+   width: 20px;
+   height: 60px;
+   background: repeating-linear-gradient(
+      180deg,
+      transparent,
+      transparent 5px,
+      #cbd5e1 5px,
+      #cbd5e1 10px
+   );
+   border-radius: 10px;
+}
+
+.ticket-horizontal::after {
+   content: "";
+   position: absolute;
+   right: -10px;
+   top: 50%;
+   transform: translateY(-50%);
+   width: 20px;
+   height: 60px;
+   background: repeating-linear-gradient(
+      180deg,
+      transparent,
+      transparent 5px,
+      #cbd5e1 5px,
+      #cbd5e1 10px
+   );
+   border-radius: 10px;
+}
+
+/* Animaciones mejoradas */
+.form-control input:focus,
+.form-control textarea:focus {
+   transform: scale(1.01);
+   transition: transform 0.2s ease;
+}
+
+/* Responsive para el diseño horizontal */
+@media (max-width: 1024px) {
+   .ticket-horizontal .flex {
+      flex-direction: column;
+   }
+
+   .ticket-horizontal .w-1\/3 {
+      width: 100%;
+      min-height: 200px;
+   }
+
+   .ticket-horizontal .w-2\/3 {
+      width: 100%;
+   }
+
+   .ticket-horizontal .absolute.left-1\/3 {
+      left: 0;
+      right: 0;
+      top: 200px;
+      bottom: auto;
+      width: auto;
+      height: 1px;
+      border-left: none;
+      border-top: 2px dashed;
+   }
+}
+
+@media (max-width: 768px) {
+   .ticket-horizontal {
+      margin: 1rem;
+      border-radius: 1rem;
+   }
+}

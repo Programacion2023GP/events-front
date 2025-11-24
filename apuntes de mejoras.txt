@@ -1,0 +1,16 @@
+---- Fonts ----
+Anodina
+Dashing
+Marcellus
+Mayoritte 
+
+---- Colores ----
+#698474; //verde olivo , y fondo blanco, blanco metálico, Plateado, ostión, algún tipo de blanco lindo que combine con ello
+#b28121; // Oro , y fondo Negro, negro metálico un negro bonito jaja
+
+
+---- AGRGAR -----
+* Detalles alusivo a bodas
+* Agregar o modificar como se vean las imágenes
+* modificar y agregar iconos o imágenes con detallitos (para no tener solo iconos)
+esto como en la linea del tiempo de los eventos, en la vestimenta, en consideraciones, etc...
