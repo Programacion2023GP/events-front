@@ -30,7 +30,7 @@ const ContactSection = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="font-marcellus text-lg md:text-xl text-primary mb-2">
+                  className="font-zapf-roman text-lg md:text-xl text-primary mb-2">
                   Atentamente
                </motion.p>
 
@@ -39,15 +39,14 @@ const ContactSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="font-anodina-bold text-xl md:text-2xl text-primary mb-1">
-                  Lic. Betzabé Martínez Arango y Dirección de Relaciones
-                  Públicas
+                  Dirección de Relaciones Públicas
                </motion.h2>
 
                <motion.h3
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.8 }}
-                  className="font-anodina-regular text-lg md:text-xl text-primary/80">
+                  className="font-avenir-roman text-lg md:text-xl text-primary/80">
                   R. Ayuntamiento de Gómez Palacio, Dgo.
                </motion.h3>
             </div>
@@ -75,7 +74,9 @@ const ContactSection = () => {
                         <MapPin className="h-6 w-6 text-primary" />
                      </motion.div>
                      <div>
-                        <p className="font-anodina-regular text-base md:text-lg leading-relaxed text-base-content/90">
+                        <p className="font-avenir-roman text-base md:text-lg leading-relaxed text-base-content/90">
+                           Piso 1, Presidencia Municipal,
+                           <br />
                            C. Francisco I. Madero #400,
                            <br />
                            Zona Centro
@@ -103,10 +104,8 @@ const ContactSection = () => {
                            <Mail className="h-6 w-6 text-primary" />
                         </motion.div>
                         <div>
-                           <p className="font-anodina-regular text-base md:text-lg text-base-content/90 break-all">
-                              relaciones.publicas@
-                              <wbr />
-                              gomezpalacio.gob.mx
+                           <p className="font-avenir-roman text-base md:text-lg text-base-content/90 wrap-break-word">
+                              relaciones.publicas@gomezpalacio.gob.mx
                            </p>
                         </div>
                      </div>
@@ -123,12 +122,12 @@ const ContactSection = () => {
                            <Phone className="h-6 w-6 text-primary" />
                         </motion.div>
                         <div className="flex flex-col gap-1">
-                           <p className="font-anodina-regular text-base md:text-lg text-base-content/90">
+                           <p className="font-avenir-roman text-base md:text-lg text-base-content/90">
                               87 11 75 10 00
                            </p>
-                           {/* <p className="font-anodina-regular text-base md:text-lg text-base-content/90">
-                              87 11 75 10 00
-                           </p> */}
+                           <p className="font-avenir-roman text-base md:text-lg text-base-content/90">
+                              Ext. 125 / Ext. 360
+                           </p>
                         </div>
                      </div>
                   </motion.div>

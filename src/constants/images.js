@@ -3,11 +3,13 @@ import faviconDark from "../../favicon-dark.ico";
 import logo from "../assets/images/logo.png";
 // import logoLight from "../assets/images/logoLight.png";
 // import logoDark from "../assets/images/logoDark.png";
+import portada from "../assets/images/portada.jpg";
+import hero from "../assets/images/el corazon de la transformacion-01.png";
 import hero2 from "../assets/images/el corazon de la transformacion-02.png";
 import hero3 from "../assets/images/logo-negro-horizontal.png";
 import fondoSplash from "../assets/images/bg-textura.png";
 import fondoSplashMovil from "../assets/images/bg-textura.png";
-import fondoInvitacion from "../assets/images/bg-textura.png";
+import fondoInvitacion from "../assets/images/portada.jpg";
 import floral from "../assets/images/floral.jpg";
 import icecream from "../assets/images/icecream.png";
 import weddingDress from "../assets/images/wedding-dress.png";
@@ -34,9 +36,11 @@ import cimaco from "../assets/images/cimaco.png";
 const images = {
    faviconLight,
    faviconDark,
+   portada,
    logo,
    // logoLight,
    // logoDark,
+   hero,
    hero2,
    hero3,
    fondoSplash,

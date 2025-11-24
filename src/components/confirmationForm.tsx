@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, User, Users, Mail, Phone, MessageSquare } from "lucide-react";
 import { useMobile } from "../hooks/useMobile";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import InvitationPDF from "./InvitationPDF";
+import images from "../constants/images";
 
 interface ConfirmationFormProps {
    guestName: string;
@@ -82,22 +85,59 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                <h3 className="font-anodina-bold text-2xl md:text-3xl text-success mb-4">
                   ¡Confirmación Recibida!
                </h3>
-               <p className="font-anodina-regular text-base-content/75 text-lg mb-6">
+               <p className="font-avenir-roman text-base-content/75 text-lg mb-6">
                   Gracias por confirmar su asistencia al evento.
                   <br />
                   Nos vemos pronto.
                </p>
                <div className="bg-base-200 rounded-2xl p-6 max-w-md mx-auto">
                   <p className="font-anodina-bold text-primary">{guestName}</p>
-                  <p className="font-anodina-regular text-base-content/60">
+                  <p className="font-avenir-roman text-base-content/60">
                      {eventName}
                   </p>
-                  <p className="font-anodina-light text-sm text-base-content/50 mt-2">
-                     {formData.attendance === "confirmed"
-                        ? "Asistencia confirmada"
-                        : "Lamentamos que no pueda asistir"}
+                  <p className="font-avenir-light text-sm text-base-content/50 mt-2">
+                     {formData.attendance === "confirmed" ? (
+                        <>
+                           <p>Asistencia confirmada</p>
+                           <div className="text-center animate-pulse">
+                              <PDFDownloadLink
+                                 document={
+                                    <InvitationPDF
+                                       name={"formData.name"}
+                                       weddingInfo={"weddingInfo"}
+                                       qrValue={"guestCode"}
+                                       // guests={"guests"}
+                                       guests={0}
+                                       table={0}
+                                       // table={"formData.attendance == "no" ? 0 : table"}
+                                       backgroundImage={images.fondoInvitacion}
+                                    />
+                                 }
+                                 fileName={`Invitacion_${formData.attendance.replaceAll(
+                                    " ",
+                                    "_",
+                                 )}.pdf`}
+                                 className="btn btn-outline btn-primary btn-xl font-zapf-bold">
+                                 {({ loading }) =>
+                                    loading
+                                       ? "Generando invitación..."
+                                       : "🎟️ DESCARGAR INVITACIÓN"
+                                 }
+                              </PDFDownloadLink>
+                           </div>
+                        </>
+                     ) : (
+                        "Lamentamos que no pueda asistir"
+                     )}
                   </p>
                </div>
+               {/* {formData.attendance == "yes" && guestCode && ( 
+               // <motion.div
+               //    initial={{ opacity: 0, scale: 0, y: 50 }}
+               //    whileInView={{ opacity: 1, scale: 1 }}
+               //    transition={{
+               //       duration: 0.3,
+               //    }}>*/}
             </motion.div>
          </div>
       );
@@ -114,7 +154,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
             <div className="flex justify-center mb-4">
                <Check className="h-12 w-12 text-primary/75" />
             </div>
-            <h2 className="font-marcellus font-black text-2xl md:text-4xl mb-2 text-primary">
+            <h2 className="font-zapf-roman font-black text-2xl md:text-4xl mb-2 text-primary">
                Confirmación de Asistencia
             </h2>
             <motion.div
@@ -124,7 +164,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                className="mb-6">
                <div className="h-0.5 bg-primary/30 mx-auto max-w-xs"></div>
             </motion.div>
-            <p className="font-marcellus leading-relaxed max-w-3xl mx-auto text-base-content/75">
+            <p className="font-zapf-roman leading-relaxed max-w-3xl mx-auto text-base-content/75">
                Por favor, confirme su asistencia al evento antes de la fecha
                indicada.
             </p>
@@ -164,7 +204,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                         <div className="font-anodina-bold text-lg mb-1">
                            Sí, asistiré
                         </div>
-                        <div className="font-anodina-light text-sm">
+                        <div className="font-avenir-light text-sm">
                            Confirmar presencia
                         </div>
                      </div>
@@ -190,7 +230,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                         <div className="font-anodina-bold text-lg mb-1">
                            No podré asistir
                         </div>
-                        <div className="font-anodina-light text-sm">
+                        <div className="font-avenir-light text-sm">
                            Lamentablemente declino
                         </div>
                      </div>
@@ -233,7 +273,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                                  <div className="font-anodina-bold">
                                     Titular
                                  </div>
-                                 <div className="font-anodina-light text-sm">
+                                 <div className="font-avenir-light text-sm">
                                     Confirmo por mí mismo
                                  </div>
                               </div>
@@ -265,7 +305,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                                  <div className="font-anodina-bold">
                                     Asistente
                                  </div>
-                                 <div className="font-anodina-light text-sm">
+                                 <div className="font-avenir-light text-sm">
                                     Confirmo en representación
                                  </div>
                               </div>
@@ -274,8 +314,8 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                      </div>
 
                      {/* Número de acompañantes */}
-                     <div className="mb-6">
-                        <label className="font-anodina-regular text-base-content/75 mb-2 block">
+                     {/* <div className="mb-6">
+                        <label className="font-avenir-roman text-base-content/75 mb-2 block">
                            Número de personas que asistirán (incluyéndose)
                         </label>
                         <select
@@ -289,7 +329,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                               </option>
                            ))}
                         </select>
-                     </div>
+                     </div> */}
                   </>
                )}
             </div>
@@ -304,7 +344,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                <div className="grid md:grid-cols-2 gap-4 mb-4">
                   <div className="form-control">
                      <label className="label">
-                        <span className="font-anodina-regular text-base-content/75">
+                        <span className="font-avenir-roman text-base-content/75">
                            Nombre completo *
                         </span>
                      </label>
@@ -321,7 +361,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
 
                   <div className="form-control">
                      <label className="label">
-                        <span className="font-anodina-regular text-base-content/75">
+                        <span className="font-avenir-roman text-base-content/75">
                            Correo electrónico *
                         </span>
                      </label>
@@ -343,7 +383,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                <div className="grid md:grid-cols-2 gap-4">
                   <div className="form-control">
                      <label className="label">
-                        <span className="font-anodina-regular text-base-content/75">
+                        <span className="font-avenir-roman text-base-content/75">
                            Teléfono *
                         </span>
                      </label>
@@ -363,7 +403,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
 
                   <div className="form-control">
                      <label className="label">
-                        <span className="font-anodina-regular text-base-content/75">
+                        <span className="font-avenir-roman text-base-content/75">
                            Mensaje adicional (opcional)
                         </span>
                      </label>

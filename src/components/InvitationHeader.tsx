@@ -58,7 +58,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="font-marcellus text-lg md:text-xl text-primary mb-4">
+                  className="font-avenir-book text-lg md:text-xl text-primary mb-4">
                   {relationship}
                </motion.p>
 
@@ -67,7 +67,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
-                  className="font-mayoritte text-4xl md:text-6xl lg:text-7xl text-primary mb-6 leading-tight">
+                  className="font-zapf-bold text-4xl md:text-6xl lg:text-7xl text-primary mb-6 leading-tight">
                   {guestName}
                </motion.h1>
 
@@ -85,7 +85,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 1 }}
                   className="mb-8">
-                  <p className="font-anodina-light text-lg md:text-xl text-base-content/80 mb-2">
+                  <p className="font-avenir-light text-lg md:text-xl text-base-content/80 mb-2">
                      Es un honor para nosotros invitarle a asistir al evento
                   </p>
                </motion.div>
@@ -135,8 +135,8 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
                />
             ) : (
                <div className="w-full h-full bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
-                  <p className="font-anodina-regular text-base-content/50 text-lg">
-                     Imagen del evento
+                  <p className="font-avenir-roman text-base-content/50 text-lg">
+                     Imagen
                   </p>
                </div>
             )}

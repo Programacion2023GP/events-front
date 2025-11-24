@@ -61,21 +61,21 @@ export default function ValidarQR() {
                title: "Acceso permitido",
                html: `
                      <div style="text-align:left;">
-                        <p class='text-lg font-marcellus mb-2'>Invitado: <b>${
+                        <p class='text-lg font-zapf-roman mb-2'>Invitado: <b>${
                            data.nombre
                         }</b><p/>
-                        <p class='text-lg font-marcellus mb-2'>Confirmado: <b>${
+                        <p class='text-lg font-zapf-roman mb-2'>Confirmado: <b>${
                            data.confirmado ? "Sí" : "No"
                         }</b><p/>
-                        <p class='text-lg font-marcellus mb-2'>Pases: <b>${
+                        <p class='text-lg font-zapf-roman mb-2'>Pases: <b>${
                            data.max
                         }</b><p/>
-                         <p class='text-lg font-marcellus mb-2'>Mesa: <b>${
+                         <p class='text-lg font-zapf-roman mb-2'>Mesa: <b>${
                             data.mesa ?? "-"
                          }</b><p/>
                         ${
                            data.llegada
-                              ? `<p class='text-lg font-marcellus mb-2'>Hora de llegada: <b>${formatDatetime(
+                              ? `<p class='text-lg font-zapf-roman mb-2'>Hora de llegada: <b>${formatDatetime(
                                    data.llegada,
                                    true,
                                    "hh:mm a",
@@ -89,8 +89,8 @@ export default function ValidarQR() {
                customClass: {
                   confirmButton: "btn btn-success font-black mx-5", // daisyUI
                   cancelButton: "btn btn-error font-black ml-2",
-                  popup: "font-marcellus",
-                  title: "font-marcellus text-green-700",
+                  popup: "font-zapf-roman",
+                  title: "font-zapf-roman text-green-700",
                },
                buttonsStyling: false, // importante para que DaisyUI maneje estilos
                allowOutsideClick: false,
@@ -343,7 +343,7 @@ export default function ValidarQR() {
                      {loading && (
                         <div className="absolute inset-0 flex flex-col items-center justify-center bg-base-300/80 z-20 rounded-lg">
                            <span className="loading loading-spinner loading-lg text-primary mb-2"></span>
-                           <span className="font-marcellus text-lg text-primary font-bold animate-pulse">
+                           <span className="font-zapf-roman text-lg text-primary font-bold animate-pulse">
                               Buscando invitado...
                            </span>
                         </div>

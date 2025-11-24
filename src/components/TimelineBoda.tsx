@@ -107,7 +107,7 @@ const TimelineBoda = ({ weddingInfo }) => {
                   margin: isMobile ? "0px" : "-25% 0px",
                }}
                className="text-center mb-2">
-               <h2 className="font-marcellus font-black text-2xl md:text-4xl mb-2 text-primary">
+               <h2 className="font-zapf-roman font-black text-2xl md:text-4xl mb-2 text-primary">
                   Itinerario del Evento
                </h2>
                <motion.div
@@ -120,7 +120,7 @@ const TimelineBoda = ({ weddingInfo }) => {
                   }}>
                   <Divider color="primary" />
                </motion.div>
-               <p className="font-marcellus italic leading-relaxed max-w-3xl mx-auto mb-2">
+               <p className="font-zapf-roman italic leading-relaxed max-w-3xl mx-auto mb-2">
                   ¿Lo mejor? ¡No necesitarás moverte de lugar! Hemos preparado
                   todo en{" "}
                   <span className="font-bold">
@@ -208,7 +208,7 @@ const TimelineBoda = ({ weddingInfo }) => {
                            </div>
 
                            {/* Título y subtítulo */}
-                           <div className="sm:text-lg md:text-1xl font-mayoritte">
+                           <div className="sm:text-lg md:text-1xl font-zapf-roman">
                               <div className="">{evento.titulo}</div>
                               <div className="">{evento.subtitulo}</div>
                            </div>
@@ -220,7 +220,7 @@ const TimelineBoda = ({ weddingInfo }) => {
 
             {/* Nota al pie */}
             <div className="text-center mt-1">
-               <p className="text-sm font-marcellus italic text-primary">
+               <p className="text-sm font-zapf-roman italic text-primary">
                   *Los horarios pueden variar ligeramente
                </p>
                {/* Indicador de scroll */}
@@ -232,7 +232,7 @@ const TimelineBoda = ({ weddingInfo }) => {
                      }
                   }>
                   <div className="flex flex-col items-center text-base-content">
-                     <span className="text-sm font-marcellus mb-1 w-full">
+                     <span className="text-sm font-zapf-roman mb-1 w-full">
                         Arrastra horizontalmente en la linea del tiempo para ver
                         todos los eventos
                      </span>

@@ -49,7 +49,7 @@ const LoveHistory = ({}) => {
             transition={{ duration: 0.8 }}
             viewport={{ once: false, margin: "-25% 0px" }}
             className="text-center mb-16">
-            <h2 className="font-marcellus font-black text-2xl md:text-4xl mb-2 text-primary">
+            <h2 className="font-zapf-roman font-black text-2xl md:text-4xl mb-2 text-primary">
                Nuestra Historia de Amor
             </h2>
             <motion.div
@@ -62,7 +62,7 @@ const LoveHistory = ({}) => {
                }}>
                <Divider color="primary" />
             </motion.div>
-            <p className="font-marcellus text-base-content leading-relaxed max-w-3xl mx-auto">
+            <p className="font-zapf-roman text-base-content leading-relaxed max-w-3xl mx-auto">
                Nos conocimos hace 5 años en una tarde de otoño. Desde entonces,
                hemos compartido innumerables momentos que nos han llevado a este
                día tan especial. Ahora queremos celebrar nuestro amor rodeados
@@ -184,13 +184,13 @@ const LoveHistory = ({}) => {
                                  : "md:text-left md:pl-8"
                            } mb-6 md:mb-0`}>
                            <h3
-                              className={`text-3xl font-mayoritte text-[#e5b168] bg-base-200 md:bg-transparent`}>
+                              className={`text-3xl font-zapf-roman text-[#e5b168] bg-base-200 md:bg-transparent`}>
                               {evento.titulo}
                            </h3>
-                           <p className="font-anodina-regular text-primary/80 mb-3 bg-base-200 md:bg-transparent">
+                           <p className="font-avenir-roman text-primary/80 mb-3 bg-base-200 md:bg-transparent">
                               {evento.fecha}
                            </p>
-                           <p className="font-marcellus italic text-base-content leading-relaxed opacity-80 bg-base-200 md:bg-transparent">
+                           <p className="font-zapf-roman italic text-base-content leading-relaxed opacity-80 bg-base-200 md:bg-transparent">
                               {evento.descripcion}
                            </p>
                         </div>

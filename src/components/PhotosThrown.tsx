@@ -161,7 +161,7 @@ const FloatingText = ({ cfg, scrollYProgress }: FloatingTextProps) => {
          }}>
          <div className="relative max-w-sm">
             <div className="bg-black/70 backdrop-blur-md rounded-xl p-1 md:p-4 border border-white/20 shadow-2xl">
-               <p className="text-white font-marcellus text-xs md:text-base leading-relaxed text-center drop-shadow-lg">
+               <p className="text-white font-zapf-roman text-xs md:text-base leading-relaxed text-center drop-shadow-lg">
                   "{cfg.text}"
                </p>
                <div className="flex justify-center mt-3">
@@ -413,7 +413,7 @@ const DynamicPhotosThrown = ({
                   {title}
                </h2>
                {subtitle && (
-                  <p className="text-white/80 text-center mt-2 font-marcellus">
+                  <p className="text-white/80 text-center mt-2 font-zapf-roman">
                      {subtitle}
                   </p>
                )}
@@ -427,7 +427,7 @@ const DynamicPhotosThrown = ({
                transition={{ delay: 1 }}
                className="absolute top-20 right-8 z-50">
                <div className="bg-black/60 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
-                  <p className="text-white font-marcellus text-sm">
+                  <p className="text-white font-zapf-roman text-sm">
                      {photos.length} foto{photos.length !== 1 ? "s" : ""} para
                      aventar
                   </p>
@@ -467,7 +467,7 @@ const DynamicPhotosThrown = ({
                   scale: useTransform(scrollYProgress, [0.9, 1], [0.8, 1]),
                }}>
                <div className="bg-black/80 backdrop-blur-lg rounded-2xl p-8 md:p-12 max-w-2xl mx-4 border border-white/30">
-                  <h3 className="text-2xl md:text-4xl font-marcellus text-white text-center mb-4 text-shadow-gray-950 shadow-2xl">
+                  <h3 className="text-2xl md:text-4xl font-zapf-roman text-white text-center mb-4 text-shadow-gray-950 shadow-2xl">
                      {finalMessage.title}
                   </h3>
                   <p className="text-white/90 text-center text-lg md:text-xl font-light leading-relaxed text-shadow-gray-950 shadow-2xl">
@@ -486,7 +486,7 @@ const DynamicPhotosThrown = ({
                   opacity: useTransform(scrollYProgress, [0, 0.2], [1, 0]),
                }}>
                <div className="flex flex-col items-center text-white">
-                  <span className="text-sm font-marcellus mb-2">
+                  <span className="text-sm font-zapf-roman mb-2">
                      Desliza lentamente para aventar las fotos
                   </span>
                   <motion.div

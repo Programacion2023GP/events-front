@@ -102,9 +102,9 @@ export default function App() {
 
    // Variables
    const nameEvent = "Presentación del Plan Municipal de Desarrollo 2025-2028";
-   const weddingDate = new Date("2025-12-13T18:00:00");
-   const weddingPlace = "Salon de eventos Altozano";
-   const location = "Altozano CP 35140, Gómez Palacio, Durango";
+   const weddingDate = new Date("2025-12-01T18:00:00");
+   const weddingPlace = "Salón de eventos Altozano";
+   const location = "ALTOZANO CP 35140, Gómez Palacio, Durango";
    const girlfriend =
          "Dirección General de Relaciones Públicas, R. Ayuntamiento de Gómez Palacio, Dgo.",
       boyfriend = "";
@@ -346,11 +346,11 @@ export default function App() {
 
             {/* Botones flotantes */}
             <div className="fixed top-4 right-6 z-50 flex gap-2">
-               <AudioPlayer
+               {/* <AudioPlayer
                   audios={[audios.bailando, audios.todoVaAEstarBien]}
                   isPlaying={isPlaying}
                   setIsPlaying={setIsPlaying}
-               />
+               /> */}
                <ThemeChanger />
             </div>
 
@@ -461,14 +461,14 @@ export default function App() {
                   </section> */}
 
             {/* Sección de Código de Vestimenta */}
-            <section className="py-20 px-6 bg-base-100 relative">
+            {/* <section className="py-20 px-6 bg-base-100 relative">
                <DressCode />
-            </section>
+            </section> */}
 
             {/* Sección de Consideraciones */}
-            <section className="py-20 px-6 relative">
+            {/* <section className="py-20 px-6 relative">
                <Considerations />
-            </section>
+            </section> */}
 
             <section className="py-20 px-6 bg-base-100 relative" ref={rsvpRef}>
                <ContactSection weddingInfo={weddingInfo} />
@@ -490,12 +490,12 @@ export default function App() {
             </section>
 
             {/* Footer */}
-            <footer className="py-2 px-6 text-center font-marcellus bg-base-100">
+            <footer className="py-2 px-6 text-center font-zapf-roman bg-base-100">
                <p className="">atentamente,</p>
-               <h2 className="font-marcellus text-sm mb-4 text-primary">
+               <h2 className="font-zapf-roman text-sm mb-4 text-primary">
                   {girlfriend} {boyfriend && `& ${boyfriend}`}
                </h2>
-               <p className="text-sm font-marcellus">
+               <p className="text-sm font-zapf-roman">
                   &copy; {new Date().getFullYear()} | Diseñado con ♥{" "}
                   <span
                      className="link hover:animate-pulse"

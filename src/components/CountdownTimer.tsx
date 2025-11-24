@@ -66,8 +66,8 @@ export default function CountdownTimer({
       : "text-4xl md:text-7xl font-anodina-extrabold text-primary";
 
    const labelClasses = isSticky
-      ? "font-anodina-regular text-[10px] text-primary"
-      : "font-anodina-light text-primary";
+      ? "font-avenir-roman text-[10px] text-primary"
+      : "font-avenir-light text-primary";
 
    const gridClasses = isSticky
       ? `grid ${isMobile ? "grid-rows-4" : "grid-cols-4"} gap-1 text-center`
@@ -115,14 +115,14 @@ export default function CountdownTimer({
          {!isSticky && (
             <>
                <div className="text-center mt-8 mb-1">
-                  <p className="font-anodina-regular text-primary">
+                  <p className="font-avenir-roman text-primary">
                      Te esperamos para celebrar nuestro evento:
                   </p>
                </div>
 
                <div className="flex items-center justify-center gap-2 mb-8 text-primary">
                   <div className="text-center border-t border-b  py-2 px-4">
-                     <span className="font-anodina-regular">
+                     <span className="font-avenir-roman">
                         {String(
                            formatDatetime(targetDate, false, "dddd"),
                         ).toUpperCase()}

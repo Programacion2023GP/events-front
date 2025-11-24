@@ -86,7 +86,7 @@ const DressCode = ({}) => {
             <div className="flex justify-center mb-4">
                <Shirt className="h-12 w-12 text-primary/75" />
             </div>
-            <h2 className="font-marcellus font-black text-2xl md:text-4xl mb-2 text-primary">
+            <h2 className="font-zapf-roman font-black text-2xl md:text-4xl mb-2 text-primary">
                Código de Vestimenta
             </h2>
             <motion.div
@@ -99,7 +99,7 @@ const DressCode = ({}) => {
                }}>
                <Divider color="primary" />
             </motion.div>
-            <p className="font-marcellus text-base-content leading-relaxed max-w-3xl mx-auto mb-8">
+            <p className="font-zapf-roman text-base-content leading-relaxed max-w-3xl mx-auto mb-8">
                Nos encantaría que nos acompañes con{" "}
                <span className="font-bold">vestimenta formal</span> para
                celebrar nuestro día especial.
@@ -129,10 +129,10 @@ const DressCode = ({}) => {
                         className="text-center w-12 h-12 transition-all text-primary"
                      />
                   </div>
-                  <h3 className="text-3xl font-medium font-mayoritte mb-3">
+                  <h3 className="text-3xl font-medium font-zapf-roman mb-3">
                      Damas
                   </h3>
-                  <p className="font-marcellus">
+                  <p className="font-zapf-roman">
                      Vestido largo o midi, traje sastre elegante
                   </p>
                </div>
@@ -152,17 +152,17 @@ const DressCode = ({}) => {
                      <img
                         src={
                            themeActive === "dark"
-                              ? images.suitDark
-                              : images.suitLight
+                              ? images.weddingDress
+                              : images.weddingDressLight
                         }
                         alt="Novio y Novia"
                         className="text-center w-12 h-12 transition-all text-primary"
                      />
                   </div>
-                  <h3 className="text-3xl font-medium font-mayoritte mb-3">
+                  <h3 className="text-3xl font-medium font-zapf-roman mb-3">
                      Caballeros
                   </h3>
-                  <p className="font-marcellus">
+                  <p className="font-zapf-roman">
                      Traje formal con corbata o moño
                   </p>
                </div>
@@ -179,7 +179,7 @@ const DressCode = ({}) => {
                margin: isMobile ? "0px" : "-25% 0px",
             }}>
             {/* <div className="mb-10 px-8">
-               <h3 className="text-xl font-medium font-marcellus text-center mb-6">
+               <h3 className="text-xl font-medium font-zapf-roman text-center mb-6">
                   Colores Recomendados
                </h3>
                <div className="flex flex-wrap justify-center ">

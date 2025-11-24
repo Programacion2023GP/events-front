@@ -59,7 +59,7 @@ const GiftTable = ({ giftRegistryUrls }) => {
             <div className="flex justify-center mb-4">
                <Gift className="h-12 w-12 text-primary/75" />
             </div>
-            <h2 className="font-marcellus font-black text-2xl md:text-4xl mb-2 text-primary">
+            <h2 className="font-zapf-roman font-black text-2xl md:text-4xl mb-2 text-primary">
                Mesa de Regalos
             </h2>
             <motion.div
@@ -72,7 +72,7 @@ const GiftTable = ({ giftRegistryUrls }) => {
                }}>
                <Divider color="primary" />
             </motion.div>
-            <p className="font-marcellus leading-relaxed max-w-3xl mx-auto mb-8">
+            <p className="font-zapf-roman leading-relaxed max-w-3xl mx-auto mb-8">
                Tu presencia es nuestro mejor regalo. Sin embargo, si deseas
                obsequiarnos algo, hemos creado una mesa de regalos para
                facilitar tu elección o si prefieres apoyarnos con una
@@ -242,7 +242,7 @@ const GiftTable = ({ giftRegistryUrls }) => {
                                  initial={{ opacity: 0 }}
                                  animate={{ opacity: 1 }}
                                  transition={{ duration: 0.6, delay: 0.4 }}>
-                                 <p className="font-marcellus text-base-content/60 text-xs">
+                                 <p className="font-zapf-roman text-base-content/60 text-xs">
                                     ¡Gracias por ser parte de nuestro día
                                     especial! ✨
                                  </p>

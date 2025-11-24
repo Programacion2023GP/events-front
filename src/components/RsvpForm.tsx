@@ -192,10 +192,10 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                      <polyline points="22 4 12 14.01 9 11.01" />
                   </svg>
                </div>
-               <h3 className="text-xl font-marcellus font-bold mb-2 text-primary">
+               <h3 className="text-xl font-zapf-roman font-bold mb-2 text-primary">
                   ¡Gracias por confirmar!
                </h3>
-               <p className="font-marcellus text-primary/90">
+               <p className="font-zapf-roman text-primary/90">
                   {formData.attendance == "yes"
                      ? "Estamos emocionados de contar con tu presencia. No olvides descargar y llevar contigo la invitación digital al evento."
                      : "Lamentamos saber que no podrás acompañarnos, pero agradecemos que nos lo hayas hecho saber."}
@@ -260,7 +260,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="text-center mb-12">
-            <h2 className="font-marcellus font-black text-2xl md:text-4xl mb-2 text-primary">
+            <h2 className="font-zapf-roman font-black text-2xl md:text-4xl mb-2 text-primary">
                Confirma tu Asistencia
             </h2>
             <motion.div
@@ -273,14 +273,14 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                }}>
                <Divider color="primary" />
             </motion.div>
-            <p className="font-marcellus leading-relaxed max-w-3xl mx-auto">
+            <p className="font-zapf-roman leading-relaxed max-w-3xl mx-auto">
                Por favor, confirma tu asistencia antes del{" "}
                {dayjs(weddingInfo.theDate)
                   .subtract(32, "days")
                   .format("dddd DD [de] MMMM [de] YYYY")}
                .
             </p>
-            <small className="font-marcellus text-xs">
+            <small className="font-zapf-roman text-xs">
                Si no recibimos tu confirmación, asumiremos que surgió algún
                imprevisto que te impedirá acompañarnos.
             </small>
@@ -325,12 +325,12 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                               </span>
                            </div>
 
-                           <h3 className="text-2xl font-marcellus font-bold text-primary">
+                           <h3 className="text-2xl font-zapf-roman font-bold text-primary">
                               Invitación del Evento
                            </h3>
 
                            <div className="space-y-2">
-                              <p className="font-marcellus text-md mb-8 text-primary">
+                              <p className="font-zapf-roman text-md mb-8 text-primary">
                                  {weddingInfo.bride}{" "}
                                  {weddingInfo.groom && `& ${weddingInfo.groom}`}
                               </p>
@@ -343,10 +343,10 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                            <div className="divider divider-primary opacity-50"></div>
 
                            <div className="space-y-1">
-                              <p className="text-xs font-marcellus font-medium">
+                              <p className="text-xs font-zapf-roman font-medium">
                                  {weddingInfo.place.toUpperCase()}
                               </p>
-                              <p className="text-xs font-marcellus opacity-60">
+                              <p className="text-xs font-zapf-roman opacity-60">
                                  {weddingInfo.location}
                               </p>
                            </div>
@@ -370,10 +370,10 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                         "D",
                      ) ? (
                         <div className="flex flex-col items-center justify-center h-full text-center p-8">
-                           <h4 className="text-xl font-marcellus font-bold text-error mb-4">
+                           <h4 className="text-xl font-zapf-roman font-bold text-error mb-4">
                               El periodo para confirmar asistencia ha finalizado
                            </h4>
-                           <p className="text-base font-marcellus text-base-content/80 max-w-md mx-auto">
+                           <p className="text-base font-zapf-roman text-base-content/80 max-w-md mx-auto">
                               Si tienes alguna duda o necesitas comunicarte, por
                               favor contáctanos directamente.
                               <br />
@@ -383,10 +383,10 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                      ) : ( */}
                      <div className="w-2/3 p-8">
                         <div className="mb-6">
-                           <h4 className="text-xl font-marcellus font-bold text-center mb-2">
+                           <h4 className="text-xl font-zapf-roman font-bold text-center mb-2">
                               Confirmación de Asistencia
                            </h4>
-                           <p className="text-sm font-marcellus text-center opacity-70">
+                           <p className="text-sm font-zapf-roman text-center opacity-70">
                               Al ingresar el número telefónico podrás llenar el
                               formulario.
                            </p>
@@ -410,7 +410,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
 
                         <form
                            onSubmit={handleSubmit}
-                           className="space-y-4 font-marcellus">
+                           className="space-y-4 font-zapf-roman">
                            {/* Primera fila - Información básica */}
                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                               <div className="form-control col-span-2">
@@ -664,7 +664,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                         )}
 
                         {/* Pie del formulario */}
-                        <div className="text-center font-marcellus mt-6 pt-4 border-t border-dashed border-primary/20">
+                        <div className="text-center font-zapf-roman mt-6 pt-4 border-t border-dashed border-primary/20">
                            <p className="text-xs opacity-60">
                               Gracias por confirmar tu asistencia • Conserva
                               este boleto como recuerdo ♥

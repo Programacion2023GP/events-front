@@ -34,7 +34,7 @@ const Considerations = ({}) => {
             <div className="flex justify-center mb-4">
                <BadgeAlert className="h-12 w-12 text-primary/75" />
             </div>
-            <h2 className="font-marcellus font-black text-2xl md:text-4xl mb-2 text-primary">
+            <h2 className="font-zapf-roman font-black text-2xl md:text-4xl mb-2 text-primary">
                Consideraciones
             </h2>
             <motion.div
@@ -47,7 +47,7 @@ const Considerations = ({}) => {
                }}>
                <Divider color="primary" />
             </motion.div>
-            <p className="font-marcellus leading-relaxed max-w-3xl mx-auto mb-8">
+            <p className="font-zapf-roman leading-relaxed max-w-3xl mx-auto mb-8">
                "Para que todos podamos disfrutar de este día especial, les
                compartimos algunas consideraciones:"
             </p>

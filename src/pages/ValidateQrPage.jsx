@@ -6,10 +6,10 @@ export default function ValidateQrPage() {
    return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-base-100 p-4">
          <div className="max-w-lg w-full bg-base-300/80 rounded-xl shadow-lg p-6 mb-6 border border-primary/20 hidden">
-            <h1 className="text-2xl font-marcellus font-bold text-primary mb-2 text-center">
+            <h1 className="text-2xl font-zapf-roman font-bold text-primary mb-2 text-center">
                Validación de Invitación
             </h1>
-            <p className="text-base font-marcellus text-center mb-4 text-base-content/80">
+            <p className="text-base font-zapf-roman text-center mb-4 text-base-content/80">
                Escanea el código QR de la invitación para registrar la
                asistencia en la recepción.
                {/* <br />

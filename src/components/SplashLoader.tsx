@@ -79,7 +79,7 @@ export default function SplashLoader({
                   {/* <h1 className="font-dashing text-3xl md:text-9xl mb-4 text-secondary">
                      {weddingInfo.bride} & {weddingInfo.groom}
                   </h1> */}
-                  {/* <h1 className="font-mayoritte text-3xl md:text-9xl mb-4 text-rose-800 dark:text-rose-300">
+                  {/* <h1 className="font-zapf-roman text-3xl md:text-9xl mb-4 text-rose-800 dark:text-rose-300">
                         {bride} & {groom}
                      </h1> */}
                   <motion.div
@@ -97,7 +97,7 @@ export default function SplashLoader({
                      />
                   </motion.div>
                   {/* <motion.h2
-                     className="font-marcellus text-xl md:text-2xl mb-2"
+                     className="font-zapf-roman text-xl md:text-2xl mb-2"
                      initial={{ opacity: 0, y: 20 }}
                      animate={{ opacity: 1, y: 0 }}
                      transition={{
@@ -119,7 +119,7 @@ export default function SplashLoader({
                      whileTap={{ scale: 0.95 }}
                      className="">
                      <button
-                        className="btn btn-primary font-marcellus rounded-full px-8 py-6 text-lg "
+                        className="btn btn-primary font-zapf-roman rounded-full px-8 py-6 text-lg "
                         onClick={() => {
                            setShow(false);
                            setIsPlaying(true);
