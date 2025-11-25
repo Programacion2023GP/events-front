@@ -22,7 +22,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
    return (
       <div className="relative w-full min-h-screen flex flex-col">
          {/* Sección del encabezado de invitación */}
-         <div className="flex-1 flex items-center justify-center py-16 px-4 relative overflow-hidden">
+         <div className="flex-1 flex items-center justify-center px-4 relative overflow-hidden">
             {/* Fondo con efecto granulado */}
             <div className="absolute inset-0 bg-base-100/95 z-0"></div>
 
@@ -50,25 +50,23 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   transition={{ duration: 1, delay: 0.2 }}
-                  className="h-px bg-primary/30 mx-auto mb-8 max-w-xs"
+                  className="h-px bg-primary/30 mx-auto mb-0 max-w-xs"
                />
-
-               {/* Saludo personalizado */}
-               <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  className="font-avenir-book text-lg md:text-xl text-primary mb-4">
-                  {relationship}
-               </motion.p>
 
                {/* Nombre del invitado */}
                <motion.h1
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
-                  className="font-zapf-bold text-4xl md:text-6xl lg:text-7xl text-primary mb-6 leading-tight">
+                  className="font-zapf-bold text-4xl md:text-6xl lg:text-7xl text-primary mb-2 leading-tight">
                   {guestName}
+                  <motion.p
+                     initial={{ opacity: 0, y: 20 }}
+                     whileInView={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.6, delay: 0.4 }}
+                     className="font-avenir-book text-lg md:text-xl text-primary mb-4">
+                     {relationship}
+                  </motion.p>
                </motion.h1>
 
                {/* Línea decorativa media */}
@@ -76,7 +74,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   transition={{ duration: 1, delay: 0.8 }}
-                  className="h-0.5 bg-primary/50 mx-auto mb-6 max-w-sm"
+                  className="h-0.5 bg-primary/50 mx-auto mb-4 max-w-sm"
                />
 
                {/* Mensaje de invitación */}
@@ -84,27 +82,27 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 1 }}
-                  className="mb-8">
-                  <p className="font-avenir-light text-lg md:text-xl text-base-content/80 mb-2">
+                  className="mb-3">
+                  <p className="font-avenir-light text-lg md:text-xl text-base-content/80 mb-0">
                      Es un honor para nosotros invitarle a asistir al evento
                   </p>
                </motion.div>
 
                {/* Nombre del evento */}
-               <motion.h2
+               {/* <motion.h2
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 1.2 }}
                   className="font-anodina-bold text-2xl md:text-4xl lg:text-5xl text-secondary mb-8 leading-relaxed">
                   {eventName}
-               </motion.h2>
+               </motion.h2> */}
 
                {/* Línea decorativa inferior */}
                <motion.div
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   transition={{ duration: 1, delay: 1.4 }}
-                  className="h-px bg-primary/30 mx-auto mt-8 max-w-xs"
+                  className="h-px bg-primary/30 mx-auto mt-0 max-w-xs"
                />
 
                {/* Elemento decorativo central */}
@@ -112,7 +110,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
                   initial={{ scale: 0, rotate: -180 }}
                   whileInView={{ scale: 1, rotate: 0 }}
                   transition={{ duration: 1, delay: 1.6, type: "spring" }}
-                  className="w-16 h-16 mx-auto mt-8 flex items-center justify-center">
+                  className="w-16 h-16 mx-auto mt-2 flex items-center justify-center">
                   <div className="w-12 h-12 border-2 border-primary/50 rounded-full flex items-center justify-center">
                      <div className="w-2 h-2 bg-primary rounded-full"></div>
                   </div>

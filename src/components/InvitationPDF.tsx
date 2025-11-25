@@ -153,29 +153,24 @@ function generateQRMatrix(text: string): number[][] {
    return matrix;
 }
 
-const InvitationPDF = ({
-   backgroundImage,
-   name,
-   weddingInfo,
-   qrValue,
-   guests = 0,
-   table = 0,
-}) => (
-   <Document>
-      <Page size="A5" style={styles.page}>
-         {/* Imagen de fondo */}
-         {backgroundImage && (
-            <Image
-               src={backgroundImage}
-               style={styles.backgroundImage}
-               fixed // Evita que se repita
-            />
-         )}
+const InvitationPDF = ({ backgroundImage, name, weddingInfo, formData }) => {
+   console.log("🚀 ~ InvitationPDF ~ formData:", formData);
+   return (
+      <Document>
+         <Page size="A5" style={styles.page}>
+            {/* Imagen de fondo */}
+            {backgroundImage && (
+               <Image
+                  src={backgroundImage}
+                  style={styles.backgroundImage}
+                  fixed // Evita que se repita
+               />
+            )}
 
-         {/* Contenido principal */}
-         <View style={styles.content}>
-            <View style={styles.section}>
-               {/* <Text style={styles.title}>Invitación a Nuestra Boda</Text>
+            {/* Contenido principal */}
+            <View style={styles.content}>
+               <View style={styles.section}>
+                  {/* <Text style={styles.title}>Invitación a Nuestra Boda</Text>
                <Text style={styles.text}>¡Hola {name}!,</Text>
                <Text style={styles.text}>
                   Nos complace invitarte a nuestra boda.
@@ -184,18 +179,18 @@ const InvitationPDF = ({
                   Este es tu boleto de acceso para nuestra boda. Por favor,
                   preséntalo el día del evento.
                </Text>*/}
-               <View style={styles.qrContainer}>
-                  {/* <Link href={weddingInfo.mapsUrl}>
+                  <View style={styles.qrContainer}>
+                     {/* <Link href={weddingInfo.mapsUrl}>
                      ${weddingInfo.weddingPlace}, ${weddingInfo.location}
                   </Link> */}
-                  {/* Mostrar el QR como imagen */}
-                  <PDFQRCode value={qrValue} />
-               </View>
-               <View style={styles.textContainer}>
-                  <Text style={styles.textMuted}>
-                     <Text style={styles.bold}>{name}</Text>
-                  </Text>
-                  <Text style={styles.textMuted}>
+                     {/* Mostrar el QR como imagen */}
+                     <PDFQRCode value={formData.guestCode} />
+                  </View>
+                  <View style={styles.textContainer}>
+                     <Text style={styles.textMuted}>
+                        <Text style={styles.bold}>{formData.nombre}</Text>
+                     </Text>
+                     {/* <Text style={styles.textMuted}>
                      Pase para: <Text style={styles.bold}>{guests}</Text>{" "}
                      {guests > 1 ? "personas" : "persona"}
                   </Text>
@@ -203,12 +198,13 @@ const InvitationPDF = ({
                      <Text style={styles.textMuted}>
                         N° Mesa: <Text style={styles.bold}>{table}</Text>
                      </Text>
-                  )}
+                  )} */}
+                  </View>
                </View>
             </View>
-         </View>
-      </Page>
-   </Document>
-);
+         </Page>
+      </Document>
+   );
+};
 
 export default InvitationPDF;

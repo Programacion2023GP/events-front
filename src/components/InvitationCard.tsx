@@ -82,7 +82,7 @@ export default function InvitationCard({
                </AnimatePresence>
             </motion.div>
 
-            <BokehCircle />
+            {/* <BokehCircle /> */}
 
             <motion.div
                className="z-10 max-w-9xl mx-auto mt-20 hidden"
@@ -112,7 +112,7 @@ export default function InvitationCard({
                   {weddingDate} - {weddingPlace}, {location}
                </p>
                <p className="text-lg md:text-xl font-zapf-roman mb-8 text-white">
-                  {weddingTime} hrs
+                  {weddingTime} hr
                </p>
                {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                <button

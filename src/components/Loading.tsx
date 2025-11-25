@@ -30,11 +30,7 @@ const Loading: React.FC<LoadingProps> = ({
                {animation === "spin" ? (
                   <div className="loader-circle-spinner">
                      <img
-                        src={
-                           themeActive == "dark"
-                              ? images.logoDark
-                              : images.logoLight
-                        }
+                        src={themeActive == "dark" ? images.logo : images.logo}
                         alt="logo"
                         className="loader-image"
                      />
@@ -44,20 +40,14 @@ const Loading: React.FC<LoadingProps> = ({
                      <div className="icon-loader inline-flex animate-[pulse_1.6s_infinite] opacity-5">
                         <img
                            src={
-                              themeActive == "dark"
-                                 ? images.logoDark
-                                 : images.logoLight
+                              themeActive == "dark" ? images.logo : images.logo
                            }
                            alt="logo"
                            className="loader-image"
                         />
                      </div>
                      <img
-                        src={
-                           themeActive == "dark"
-                              ? images.logoDark
-                              : images.logoLight
-                        }
+                        src={themeActive == "dark" ? images.logo : images.logo}
                         alt="logo"
                         className="relative inline-flex loader-image animate-[ping_1.5s_infinite]"
                      />
@@ -73,9 +63,7 @@ const Loading: React.FC<LoadingProps> = ({
                      <div className="loader-circle-spinner">
                         <img
                            src={
-                              themeActive == "dark"
-                                 ? images.logoDark
-                                 : images.logoLight
+                              themeActive == "dark" ? images.logo : images.logo
                            }
                            alt="logo"
                            className="loader-image"

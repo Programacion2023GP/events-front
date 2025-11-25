@@ -39,8 +39,8 @@ const DetailsEvent = ({
                   once: false,
                   margin: isMobile ? "0px" : "-25% 0px",
                }}
-               className="text-center mb-16">
-               <h2 className="font-zapf-roman font-black text-2xl md:text-4xl mb-2 text-primary">
+               className="text-center mb-2">
+               <h2 className="font-zapf-roman font-black text-2xl md:text-4xl text-primary">
                   Detalles del Evento
                </h2>
                <motion.div
@@ -66,14 +66,14 @@ const DetailsEvent = ({
                      margin: isMobile ? "0px" : "-25% 0px",
                   }}
                   className="text-center">
-                  <div className="flex justify-center mb-4">
+                  <div className="flex justify-center mb-1">
                      <Calendar className="h-12 w-12 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold font-zapf-roman   mb-4">
+                  <h3 className="text-xl font-bold font-zapf-roman mb-0">
                      Fecha y Hora
                   </h3>
                   <p className="font-avenir-roman">{formattedDate}</p>
-                  <p className="mb-6 font-avenir-roman">{formattedTime} hrs</p>
+                  <p className="mb-1 font-avenir-roman">{formattedTime} hr</p>
                   <motion.div
                      whileHover={{ scale: 1.05 }}
                      whileTap={{ scale: 0.95 }}>
@@ -109,14 +109,14 @@ const DetailsEvent = ({
                      margin: isMobile ? "0px" : "-25% 0px",
                   }}
                   className="text-center">
-                  <div className="flex justify-center mb-4">
+                  <div className="flex justify-center mb-1">
                      <MapPin className="h-12 w-12 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold font-zapf-roman   mb-4">
+                  <h3 className="text-xl font-bold font-zapf-roman mb-0">
                      Ubicación
                   </h3>
                   <p className="font-avenir-roman">{weddingPlace}</p>
-                  <p className="font-avenir-roman mb-6">{location}</p>
+                  <p className="font-avenir-roman mb-1">{location}</p>
                   <motion.div
                      whileHover={{ scale: 1.05 }}
                      whileTap={{ scale: 0.95 }}>
@@ -151,13 +151,13 @@ const DetailsEvent = ({
                      margin: isMobile ? "0px" : "-25% 0px",
                   }}
                   className="text-center">
-                  <div className="flex justify-center mb-4">
+                  <div className="flex justify-center mb-1">
                      <Shirt className="h-12 w-12 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold font-zapf-roman   mb-4">
+                  <h3 className="text-xl font-bold font-zapf-roman mb-0">
                      Código de Vestimenta
                   </h3>
-                  <p className="font-avenir-roman mb-6">Formal</p>
+                  <p className="font-avenir-roman mb-1">Formal</p>
                </motion.div>
 
                {/* Recomendaciones */}
@@ -170,13 +170,13 @@ const DetailsEvent = ({
                      margin: isMobile ? "0px" : "-25% 0px",
                   }}
                   className="text-center">
-                  <div className="flex justify-center mb-4">
+                  <div className="flex justify-center mb-1">
                      <Clock className="h-12 w-12 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold font-zapf-roman   mb-4">
+                  <h3 className="text-xl font-bold font-zapf-roman mb-0">
                      Recomendaciones
                   </h3>
-                  <p className="font-avenir-roman mb-6">
+                  <p className="font-avenir-roman mb-1">
                      Le recomendamos llegar 30 minutos antes de la hora
                      señalada.
                   </p>

@@ -13,13 +13,18 @@ interface ConfirmationFormProps {
 }
 
 export interface ConfirmationData {
+   autorizado: boolean;
+   codigo: string;
+   nombre: string;
+   puesto: string;
+   telefono: string;
+   asistencia: number;
+   seccion: string;
+   asiento: string;
+   guestCode: string;
+   timeStamp: string;
    attendance: "confirmed" | "declined";
-   confirmationType: "titular" | "asistente";
-   fullName: string;
-   email: string;
-   phone: string;
-   message?: string;
-   guestCount?: number;
+   confirmationType?: "titular" | "asistente";
 }
 
 const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
@@ -29,13 +34,18 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
 }) => {
    const isMobile = useMobile();
    const [formData, setFormData] = useState<ConfirmationData>({
+      autorizado: false,
+      codigo: "",
+      nombre: "",
+      puesto: "",
+      telefono: "",
+      asistencia: 0,
+      seccion: "",
+      asiento: "",
+      guestCode: "",
+      timeStamp: "",
       attendance: "confirmed",
       confirmationType: "titular",
-      fullName: "",
-      email: "",
-      phone: "",
-      message: "",
-      guestCount: 1,
    });
 
    const [isSubmitted, setIsSubmitted] = useState(false);
@@ -73,19 +83,19 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
 
    if (isSubmitted) {
       return (
-         <div className="max-w-2xl mx-auto px-4 py-16">
+         <div className="max-w-2xl mx-auto px-4">
             <motion.div
                initial={{ opacity: 0, scale: 0.8 }}
                animate={{ opacity: 1, scale: 1 }}
                transition={{ duration: 0.6 }}
                className="text-center">
-               <div className="bg-success/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+               <div className="bg-success/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Check className="h-10 w-10 text-success" />
                </div>
-               <h3 className="font-anodina-bold text-2xl md:text-3xl text-success mb-4">
+               <h3 className="font-anodina-bold text-2xl md:text-3xl text-success mb-2">
                   ¡Confirmación Recibida!
                </h3>
-               <p className="font-avenir-roman text-base-content/75 text-lg mb-6">
+               <p className="font-avenir-roman text-base-content/75 text-lg mb-4">
                   Gracias por confirmar su asistencia al evento.
                   <br />
                   Nos vemos pronto.
@@ -96,7 +106,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                      {eventName}
                   </p>
                   <p className="font-avenir-light text-sm text-base-content/50 mt-2">
-                     {formData.attendance === "confirmed" ? (
+                     {formData?.attendance === "confirmed" ? (
                         <>
                            <p>Asistencia confirmada</p>
                            <div className="text-center animate-pulse">
@@ -105,18 +115,14 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                                     <InvitationPDF
                                        name={"formData.name"}
                                        weddingInfo={"weddingInfo"}
-                                       qrValue={"guestCode"}
-                                       // guests={"guests"}
-                                       guests={0}
-                                       table={0}
+                                       formData={formData}
                                        // table={"formData.attendance == "no" ? 0 : table"}
                                        backgroundImage={images.fondoInvitacion}
                                     />
                                  }
-                                 fileName={`Invitacion_${formData.attendance.replaceAll(
-                                    " ",
-                                    "_",
-                                 )}.pdf`}
+                                 fileName={`Invitacion_${formData.nombre
+                                    .toString()
+                                    .replaceAll(" ", "_")}.pdf`}
                                  className="btn btn-outline btn-primary btn-xl font-zapf-bold">
                                  {({ loading }) =>
                                     loading
@@ -144,14 +150,14 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
    }
 
    return (
-      <div className="max-w-4xl mx-auto px-4 py-16">
+      <div className="max-w-4xl mx-auto px-4">
          <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: false, margin: isMobile ? "0px" : "-25% 0px" }}
             className="text-center mb-12">
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center mb-2">
                <Check className="h-12 w-12 text-primary/75" />
             </div>
             <h2 className="font-zapf-roman font-black text-2xl md:text-4xl mb-2 text-primary">
@@ -177,7 +183,186 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
             onSubmit={handleSubmit}
             className="max-w-2xl mx-auto">
             {/* Sección: Confirmación de asistencia */}
-            <div className="bg-base-200 rounded-2xl p-6 mb-8">
+            <div className="bg-base-200 rounded-2xl p-6 mb-4">
+               <h3 className="font-anodina-bold text-xl text-primary mb-4 flex items-center gap-3">
+                  <Check className="h-5 w-5" />
+                  ¿Podrá asistir al evento?
+               </h3>
+
+               {/* Selector de asistencia */}
+               <div className="mb-6">
+                  <select
+                     name="attendance"
+                     value={formData.attendance}
+                     onChange={handleInputChange}
+                     className="select select-bordered w-full font-anodina-regular text-lg">
+                     <option value="confirmed">
+                        Sí, asistiré - Confirmar presencia
+                     </option>
+                     <option value="declined">
+                        No podré asistir - Lamentablemente declino
+                     </option>
+                  </select>
+               </div>
+
+               {/* Solo mostrar opciones adicionales si confirma asistencia */}
+               {formData.attendance === "confirmed" && (
+                  <>
+                     <div className="border-t border-base-300 pt-6 mb-4">
+                        <h4 className="font-anodina-bold text-lg text-primary mb-4 flex items-center gap-3">
+                           <Users className="h-5 w-5" />
+                           Tipo de confirmación
+                        </h4>
+
+                        {/* Selector de tipo de confirmación */}
+                        <div className="mb-6">
+                           <select
+                              name="confirmationType"
+                              value={formData.confirmationType}
+                              onChange={handleInputChange}
+                              className="select select-bordered w-full font-anodina-regular text-lg">
+                              <option value="titular">
+                                 Titular - Confirmo por mí mismo
+                              </option>
+                              <option value="asistente">
+                                 Asistente - Confirmo en representación
+                              </option>
+                           </select>
+                        </div>
+                     </div>
+
+                     {/* Número de acompañantes */}
+                     {/* <div className="mb-6">
+               <label className="font-avenir-roman text-base-content/75 mb-2 block">
+                  Número de personas que asistirán (incluyéndose)
+               </label>
+               <select
+                  name="guestCount"
+                  value={formData.guestCount}
+                  onChange={handleInputChange}
+                  className="select select-bordered w-full max-w-xs">
+                  {[1, 2, 3, 4, 5, 6].map((num) => (
+                     <option key={num} value={num}>
+                        {num} persona{num > 1 ? "s" : ""}
+                     </option>
+                  ))}
+               </select>
+            </div> */}
+                  </>
+               )}
+            </div>
+
+            {/* Información de contacto */}
+            {/* <div className="bg-base-200 rounded-2xl p-6 mb-8">
+      <h3 className="font-anodina-bold text-xl text-primary mb-6 flex items-center gap-3">
+         <User className="h-5 w-5" />
+         Información de contacto
+      </h3>
+
+      <div className="grid md:grid-cols-2 gap-4 mb-4">
+         <div className="form-control">
+            <label className="label">
+               <span className="font-avenir-roman text-base-content/75">
+                  Nombre completo *
+               </span>
+            </label>
+            <input
+               type="text"
+               name="fullName"
+               value={formData.fullName}
+               onChange={handleInputChange}
+               required
+               className="input input-bordered"
+               placeholder="Ingrese su nombre completo"
+            />
+         </div>
+
+         <div className="form-control">
+            <label className="label">
+               <span className="font-avenir-roman text-base-content/75">
+                  Correo electrónico *
+               </span>
+            </label>
+            <div className="relative">
+               <Mail className="absolute left-3 top-3 h-5 w-5 text-base-content/30" />
+               <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="input input-bordered pl-10 w-full"
+                  placeholder="ejemplo@correo.com"
+               />
+            </div>
+         </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-4">
+         <div className="form-control">
+            <label className="label">
+               <span className="font-avenir-roman text-base-content/75">
+                  Teléfono *
+               </span>
+            </label>
+            <div className="relative">
+               <Phone className="absolute left-3 top-3 h-5 w-5 text-base-content/30" />
+               <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  required
+                  className="input input-bordered pl-10 w-full"
+                  placeholder="(000) 000-0000"
+               />
+            </div>
+         </div>
+
+         <div className="form-control">
+            <label className="label">
+               <span className="font-avenir-roman text-base-content/75">
+                  Mensaje adicional (opcional)
+               </span>
+            </label>
+            <div className="relative">
+               <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-base-content/30" />
+               <input
+                  type="text"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className="input input-bordered pl-10 w-full"
+                  placeholder="Comentarios o observaciones"
+               />
+            </div>
+         </div>
+      </div>
+   </div> */}
+
+            {/* Botón de envío */}
+            <motion.button
+               whileHover={{ scale: 1.02 }}
+               whileTap={{ scale: 0.98 }}
+               type="submit"
+               className="btn btn-primary btn-lg w-full max-w-md mx-auto flex items-center gap-2">
+               <Check className="h-5 w-5" />
+               Confirmar Asistencia
+            </motion.button>
+
+            <p className="text-center text-base-content/50 text-sm mt-4">
+               Al confirmar, acepta los términos y condiciones del evento.
+            </p>
+         </motion.form>
+
+         <motion.form
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            onSubmit={handleSubmit}
+            className="max-w-2xl mx-auto hidden">
+            {/* Sección: Confirmación de asistencia */}
+            <div className="bg-base-200 rounded-2xl p-6 mb-4">
                <h3 className="font-anodina-bold text-xl text-primary mb-4 flex items-center gap-3">
                   <Check className="h-5 w-5" />
                   ¿Podrá asistir al evento?

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
    motion,
    AnimatePresence,
@@ -84,6 +84,18 @@ export default function App() {
    const [isScrolled, setIsScrolled] = useState(false);
    const mainRef = useRef(null);
    const rsvpRef = useRef(null);
+   const [formData, setFormData] = useState({
+      autorizado: false,
+      codigo: "",
+      nombre: "",
+      puesto: "",
+      telefono: "yes",
+      asistencia: 0,
+      seccion: "",
+      asiento: "",
+      guestCode: "",
+      timeStamp: "",
+   });
 
    useEffect(() => {
       setIsLoading(false);
@@ -304,9 +316,62 @@ export default function App() {
          rsvpRef.current?.scrollIntoView({ behavior: "smooth" });
       }, 100);
    };
-   const [showSplash, setShowSplash] = useState(false);
+   const [showSplash, setShowSplash] = useState(true);
    const [isPlaying, setIsPlaying] = useState(false);
    const { isLoading, setIsLoading } = useGlobalContext();
+   const [authorized, setAuthorized] = useState(false);
+
+   const { tel } = useParams();
+
+   const checkPhone = async (tel) => {
+      // console.log("🚀 ~ checkPhone ~ tel:", tel, tel.length);
+      // setShowButtonDownload(false);
+      if (tel.length < 10) return;
+      try {
+         setIsLoading(true);
+         // setIsSubmitting(true);
+         const res = await fetch(
+            `${env.API_MACRO}?telefono=${tel}&action=getGuest`,
+         );
+         const data = await res.json();
+         //  console.log("🚀 ~ checkPhone ~ data:", data);
+         setAuthorized(data.autorizado);
+         if (data.autorizado) {
+            // setTable(data.table);
+            setFormData({
+               ...formData,
+               nombre: data.nombre,
+               puesto: data.puesto,
+               telefono: data.telefono,
+            });
+            setShow(false);
+
+            // setError("");
+            // if (data.guestCode) {
+            //    // setShowButtonDownload(true);
+            // }
+         } else {
+            // setError("Este número no está autorizado.");
+         }
+         // setIsSubmitting(false);
+         setIsLoading(false);
+      } catch {
+         // setError("Error validando el teléfono.");
+      } finally {
+         // setIsSubmitting(false);
+         setIsLoading(false);
+      }
+   };
+   useEffect(() => {
+      /* if (formData.nombre != "") */
+      (async () => {
+         //  console.log("first tel:", tel);
+         await checkPhone(tel);
+      })();
+   }, []);
+
+   if (formData.nombre == "")
+      return <Loading open={isLoading} animation="bounce" />;
 
    // dark:from-slate-900 dark:to-slate-800
    return (
@@ -316,11 +381,13 @@ export default function App() {
             show={showSplash}
             setShow={setShowSplash}
             setIsPlaying={setIsPlaying}
+            formData={formData}
+            setFormData={setFormData}
          /> */}
 
          {/* {!showSplash && (
             <> */}
-         <Loading open={isLoading} animation="bounce" />
+
          <motion.header
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -355,7 +422,7 @@ export default function App() {
             </div>
 
             {/* Contador sticky */}
-            <AnimatePresence>
+            {/* <AnimatePresence>
                {isScrolled && (
                   <motion.div
                      initial={{ opacity: 0, scale: 0.8, x: -100 }}
@@ -365,7 +432,7 @@ export default function App() {
                      <CountdownTimer targetDate={weddingDate} isSticky={true} />
                   </motion.div>
                )}
-            </AnimatePresence>
+            </AnimatePresence> */}
 
             {/* Encabezado */}
             <InvitationCard
@@ -383,16 +450,16 @@ export default function App() {
             {/* Sección de Código de Vestimenta */}
             <section className=" relative">
                <InvitationHeader
-                  relationship="Estimada"
-                  guestName="Senadora Margarita Valdez"
+                  guestName={formData.nombre}
+                  relationship={formData.puesto}
                   eventName={weddingInfo.nameEvent}
                   backgroundImage={images.hero}
-                  decorativeElements={true}
+                  decorativeElements={false}
                />
             </section>
 
             {/* Sección de cuenta regresiva */}
-            <section className="py-10 px-6 relative bg-base-100">
+            {/* <section className="py-10 px-6 relative bg-base-100">
                <div className="max-w-4xl mx-auto">
                   <motion.div
                      initial={{ opacity: 0, y: 50 }}
@@ -405,7 +472,7 @@ export default function App() {
                      <CountdownTimer targetDate={weddingDate} />
                   </motion.div>
                </div>
-            </section>
+            </section> */}
 
             {/* Sección de historia */}
             {/* <section className="py-20 px-6 relative">
@@ -443,7 +510,7 @@ export default function App() {
                   </section> */}
 
             {/* Sección de detalles */}
-            <section className="py-20 px-6 relative">
+            <section className="py-5 px-6 bg-base-100 relative">
                <DetailsEvent
                   formattedDate={formattedDate}
                   formattedTime={formattedTime}
@@ -470,23 +537,25 @@ export default function App() {
                <Considerations />
             </section> */}
 
-            <section className="py-20 px-6 bg-base-100 relative" ref={rsvpRef}>
-               <ContactSection weddingInfo={weddingInfo} />
-            </section>
-
             {/* Sección de RSVP */}
             {/* <section className="py-20 px-6 bg-base-100 relative" ref={rsvpRef}>
                <RsvpForm weddingInfo={weddingInfo} />
             </section> */}
-            <section className="py-20 px-6 relative" ref={rsvpRef}>
+            <section className="py-5 px-6 relative" ref={rsvpRef}>
                <ConfirmationForm
-                  guestName="Senadora Margarita Valdez"
+                  guestName={formData.nombre}
                   eventName={weddingInfo.nameEvent}
                   onSubmit={(data) => {
                      // Enviar datos a tu API
                      console.log("Datos confirmados:", data);
                   }}
                />
+            </section>
+
+            <section
+               className="py-5 px-6 bg-base-200/50 relative"
+               ref={rsvpRef}>
+               <ContactSection weddingInfo={weddingInfo} />
             </section>
 
             {/* Footer */}
@@ -517,8 +586,9 @@ export default function App() {
             {/* Botón para volver arriba */}
             <ScrollToTopButton />
          </motion.header>
+
+         {/* </>
+         )} */}
       </>
-      //    )}
-      // </>
    );
 }

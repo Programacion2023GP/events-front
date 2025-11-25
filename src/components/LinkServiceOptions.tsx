@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 
-const LinkServiceOptions = ({
+interface LinkServiceOptionsProps {
+   type: "calendar" | "maps";
+   calendarUrl?: string | null;
+   mapsUrl?: string | null;
+   weddingDate?: string | "";
+   weddingPlace?: string | "";
+}
+
+const LinkServiceOptions: React.FC<LinkServiceOptionsProps> = ({
    type,
-   calendarUrl = null,
-   mapsUrl = null,
-   weddingDate,
-   weddingPlace,
+   calendarUrl = "",
+   mapsUrl = "",
+   weddingDate = "",
+   weddingPlace = "",
 }) => {
    const services = {
       calendar: {
          "Google Calendar": calendarUrl,
-         "Apple Calendar": calendarUrl.replace("https://", "webcal://"),
+         "Apple Calendar": calendarUrl?.replace("https://", "webcal://"),
          Outlook: `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&subject=Evento&startdt=${weddingDate}&location=${weddingPlace}`,
       },
       maps: {
@@ -25,9 +33,12 @@ const LinkServiceOptions = ({
          {/* Open the modal using document.getElementById('ID').showModal() method */}
          <button
             className="btn btn-outline rounded-full btn-primary"
-            onClick={() =>
-               document.getElementById(`my_modal_2_${type}`).showModal()
-            }>
+            onClick={() => {
+               const dialog = document.getElementById(
+                  `my_modal_2_${type}`,
+               ) as HTMLDialogElement | null;
+               if (dialog instanceof HTMLDialogElement) dialog.showModal();
+            }}>
             {type === "calendar" ? "Agregar al calendario" : "Como llegar"}
          </button>
          <dialog id={`my_modal_2_${type}`} className="modal">
@@ -36,12 +47,13 @@ const LinkServiceOptions = ({
                <p className="py-4">
                   {Object.entries(services[type]).map(([name, link]) => (
                      <button
-                        className="btn btn-outline rounded-full btn-secondary mx-1"
+                        className="btn btn-outline rounded-full btn-secondary mx-1 mb-1"
                         key={name}
                         onClick={() => {
-                           window.open(link, "_blank");
-                        }}
-                        sx={{ mb: 1 }}>
+                           if (link) {
+                              window.open(link, "_blank");
+                           }
+                        }}>
                         {name}
                      </button>
                   ))}
