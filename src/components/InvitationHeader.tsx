@@ -20,7 +20,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
    const isMobile = useMobile();
 
    return (
-      <div className="relative w-full min-h-screen flex flex-col">
+      <div className="relative w-full flex flex-col">
          {/* Sección del encabezado de invitación */}
          <div className="flex-1 flex items-center justify-center px-4 relative overflow-hidden">
             {/* Fondo con efecto granulado */}
@@ -44,7 +44,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
                whileInView={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.8 }}
                viewport={{ once: false, margin: isMobile ? "0px" : "-25% 0px" }}
-               className="text-center relative z-10 max-w-4xl mx-auto">
+               className="text-center relative z-10 max-w-4xl mx-auto py-4">
                {/* Línea decorativa superior */}
                <motion.div
                   initial={{ scaleX: 0 }}
@@ -106,7 +106,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
                />
 
                {/* Elemento decorativo central */}
-               <motion.div
+               {/* <motion.div
                   initial={{ scale: 0, rotate: -180 }}
                   whileInView={{ scale: 1, rotate: 0 }}
                   transition={{ duration: 1, delay: 1.6, type: "spring" }}
@@ -114,7 +114,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
                   <div className="w-12 h-12 border-2 border-primary/50 rounded-full flex items-center justify-center">
                      <div className="w-2 h-2 bg-primary rounded-full"></div>
                   </div>
-               </motion.div>
+               </motion.div> */}
             </motion.div>
          </div>
 
@@ -124,7 +124,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.5 }}
             viewport={{ once: true }}
-            className="w-full h-64 md:h-96 lg:h-[500px] relative overflow-hidden">
+            className="w-full  relative overflow-hidden">
             {backgroundImage ? (
                <img
                   src={backgroundImage}
