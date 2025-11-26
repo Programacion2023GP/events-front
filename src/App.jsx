@@ -116,9 +116,9 @@ export default function App() {
    const nameEvent = "Presentación del Plan Municipal de Desarrollo 2025-2028";
    const weddingDate = new Date("2025-12-01T18:00:00");
    const weddingPlace = "Salón de eventos Altozano";
-   const location = "ALTOZANO CP 35140, Gómez Palacio, Durango";
+   const location = "ALTOZANO CP 35140, Gómez Palacio, Durango";
    const girlfriend =
-         "Dirección General de Relaciones Públicas, R. Ayuntamiento de Gómez Palacio, Dgo.",
+         "Dirección de Relaciones Públicas, R. Ayuntamiento de Gómez Palacio, Dgo.",
       boyfriend = "";
 
    const formattedDate = formatDatetime(
@@ -560,11 +560,11 @@ export default function App() {
 
             {/* Footer */}
             <footer className="py-2 px-6 text-center font-zapf-roman bg-base-100">
-               <p className="">atentamente,</p>
+               {/* <p className="">Atentamente,</p>
                <h2 className="font-zapf-roman text-sm mb-4 text-primary">
                   {girlfriend} {boyfriend && `& ${boyfriend}`}
-               </h2>
-               <p className="text-sm font-zapf-roman">
+               </h2> */}
+               {/* <p className="text-sm font-zapf-roman">
                   &copy; {new Date().getFullYear()} | Diseñado con ♥{" "}
                   <span
                      className="link hover:animate-pulse"
@@ -580,7 +580,7 @@ export default function App() {
                      WhatsApp
                   </span>{" "}
                   | {env.VERSION}
-               </p>
+               </p> */}
             </footer>
 
             {/* Botón para volver arriba */}
