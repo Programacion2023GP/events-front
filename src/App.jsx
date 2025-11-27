@@ -34,48 +34,9 @@ import { useDynamicFavicon } from "./hooks/useDynamicFavicon";
 import ContactSection from "./components/ContactSecction";
 import InvitationHeader from "./components/InvitationHeader";
 import ConfirmationForm from "./components/confirmationForm";
-import { name } from "dayjs/locale/es";
+import { Shield, AlertCircle, Home, Mail } from "lucide-react";
 
 export default function App() {
-   //#region SCROLL DENSO
-   // const containerRef = useRef(null);
-   // // 1. Obtenemos el progreso del scroll (0 a 1)
-   // const { scrollYProgress } = useScroll({
-   //    container: containerRef, // Contenedor personalizado
-   // });
-
-   // // 2. Aplicamos una transformación no lineal para hacerlo más lento
-   // const denseScroll = useTransform(
-   //    scrollYProgress,
-   //    [0, 1], // Rango de entrada
-   //    [0, 1], // Rango de salida
-   //    { clamp: false }, // Permite valores fuera del rango
-   // );
-
-   // // 3. Mapeamos a un desplazamiento "más lento"
-   // const y = useTransform(denseScroll, [0, 1], ["0%", "-50%"]);
-
-   //OPCION 2
-   // const containerRef = useRef(null);
-   // const contentRef = useRef(null);
-
-   // useEffect(() => {
-   //    const container = containerRef.current;
-   //    const content = contentRef.current;
-
-   //    const handleScroll = () => {
-   //       console.log("🚀 ~ handleScroll ~ handleScroll:");
-   //       const scrollY = container.scrollTop;
-   //       // Ajusta la velocidad (0.5 = 50% más lento)
-   //       content.style.transform = `translateY(${scrollY * 0.5}px)`;
-   //    };
-
-   //    container?.addEventListener("scroll", handleScroll);
-   //    return () => container?.removeEventListener("scroll", handleScroll);
-   // }, []);
-   //#endregion SCROLL DENSO
-
-   // const { theme, setTheme } = useTheme();
    const { themeActive } = useGlobalContext();
    useDynamicFavicon();
 
@@ -86,33 +47,33 @@ export default function App() {
    const rsvpRef = useRef(null);
    const [formData, setFormData] = useState({
       autorizado: false,
-      codigo: "",
+      guestCode: "",
       nombre: "",
       puesto: "",
-      telefono: "yes",
-      asistencia: 0,
+      telefono: "",
+      asistencia: "confirmed",
       seccion: "",
       asiento: "",
-      guestCode: "",
       timeStamp: "",
+      confirmationType: "titular",
+      ya_confirmo: "",
    });
 
    useEffect(() => {
       setIsLoading(false);
-      // console.log(`🚀 ~ App ~ themeActive:`, themeActive);
    }, [themeActive]);
 
    useEffect(() => {
       const handleScroll = () => {
          const scrollPosition = window.scrollY;
-         setIsScrolled(scrollPosition > 500); // Ajusta este valor según necesites
+         setIsScrolled(scrollPosition > 500);
       };
 
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener("scroll", handleScroll);
    }, []);
 
-   // Variables
+   //#region Variables
    const nameEvent = "Presentación del Plan Municipal de Desarrollo 2025-2028";
    const weddingDate = new Date("2025-12-01T18:00:00");
    const weddingPlace = "Salón de eventos Altozano";
@@ -130,7 +91,7 @@ export default function App() {
    const formattedTime = formatDatetime(weddingDate, false, "HH:mm");
 
    // Crear enlace para Google Calendar
-   const calendarUrl = `https://calendar.google.com/calendar/`; // ["MacOS", "iOS"].includes(detectOS()) ? `webcal://pXX-caldav.icloud.com/`:
+   const calendarUrl = `https://calendar.google.com/calendar/`;
    const googleCalendarUrl = `${calendarUrl}render?action=TEMPLATE&text=Evento+de+${girlfriend}+&dates=${weddingDate
       .toISOString()
       .replace(/-|:|\.\d+/g, "")
@@ -146,9 +107,8 @@ export default function App() {
    )},+${location.replace(" ", "+")}&sf=true&output=xml`;
 
    // Crear enlace para Google Maps
-   const googleMapsUrl = "https://maps.app.goo.gl/hXjwuD8yCn4rfRHi9"; //["MacOS", "iOS"].includes(detectOS()) ? `http://maps.apple.com/?q=${weddingPlace},${location}` :
+   const googleMapsUrl = "https://maps.app.goo.gl/hXjwuD8yCn4rfRHi9";
 
-   // Crear enlace para mesa de regalos
    const giftRegistryUrls = [
       {
          site: "Cimaco",
@@ -157,25 +117,19 @@ export default function App() {
          color: "white",
          type: "link",
       },
-      // {
-      //    site: "Mercado Libre",
-      //    link: "https://meli.uniko.co/Home",
-      //    image: "",
-      //    color: "yellow-500",
-      //    type: "link",
-      // },
       {
          type: "transferencia",
          bankData: {
             banco: "BBVA",
             nombre: "Néstor Josue Puentes Inchaurregui",
-            numeroTarjeta: "4152 3139 8353 6074",
+            numeroTarjeta: "4152 3139 8353 6074",
             clabe: "012 078 02895772494 9",
             concepto: "Regalo boda de [Tu Nombre]",
-            linkCobro: null, //"https://bbva.mx/tu-link-de-cobro",
+            linkCobro: null,
          },
       },
    ];
+
    const weddingInfo = {
       nameEvent: nameEvent,
       bride: girlfriend,
@@ -190,125 +144,7 @@ export default function App() {
       mapsUrl: googleMapsUrl,
       giftTable: giftRegistryUrls,
    };
-
-   const photos = [
-      {
-         src: images.memory1,
-         alt: "Nuestra primera cita",
-      },
-      { src: images.memory2, alt: "Día en la playa" },
-      { src: images.memory3, alt: "Cena romántica" },
-      { src: images.memory4, alt: "Viaje a París" },
-      {
-         src: images.memory5,
-         alt: "Cumpleaños juntos",
-      },
-      {
-         src: images.memory6,
-         alt: "Navidad en familia",
-      },
-      { src: images.memory7, alt: "Día de lluvia" },
-      {
-         src: images.memory8,
-         alt: "Atardecer perfecto",
-      },
-      {
-         src: images.memory9,
-         alt: "Picnic en el parque",
-      },
-      {
-         src: images.memory10,
-         alt: "Concierto favorito",
-      },
-      {
-         src: images.memory11,
-         alt: "Picnic en el parque",
-      },
-      {
-         src: images.memory12,
-         alt: "Concierto favorito",
-      },
-      { src: images.memory13, alt: "Viaje a París" },
-      {
-         src: images.memory14,
-         alt: "Cumpleaños juntos",
-      },
-      {
-         src: images.memory15,
-         alt: "Nuestra primera cita",
-      },
-      { src: images.memory16, alt: "Día en la playa" },
-      { src: images.memory17, alt: "Cena romántica" },
-      { src: images.memory18, alt: "Viaje a París" },
-      {
-         src: images.memory19,
-         alt: "Cumpleaños juntos",
-      },
-      {
-         src: images.memory20,
-         alt: "Navidad en familia",
-      },
-      { src: images.memory21, alt: "Día de lluvia" },
-      {
-         src: images.memory22,
-         alt: "Atardecer perfecto",
-      },
-      {
-         src: images.memory23,
-         alt: "Picnic en el parque",
-      },
-      {
-         src: images.memory24,
-         alt: "Concierto favorito",
-      },
-      {
-         src: images.memory25,
-         alt: "Picnic en el parque",
-      },
-      {
-         src: images.memory26,
-         alt: "Concierto favorito",
-      },
-      // Puedes añadir tantas como quieras...
-   ];
-   // Textos personalizados
-   const customTexts = [
-      {
-         text: `🎵Y así te fui queriendo a diario Sin una ley sin un horario🎶`,
-         position: { x: 40, y: 37 },
-         delay: 0.1,
-      },
-      {
-         text: "Cada foto cuenta nuestra historia",
-         position: { x: 80, y: 25 },
-         delay: 0.2,
-      },
-      {
-         text: "Momentos que atesoramos para siempre",
-         position: { x: 20, y: 58 },
-         delay: 0.3,
-      },
-      {
-         text: "Cada foto es un latido de nuestro corazón",
-         position: { x: 4, y: 20 },
-         delay: 0.4,
-      },
-      {
-         text: "Momentos que se vuelven eternos",
-         position: { x: 20, y: 90 },
-         delay: 0.5,
-      },
-      {
-         text: "Nuestra historia de amor en imágenes",
-         position: { x: 70, y: 85 },
-         delay: 0.6,
-      },
-      {
-         text: "Las memorias nos vuelven a enamorar",
-         position: { x: 6, y: 70 },
-         delay: 0.7,
-      },
-   ];
+   //#endregion
 
    const handleClickConfirm = () => {
       setShowRsvp(true);
@@ -316,108 +152,163 @@ export default function App() {
          rsvpRef.current?.scrollIntoView({ behavior: "smooth" });
       }, 100);
    };
+
    const [showSplash, setShowSplash] = useState(true);
    const [isPlaying, setIsPlaying] = useState(false);
    const { isLoading, setIsLoading } = useGlobalContext();
    const [authorized, setAuthorized] = useState(false);
+   const [validationChecked, setValidationChecked] = useState(false);
 
    const { tel } = useParams();
 
    const checkPhone = async (tel) => {
-      // console.log("🚀 ~ checkPhone ~ tel:", tel, tel.length);
-      // setShowButtonDownload(false);
-      if (tel.length < 10) return;
+      if (!tel || tel.length < 10) {
+         setValidationChecked(true);
+         return;
+      }
+
       try {
          setIsLoading(true);
-         // setIsSubmitting(true);
          const res = await fetch(
             `${env.API_MACRO}?telefono=${tel}&action=getGuest`,
          );
          const data = await res.json();
-         //  console.log("🚀 ~ checkPhone ~ data:", data);
+
          setAuthorized(data.autorizado);
          if (data.autorizado) {
-            // setTable(data.table);
             setFormData({
                ...formData,
-               nombre: data.nombre,
-               puesto: data.puesto,
-               telefono: data.telefono,
+               ...data,
             });
-            setShow(false);
-
-            // setError("");
-            // if (data.guestCode) {
-            //    // setShowButtonDownload(true);
-            // }
-         } else {
-            // setError("Este número no está autorizado.");
          }
-         // setIsSubmitting(false);
-         setIsLoading(false);
-      } catch {
-         // setError("Error validando el teléfono.");
+      } catch (error) {
+         console.error("Error validando teléfono:", error);
       } finally {
-         // setIsSubmitting(false);
          setIsLoading(false);
+         setValidationChecked(true);
       }
    };
+
    useEffect(() => {
-      /* if (formData.nombre != "") */
-      (async () => {
-         //  console.log("first tel:", tel);
-         await checkPhone(tel);
-      })();
-   }, []);
+      if (tel) {
+         checkPhone(tel);
+      } else {
+         setValidationChecked(true);
+      }
+   }, [tel]);
 
-   if (formData.nombre == "")
-      return <Loading open={isLoading} animation="bounce" />;
+   // Componente para pantalla de no autorizado
+   const UnauthorizedView = () => (
+      <div className="min-h-screen bg-gradient-to-b from-base-100/25 to-base-100 flex items-center justify-center px-4">
+         <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-md w-full text-center">
+            {/* Icono de alerta */}
+            <motion.div
+               initial={{ scale: 0 }}
+               animate={{ scale: 1 }}
+               transition={{ delay: 0.3, type: "spring" }}
+               className="flex justify-center mb-6">
+               <div className="bg-error/20 p-6 rounded-full">
+                  <Shield className="h-16 w-16 text-error" />
+               </div>
+            </motion.div>
 
-   // dark:from-slate-900 dark:to-slate-800
+            {/* Título y mensaje */}
+            <h1 className="font-marcellus text-3xl md:text-4xl text-error mb-4">
+               Acceso No Autorizado
+            </h1>
+
+            <motion.div
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               transition={{ delay: 0.5 }}
+               className="space-y-4 mb-8">
+               <p className="font-anodina-regular text-base-content/75 text-lg">
+                  Lo sentimos, pero no encontramos una invitación asociada a
+                  este link.
+               </p>
+               <p className="font-avenir-light text-base-content/60">
+                  Si crees que esto es un error, por favor contacta a los
+                  anfitriones del evento.
+               </p>
+            </motion.div>
+
+            {/* Información de contacto */}
+            <motion.div
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ delay: 0.7 }}
+               className="bg-base-100 rounded-2xl p-6 mb-6 border border-base-300/50">
+               <h3 className="font-anodina-bold text-primary mb-4 flex items-center justify-center gap-2">
+                  <Mail className="h-5 w-5" />
+                  Contacto
+               </h3>
+               <p className="font-avenir-roman text-base-content/75">
+                  {girlfriend}
+               </p>
+               <p className="font-avenir-light text-base-content/60 text-sm mt-2">
+                  relacionespublicas@coahuila.gob.mx
+               </p>
+            </motion.div>
+
+            {/* Acciones */}
+            <motion.div
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               transition={{ delay: 0.9 }}
+               className="flex flex-col sm:flex-row gap-4 justify-center">
+               {/* <Link
+                  to="/"
+                  className="btn btn-primary btn-outline rounded-full flex items-center gap-2">
+                  <Home className="h-4 w-4" />
+                  Página Principal
+               </Link> */}
+               <button
+                  onClick={() => window.location.reload()}
+                  className="btn btn-primary rounded-full flex items-center gap-2">
+                  <AlertCircle className="h-4 w-4" />
+                  Reintentar
+               </button>
+            </motion.div>
+
+            {/* Footer */}
+            <motion.div
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               transition={{ delay: 1.1 }}
+               className="mt-8 pt-6 border-t border-base-300/30">
+               <p className="text-sm font-zapf-roman text-base-content/50">
+                  &copy; 2025 | R. Ayuntamiento de Gómez Palacio
+               </p>
+            </motion.div>
+         </motion.div>
+      </div>
+   );
+
+   // Mostrar loading mientras se valida
+   if (isLoading || !validationChecked) {
+      return <Loading open={true} animation="bounce" />;
+   }
+
+   // Mostrar pantalla de no autorizado
+   if (!authorized) {
+      return <UnauthorizedView />;
+   }
+
+   // Si está autorizado, mostrar la aplicación normal
    return (
       <>
-         {/* <SplashLoader
-            weddingInfo={weddingInfo}
-            show={showSplash}
-            setShow={setShowSplash}
-            setIsPlaying={setIsPlaying}
-            formData={formData}
-            setFormData={setFormData}
-         /> */}
-
-         {/* {!showSplash && (
-            <> */}
-
          <motion.header
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
             ref={mainRef}
             className="min-h-screen bg-gradient-to-b from-base-200 to-base-300 transition-colors duration-500 max-w-[100vw] overflow-x-hidden relative">
-            {/* Enlace visible solo para staff/recepción */}
-            {/* <div className="fixed bottom-10 left-4 z-50">
-                     <Link
-                        to="/validar"
-                        className="btn btn-outline btn-sm btn-primary opacity-70 hover:opacity-100"
-                        title="Ir a Validar QR">
-                        Validar QR
-                     </Link>
-                  </div> */}
-            {/* <!-- Elementos decorativos laterales --> */}
-            {/* <div className="decorative-element top-left"></div>
-                  <div className="decorative-element top-right"></div>
-                  <div className="decorative-element middle-left"></div>
-                  <div className="decorative-element middle-right"></div>
-                  <div className="decorative-element bottom-left"></div>
-                  <div className="decorative-element bottom-right"></div> */}
-
             {/* Botones flotantes */}
             <div className="fixed top-4 right-6 z-50 flex gap-2">
-               {/* <AudioPlayer
-                  audios={[audios.bailando, audios.todoVaAEstarBien]}
-                  isPlaying={isPlaying}
-                  setIsPlaying={setIsPlaying}
-               /> */}
                <ThemeChanger />
             </div>
 
@@ -447,7 +338,7 @@ export default function App() {
                onConfirmClick={handleClickConfirm}
             />
 
-            {/* Sección de Código de Vestimenta */}
+            {/* Sección de Invitación Personalizada */}
             <section className=" relative">
                <InvitationHeader
                   guestName={formData.nombre}
@@ -457,57 +348,6 @@ export default function App() {
                   decorativeElements={false}
                />
             </section>
-
-            {/* Sección de cuenta regresiva */}
-            {/* <section className="py-10 px-6 relative bg-base-100">
-               <div className="max-w-4xl mx-auto">
-                  <motion.div
-                     initial={{ opacity: 0, y: 50 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 0.8 }}
-                     viewport={{
-                        once: false,
-                        margin: isMobile ? "0px" : "-25% 0px",
-                     }}>
-                     <CountdownTimer targetDate={weddingDate} />
-                  </motion.div>
-               </div>
-            </section> */}
-
-            {/* Sección de historia */}
-            {/* <section className="py-20 px-6 relative">
-                     <LoveHistory />
-                  </section> */}
-
-            {/* Sección de Fotografias */}
-            {/* <section className="py-10 px-6 relative bg-base-100"> */}
-            {/* <secction className={`min-h-screen absolute`}> */}
-            {/* <PhotosThrown
-                     photos={photos}
-                     title="Aventando Nuestros Recuerdos"
-                     subtitle={`${photos.length} momentos especiales volando hacia la mesa`}
-                     // sectionHeight="auto" // Se calcula automáticamente basado en número de fotos
-                     sectionHeight="2000vh"
-                     animationSpeed={0.05} // Más rápido para muchas fotos
-                     photoSizes={{
-                        minWidth: 100,
-                        maxWidth: 180,
-                        minHeight: 100,
-                        maxHeight: 200,
-                     }}
-                     floatingTexts={customTexts}
-                     finalMessage={{
-                        title: "♥ Recuerdos que avivan nuestro amor",
-                        description: `cada memoria un tesoro de nuestra historia juntos.`,
-                     }}
-                     backgroundImage={images.bgTable}
-                  /> */}
-            {/* </secction> */}
-
-            {/* Sección de Linea de tiempo */}
-            {/* <section className="py-20 px-6 bg-base-100 relative">
-                     <TimelineBoda weddingInfo={weddingInfo} />
-                  </section> */}
 
             {/* Sección de detalles */}
             <section className="py-5 px-6 bg-base-100 relative">
@@ -522,73 +362,33 @@ export default function App() {
                />
             </section>
 
-            {/* Sección de mesa de regalos */}
-            {/* <section className="py-20 px-6  bg-base-100 relative">
-                     <GiftTable giftRegistryUrls={giftRegistryUrls} />
-                  </section> */}
-
-            {/* Sección de Código de Vestimenta */}
-            {/* <section className="py-20 px-6 bg-base-100 relative">
-               <DressCode />
-            </section> */}
-
-            {/* Sección de Consideraciones */}
-            {/* <section className="py-20 px-6 relative">
-               <Considerations />
-            </section> */}
-
-            {/* Sección de RSVP */}
-            {/* <section className="py-20 px-6 bg-base-100 relative" ref={rsvpRef}>
-               <RsvpForm weddingInfo={weddingInfo} />
-            </section> */}
+            {/* Sección de Confirmación */}
             <section className="py-5 px-6 relative" ref={rsvpRef}>
                <ConfirmationForm
-                  guestName={formData.nombre}
                   eventName={weddingInfo.nameEvent}
+                  formData={formData}
                   onSubmit={(data) => {
-                     // Enviar datos a tu API
                      console.log("Datos confirmados:", data);
                   }}
                />
             </section>
 
-            <section
-               className="py-5 px-6 bg-base-200/50 relative"
-               ref={rsvpRef}>
+            {/* Sección de Contacto */}
+            <section className="py-5 px-6 bg-base-200/50 relative">
                <ContactSection weddingInfo={weddingInfo} />
             </section>
 
             {/* Footer */}
-            <footer className="py-2 px-6 text-center font-zapf-roman bg-base-100">
-               {/* <p className="">Atentamente,</p>
-               <h2 className="font-zapf-roman text-sm mb-4 text-primary">
-                  {girlfriend} {boyfriend && `& ${boyfriend}`}
-               </h2> */}
-               {/* <p className="text-sm font-zapf-roman">
-                  &copy; {new Date().getFullYear()} | Diseñado con ♥{" "}
-                  <span
-                     className="link hover:animate-pulse"
-                     onClick={() =>
-                        window.open(
-                           getLinkWhatsApp(
-                              "8715265468",
-                              "Hola, vi tu invitación dígital y quisiera saber más información",
-                           ),
-                           "_blank",
-                        )
-                     }>
-                     WhatsApp
-                  </span>{" "}
-                  | {env.VERSION}
-               </p> */}
+            <footer className="py-2 px-6 text-center font-zapf-roman bg-base-200">
+               <p className="text-sm font-zapf-roman">
+                  &copy; 2025 | Diseñado con ♥ | R. Ayuntamiento de Gómez
+                  Palacio | {env.VERSION}
+               </p>
             </footer>
 
             {/* Botón para volver arriba */}
             <ScrollToTopButton />
          </motion.header>
-
-         {/* </>
-         )} */}
       </>
    );
 }

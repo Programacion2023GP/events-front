@@ -36,7 +36,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
       name: "",
       // email: "",
       phone: "",
-      attendance: "yes",
+      asistencia: "confirmed",
       guests: 0,
       message: "",
    });
@@ -57,7 +57,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
          setFormData({
             name: "",
             phone: formData.phone,
-            attendance: "yes",
+            asistencia: "confirmed",
             guests: 0,
             message: "",
          });
@@ -114,7 +114,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
       setIsSubmitting(true);
       setErrorMsg("");
 
-      // if (formData.attendance == "yes" && formData.guests < 1) {
+      // if (formData.asistencia == "confirmed" && formData.guests < 1) {
       //    setIsSubmitting(false);
       //    return setErrorMsg("No has elejido la cantidad de invitados");
       // }
@@ -123,8 +123,8 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
          action: "registerRequest",
          name: formData.name,
          phone: formData.phone,
-         attendance: formData.attendance,
-         guests: formData.attendance == "no" ? 0 : formData.guests,
+         asistencia: formData.asistencia,
+         guests: formData.asistencia == "no" ? 0 : formData.guests,
          message: formData.message,
       };
 
@@ -139,8 +139,8 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                body.action
             }&name=${encodeURIComponent(body.name)}&phone=${encodeURIComponent(
                body.phone,
-            )}&attendance=${encodeURIComponent(
-               body.attendance,
+            )}&asistencia=${encodeURIComponent(
+               body.asistencia,
             )}&guests=${encodeURIComponent(
                body.guests,
             )}&table=${encodeURIComponent(table)}&message=${encodeURIComponent(
@@ -196,7 +196,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                   ¡Gracias por confirmar!
                </h3>
                <p className="font-zapf-roman text-primary/90">
-                  {formData.attendance == "yes"
+                  {formData.asistencia == "confirmed"
                      ? "Estamos emocionados de contar con tu presencia. No olvides descargar y llevar contigo la invitación digital al evento."
                      : "Lamentamos saber que no podrás acompañarnos, pero agradecemos que nos lo hayas hecho saber."}
                </p>
@@ -212,7 +212,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                   <Divider color="primary" />
                </motion.div>
             </motion.div>
-            {formData.attendance == "yes" && guestCode && (
+            {formData.asistencia == "confirmed" && guestCode && (
                // <motion.div
                //    initial={{ opacity: 0, scale: 0, y: 50 }}
                //    whileInView={{ opacity: 1, scale: 1 }}
@@ -227,7 +227,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                            weddingInfo={weddingInfo}
                            qrValue={guestCode}
                            guests={guests}
-                           table={formData.attendance == "no" ? 0 : table}
+                           table={formData.asistencia == "no" ? 0 : table}
                            backgroundImage={images.fondoInvitacion}
                         />
                      }
@@ -464,7 +464,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                                           qrValue={guestCode}
                                           guests={guests}
                                           table={
-                                             formData.attendance == "no"
+                                             formData.asistencia == "no"
                                                 ? 0
                                                 : table
                                           }
@@ -498,21 +498,23 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                                        <label className="cursor-pointer">
                                           <div
                                              className={`flex items-center gap-2 p-3 rounded-lg border-2 transition-all duration-300 ${
-                                                formData.attendance === "yes"
+                                                formData.asistencia ===
+                                                "confirmed"
                                                    ? "border-primary bg-primary/10 shadow-md"
                                                    : "border-base-300 hover:border-primary/50"
                                              }`}>
                                              <input
                                                 type="radio"
-                                                name="attendance"
-                                                value="yes"
+                                                name="asistencia"
+                                                value="confirmed"
                                                 checked={
-                                                   formData.attendance === "yes"
+                                                   formData.asistencia ===
+                                                   "confirmed"
                                                 }
                                                 onChange={() =>
                                                    setFormData({
                                                       ...formData,
-                                                      attendance: "yes",
+                                                      asistencia: "confirmed",
                                                    })
                                                 }
                                                 disabled={!authorized}
@@ -528,22 +530,22 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                                        <label className="cursor-pointer">
                                           <div
                                              className={`flex items-center gap-2 p-3 rounded-lg border-2 transition-all duration-300 ${
-                                                formData.attendance === "no"
+                                                formData.asistencia === "no"
                                                    ? "border-error bg-error/10 shadow-md"
                                                    : "border-base-300 hover:border-error/50"
                                              }`}>
                                              <input
                                                 type="radio"
-                                                name="attendance"
+                                                name="asistencia"
                                                 value="no"
                                                 checked={
-                                                   formData.attendance === "no"
+                                                   formData.asistencia === "no"
                                                 }
                                                 disabled={!authorized}
                                                 onChange={() =>
                                                    setFormData({
                                                       ...formData,
-                                                      attendance: "no",
+                                                      asistencia: "no",
                                                    })
                                                 }
                                                 className="radio radio-error radio-sm"
@@ -560,12 +562,12 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                                  {/* Cuarta fila - Número de invitados y mensaje */}
                                  <div
                                     className={`grid grid-cols-1 ${
-                                       formData.attendance == "yes"
+                                       formData.asistencia == "confirmed"
                                           ? "lg:grid-cols-2"
                                           : "lg:grid-cols-1"
                                     } gap-4`}>
                                     {maxGuests !== null &&
-                                       formData.attendance === "yes" && (
+                                       formData.asistencia === "confirmed" && (
                                           <div className="form-control">
                                              <label className="label">
                                                 <span className="label-text font-bold mr-2 mb-1">
@@ -578,8 +580,8 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                                                    type="number"
                                                    className="input input-bordered input-lg input-primary focus:input-primary w-20 text-center font-bold"
                                                    min={
-                                                      formData.attendance ===
-                                                      "yes"
+                                                      formData.asistencia ===
+                                                      "confirmed"
                                                          ? 1
                                                          : 0
                                                    }
@@ -628,7 +630,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                                           isSubmitting || maxGuests === null
                                        }>
                                        {isSubmitting &&
-                                       formData.attendance == "yes" &&
+                                       formData.asistencia == "confirmed" &&
                                        formData.guests > 0 ? (
                                           <>
                                              <span className="loading loading-spinner loading-sm"></span>

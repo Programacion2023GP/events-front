@@ -178,7 +178,7 @@ export default function SplashLoader({
                               // disabled={isSubmitting || maxGuests === null}
                               >
                               {isSubmitting &&
-                              formData.attendance == "yes" &&
+                              formData.asistencia == "confirmed" &&
                               formData.guests > 0 ? (
                                  <>
                                     <span className="loading loading-spinner loading-sm"></span>
