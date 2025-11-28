@@ -194,7 +194,7 @@ export default function ValidarQR() {
                icon: "",
                showConfirmButton: true,
                showCancelButton: false,
-               confirmButtonText: "Continuar Scanneando",
+               confirmButtonText: "Continuar Escaneando",
                customClass: {
                   confirmButton:
                      "btn bg-[#9B2242] hover:bg-[#651D32] border-none text-white font-zapf-bold text-base sm:text-lg px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300",
@@ -516,7 +516,7 @@ export default function ValidarQR() {
                   </div>
                   <div className="flex flex-col items-center bg-neutral-300 rounded-lg px-4 py-2 shadow">
                      <span className="text-lg font-bold text-primary">
-                        Pases scanneados
+                        Pases escaneados
                      </span>
                      <span className="text-5xl font-extrabold text-primary">
                         {dataAsistencia.scanneados ?? "-"}
