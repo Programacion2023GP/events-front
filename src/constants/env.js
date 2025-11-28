@@ -1,6 +1,6 @@
 const env = {
    theme: "light",
-   VERSION: "v1.0.0.14",
+   VERSION: "v1.0.0.15",
    ID_MACRO_SCRIPT:
       "AKfycbwNzytvr-qA_bIyV2WMFKizBNiVzSokEyxgrjnPrXBU5vEsd_AhlLe4YOBwHHnlWqOyEA",
    API_MACRO:
