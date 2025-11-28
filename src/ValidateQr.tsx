@@ -21,8 +21,8 @@ interface Invitado {
 }
 
 interface Asistencia {
-   invitaciones: number;
-   pases: number;
+   confirmados: number;
+   scanneados: number;
 }
 
 export default function ValidarQR() {
@@ -30,8 +30,8 @@ export default function ValidarQR() {
 
    const [scannedPhone, setScannedPhone] = useState("");
    const [dataAsistencia, setDataAsistencia] = useState<Asistencia>({
-      invitaciones: 0,
-      pases: 0,
+      confirmados: 0,
+      scanneados: 0,
    });
    const [error, setError] = useState("");
    const [loading, setLoading] = useState(false);
@@ -42,6 +42,12 @@ export default function ValidarQR() {
    const [dataInvitados, setDataInvitados] = useState<Invitado[]>([]);
    const [search, setSearch] = useState("");
 
+   /**
+    *
+    * @param guestCode ODcwMDAwMDAwMDE3NjQzNDc3NTg3MDc=
+    * ODcwMDAwMDAwMDE3NjQzNDc2MTkzNjg=
+    */
+
    const validateGuest = async (guestCode: string) => {
       setLoading(true);
       try {
@@ -49,48 +55,197 @@ export default function ValidarQR() {
             `https://script.google.com/macros/s/${env.ID_MACRO_SCRIPT}/exec?guestCode=${guestCode}&action=validateGuest`,
          );
          const data = await res.json();
-         console.log("aqui el json", data);
+         // console.log("aqui el json", data);
          if (data.autorizado) {
             await handleGetListaInvitados();
             await handleRefresh();
 
             Swal.fire({
-               title: "Acceso permitido",
+               title: "",
                html: `
-                     <div style="text-align:left;">
-                        <p class='text-lg font-marcellus mb-2'>Invitado: <b>${
-                           data.nombre
-                        } - ${data.puesto}</b><p/>
-                       
-                        <p class='text-lg font-marcellus mb-2'>Sección: <b>${
-                           data.seccion
-                        }</b><p/>
-                         <p class='text-lg font-marcellus mb-2'>Asiento: <b>${
-                            data.asiento ?? "-"
-                         }</b><p/>
+                  <div class="w-full max-w-md mx-auto p-4 sm:p-6">
+                     <!-- Header compacto -->
+                     <div class="text-center mb-4 sm:mb-6">
+                     <div class="w-16 h-16 sm:w-20 sm:h-20 bg-[#9B2242] rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-lg">
+                        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                     </div>
+                     <h2 class="text-xl sm:text-2xl font-bold text-[#9B2242] font-zapf-bold mb-1 sm:mb-2">Acceso Autorizado</h2>
+                     <p class="text-[#727372] text-sm sm:text-base font-avenir-book">Credencial verificada</p>
+                     </div>
+
+                     <!-- Card única principal -->
+                     <div class="bg-gradient-to-br from-[#FAF9F8] to-[#F0F0F0] rounded-2xl p-4 sm:p-6 border border-[#B8B6AF] shadow-lg">
+                     
+                     <!-- Información del invitado -->
+                     <div class="flex items-start space-x-3 sm:space-x-4 pb-3 sm:pb-4 border-b border-[#B8B6AF] mb-4 sm:mb-6">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#9B2242] rounded-full flex items-center justify-center flex-shrink-0">
+                           <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                           </svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                           <p class="text-xs sm:text-sm text-[#651D32] font-avenir-heavy uppercase tracking-wider mb-1">INVITADO OFICIAL</p>
+                           <p class="text-lg sm:text-xl font-bold text-[#130D0E] font-zapf-semibold leading-tight truncate">${
+                              data.nombre
+                           }</p>
+                           <p class="text-sm sm:text-base text-[#474C55] font-avenir-medium mt-1 truncate">${
+                              data.puesto
+                           }</p>
+                        </div>
+                     </div>
+
+                     <!-- Grid responsivo para sección y asiento -->
+                     <div class="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
+                        <!-- Sección -->
+                        <div class="flex items-center space-x-2 sm:space-x-3 p-3 bg-white rounded-xl border border-[#B8B6AF]">
+                           <div class="w-8 h-8 sm:w-10 sm:h-10 bg-[#651D32] rounded-full flex items-center justify-center flex-shrink-0">
+                           <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                           </svg>
+                           </div>
+                           <div class="min-w-0 flex-1">
+                           <p class="text-xs text-[#727372] font-avenir-heavy uppercase tracking-wide truncate">SECCIÓN</p>
+                           <p class="text-base sm:text-lg font-bold text-[#130D0E] font-zapf-roman truncate">${
+                              data.seccion
+                           }</p>
+                           </div>
+                        </div>
+
+                        <!-- Asiento -->
+                        <div class="flex items-center space-x-2 sm:space-x-3 p-3 bg-white rounded-xl border border-[#B8B6AF]">
+                           <div class="w-8 h-8 sm:w-10 sm:h-10 bg-[#474C55] rounded-full flex items-center justify-center flex-shrink-0">
+                           <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                           </svg>
+                           </div>
+                           <div class="min-w-0 flex-1">
+                           <p class="text-xs text-[#727372] font-avenir-heavy uppercase tracking-wide truncate">ASIENTO</p>
+                           <p class="text-base sm:text-lg font-bold text-[#130D0E] font-zapf-roman truncate">${
+                              data.asiento ?? "Por asignar"
+                           }</p>
+                           </div>
+                        </div>
+                     </div>
+
+                     <!-- Panel de estado integrado -->
+                     <div class="bg-gradient-to-r from-[#651D32] to-[#9B2242] rounded-xl p-4 text-white mb-4 sm:mb-6">
+                        <div class="flex items-center justify-between mb-3">
+                           <div>
+                           <p class="text-xs sm:text-sm font-avenir-heavy uppercase tracking-wide opacity-90">ESTADO</p>
+                           <p class="text-sm sm:text-base font-bold font-zapf-semibold">
+                              ${
+                                 data.llegada
+                                    ? "INGRESO REGISTRADO"
+                                    : "PENDIENTE DE INGRESO"
+                              }
+                           </p>
+                           </div>
+                           <div class="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                           <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                           </svg>
+                           </div>
+                        </div>
+                        
                         ${
                            data.llegada
-                              ? `<p class='text-lg font-marcellus mb-2'>Hora de llegada: <b>${formatDatetime(
-                                   data.llegada,
-                                   true,
-                                   "hh:mm a",
-                                )}</b><p/>`
-                              : ""
+                              ? `
+                           <div class="bg-white/10 rounded-lg p-2 sm:p-3 text-center">
+                           <p class="text-xs font-avenir-heavy uppercase tracking-wide opacity-90">HORA DE INGRESO</p>
+                           <p class="text-lg sm:text-xl font-bold font-zapf-semibold">${formatDatetime(
+                              data.llegada,
+                              true,
+                              "hh:mm a",
+                           )}</p>
+                           </div>
+                        `
+                              : `
+                           <div class="bg-white/10 rounded-lg p-2 sm:p-3 text-center">
+                           <p class="text-xs font-avenir-light opacity-80">Esperando llegada del invitado</p>
+                           </div>
+                        `
                         }
                      </div>
-                  `,
-               icon: "success",
-               confirmButtonText: "ACEPTAR",
+
+                     <!-- Información adicional compacta -->
+                     <div class="flex justify-between items-center text-xs sm:text-sm">
+                        <div class="text-[#727372] font-avenir-book">
+                           Código: <span class="font-avenir-medium text-[#474C55]">${
+                              data.guestCode || "N/A"
+                           }</span>
+                        </div>
+                        <div class="text-[#9B2242] font-avenir-heavy uppercase tracking-wide">
+                           VERIFICADO ✓
+                        </div>
+                     </div>
+                     </div>
+
+                     <!-- Mensaje final compacto -->
+                     <div class="text-center mt-3 sm:mt-4">
+                     <p class="text-[#474C55] font-avenir-book italic text-sm sm:text-base">
+                        ¡Bienvenido al evento!
+                     </p>
+                     </div>
+                  </div>
+               `,
+               icon: "",
+               showConfirmButton: true,
+               showCancelButton: false,
+               confirmButtonText: "Continuar Scanneando",
                customClass: {
-                  confirmButton: "btn btn-success font-black mx-5",
-                  cancelButton: "btn btn-error font-black ml-2",
-                  popup: "font-marcellus",
-                  title: "font-marcellus text-green-700",
+                  confirmButton:
+                     "btn bg-[#9B2242] hover:bg-[#651D32] border-none text-white font-zapf-bold text-base sm:text-lg px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300",
+                  popup: "rounded-2xl sm:rounded-3xl shadow-2xl border border-[#B8B6AF] font-avenir-book bg-white mx-2",
+                  title: "hidden",
                },
                buttonsStyling: false,
                allowOutsideClick: false,
                allowEscapeKey: false,
+               background: "#FFFFFF",
+               width: "auto",
+               padding: "1rem",
             });
+
+            // Swal.fire({
+            //    title: "Acceso permitido",
+            //    html: `
+            //          <div style="text-align:left;">
+            //             <p class='text-lg font-marcellus mb-2'>Invitado: <b>${
+            //                data.nombre
+            //             } - ${data.puesto}</b><p/>
+
+            //             <p class='text-lg font-marcellus mb-2'>Sección: <b>${
+            //                data.seccion
+            //             }</b><p/>
+            //              <p class='text-lg font-marcellus mb-2'>Asiento: <b>${
+            //                 data.asiento ?? "-"
+            //              }</b><p/>
+            //             ${
+            //                data.llegada
+            //                   ? `<p class='text-lg font-marcellus mb-2'>Hora de llegada: <b>${formatDatetime(
+            //                        data.llegada,
+            //                        true,
+            //                        "hh:mm a",
+            //                     )}</b><p/>`
+            //                   : ""
+            //             }
+            //          </div>
+            //       `,
+            //    icon: "success",
+            //    confirmButtonText: "ACEPTAR",
+            //    customClass: {
+            //       confirmButton: "btn btn-success font-black mx-5",
+            //       cancelButton: "btn btn-error font-black ml-2",
+            //       popup: "font-marcellus",
+            //       title: "font-marcellus text-green-700",
+            //    },
+            //    buttonsStyling: false,
+            //    allowOutsideClick: false,
+            //    allowEscapeKey: false,
+            // });
          } else {
             setError(data.msg);
             setTimeout(() => {
@@ -280,14 +435,17 @@ export default function ValidarQR() {
                                        {invitado.nombre}
                                     </div>
                                     <div className="text-xs uppercase opacity-60">
+                                       {invitado.puesto}
+                                    </div>
+                                    <div className="text-xs uppercase opacity-60">
                                        {invitado.telefono}
                                     </div>
                                     <div className="flex w-full justify-between my-1">
                                        <div className="w-full text-center border-r-2">
-                                          Pases: <b>{invitado.seccion + 1}</b>
+                                          Sección: <b>{invitado.seccion}</b>
                                        </div>
                                        <div className="w-full text-center">
-                                          Mesa: <b>{invitado.asiento}</b>
+                                          Asiento: <b>{invitado.asiento}</b>
                                        </div>
                                     </div>
                                  </div>
@@ -348,29 +506,29 @@ export default function ValidarQR() {
             {/* Indicadores y mensajes debajo de la cámara */}
             <div className="w-full max-w-md mx-auto flex flex-col gap-2 mb-4">
                <div className="flex flex-row justify-center items-center gap-6 mb-2 animate-fade-in">
-                  <div className="flex flex-col items-center bg-base-200 rounded-lg px-4 py-2 shadow">
+                  <div className="flex flex-col items-center bg-neutral-300 rounded-lg px-4 py-2 shadow">
                      <span className="text-lg font-bold text-primary">
-                        Invitaciones escaneadas
+                        Invitados confirmados
                      </span>
                      <span className="text-5xl font-extrabold text-primary">
-                        {dataAsistencia.invitaciones ?? "-"}
+                        {dataAsistencia.confirmados ?? "-"}
                      </span>
                   </div>
-                  <div className="flex flex-col items-center bg-base-200 rounded-lg px-4 py-2 shadow">
+                  <div className="flex flex-col items-center bg-neutral-300 rounded-lg px-4 py-2 shadow">
                      <span className="text-lg font-bold text-primary">
-                        Pases acumulados
+                        Pases scanneados
                      </span>
                      <span className="text-5xl font-extrabold text-primary">
-                        {dataAsistencia.pases ?? "-"}
+                        {dataAsistencia.scanneados ?? "-"}
                      </span>
                   </div>
                   <button
-                     className="btn btn-lg"
+                     className="btn btn-lg bg-neutral-300"
                      onClick={handleRefresh}
                      disabled={disabledButtonRefresh}>
                      <RefreshCwIcon
                         size={25}
-                        className={`active:animate-spin ${
+                        className={`active:animate-spin text-primary ${
                            disabledButtonRefresh ? "animate-spin" : ""
                         }`}
                      />

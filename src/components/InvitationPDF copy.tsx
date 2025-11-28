@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
    },
    textMuted: {
       fontSize: 14,
-      margin: 3,
+      margin: 5,
       // color: "#fff",
       color: "#130D0E",
    },
@@ -128,7 +128,7 @@ const PDFQRCode = ({ value, size = 110 }: { value: string; size?: number }) => {
                   y={y * cellSize}
                   width={cellSize}
                   height={cellSize}
-                  fill={cell ? "#130D0E" : "#FFF"} //#000 | #b28121 | #9C7014
+                  fill={cell ? "#000" : "#FFF"} //#b28121 | #9C7014
                />
             )),
          )}
@@ -138,7 +138,7 @@ const PDFQRCode = ({ value, size = 110 }: { value: string; size?: number }) => {
 
 // Función simplificada para generar matriz QR (debes reemplazarla con un generador real)
 function generateQRMatrix(text: string): number[][] {
-   const qr = QRCode(0, "H"); // Tipo L (Low error correction)
+   const qr = QRCode(0, "L"); // Tipo L (Low error correction)
    qr.addData(text);
    qr.make();
 

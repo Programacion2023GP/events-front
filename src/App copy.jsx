@@ -373,8 +373,8 @@ export default function App() {
    if (formData.nombre == "")
       return <Loading open={isLoading} animation="bounce" />;
 
-   console.log("🚀 ~ App ~ authorized:", authorized);
-   console.log("🚀 ~ App ~ isLoading:", isLoading);
+   // console.log("🚀 ~ App ~ authorized:", authorized);
+   // console.log("🚀 ~ App ~ isLoading:", isLoading);
    if (!isLoading && !authorized)
       return (
          <>

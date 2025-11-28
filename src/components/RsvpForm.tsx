@@ -73,7 +73,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                `${env.API_MACRO}?telefono=${formData.phone}&action=getGuest`,
             );
             const data = await res.json();
-            console.log("🚀 ~ checkPhone ~ data:", data);
+            // console.log("🚀 ~ checkPhone ~ data:", data);
             setAuthorized(data.autorizado);
             if (data.autorizado) {
                setMaxGuests(data.max);

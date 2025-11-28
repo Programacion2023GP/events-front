@@ -367,9 +367,10 @@ export default function App() {
                <ConfirmationForm
                   eventName={weddingInfo.nameEvent}
                   formData={formData}
-                  onSubmit={(data) => {
-                     console.log("Datos confirmados:", data);
-                  }}
+                  setFormData={setFormData}
+                  // onSubmit={(data) => {
+                  //    console.log("Datos confirmados:", data);
+                  // }}
                />
             </section>
 

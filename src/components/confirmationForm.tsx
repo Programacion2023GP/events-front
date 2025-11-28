@@ -46,20 +46,6 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
    const isMobile = useMobile();
    const { setIsLoading } = useGlobalContext();
    const [showButtonDownload, setShowButtonDownload] = useState(false);
-
-   // const [formData, setFormData] = useState<IFormData>({
-   //    autorizado: false,
-   //    guestCode: "",
-   //    nombre: "",
-   //    puesto: "",
-   //    telefono: "",
-   //    asistencia: 0,
-   //    seccion: "",
-   //    asiento: "",
-   //    timeStamp: "",
-   //    asistencia: "confirmed",
-   //    confirmationType: "titular",
-   // });
    const [isSubmitting, setIsSubmitting] = useState(false);
 
    const handleInputChange = (
@@ -84,12 +70,12 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       // Aquí puedes enviar los datos a tu API
-      console.log("Datos de confirmación:", formData);
+      // console.log("Datos de confirmación:", formData);
       // return;
       // setShowButtonDownload(false);
       if (formData.telefono.length < 10) return;
       try {
-         setIsLoading(true);
+         // setIsLoading(true);
          setIsSubmitting(true);
 
          const res = await fetch(
@@ -99,7 +85,11 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                formData.nombre,
             )}&puesto=${encodeURIComponent(
                formData.puesto,
-            )}&asistencia=${encodeURIComponent(formData.asistencia)}`,
+            )}&asistencia=${encodeURIComponent(
+               formData.asistencia,
+            )}&seccion=${encodeURIComponent(
+               formData.seccion,
+            )}&asiento=${encodeURIComponent(formData.asiento)}`,
          );
 
          // const res = await fetch(
@@ -108,26 +98,28 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
          //    &action=registerRequest`,
          // );
          const data = await res.json();
-         console.log("🚀 ~ checktelefono ~ data:", data);
-         if (data.autorizado) {
-            setFormData(data);
+         // console.log("🚀 ~ checktelefono ~ data:", data);
+         if (data.success) {
+            setFormData(data.rowData);
             // setErrorMsg("");
          } else {
             // setErrorMsg("Este número no está autorizado.");
          }
          setIsSubmitting(false);
-         setIsLoading(false);
+         // setIsLoading(false);
       } catch (e) {
          console.log("error", e);
          // setErrorMsg("Error validando el teléfono.");
       } finally {
          setIsSubmitting(false);
-         setIsLoading(false);
+         // setIsLoading(false);
       }
 
-      if (onSubmit) {
-         onSubmit(formData);
-      }
+      // console.log("🚀 ~ handleSubmit ~ onSubmit:", onSubmit);
+      // if (onSubmit) {
+      //    console.log("entro al onSubimit?");
+      //    onSubmit(formData);
+      // }
 
       setIsSubmitting(true);
    };
@@ -266,13 +258,32 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                      <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="btn btn-secondary btn-outline rounded-full"
-                        onClick={() =>
-                           // window.open("/descargar-pase", "_blank")
-                           alert("Activo proximamente")
-                        }>
-                        <Download className="h-4 w-4 mr-2" />
-                        Descargar Mi Pase
+                        className="btn btn-secondary btn-outline rounded-full">
+                        <PDFDownloadLink
+                           document={
+                              <InvitationPDF
+                                 name={"formData.name"}
+                                 weddingInfo={"weddingInfo"}
+                                 formData={formData}
+                                 // table={"formData?.asistencia == "no" ? 0 : table"}
+                                 backgroundImage={images.fondoInvitacion}
+                              />
+                           }
+                           className="flex"
+                           fileName={`Invitacion_${formData.nombre
+                              .toString()
+                              .replaceAll(" ", "_")}.pdf`}>
+                           {({ loading }) =>
+                              loading ? (
+                                 "Generando invitación..."
+                              ) : (
+                                 <>
+                                    <Download className="h-4 w-4 mr-2" />
+                                    Descargar Mi Pase
+                                 </>
+                              )
+                           }
+                        </PDFDownloadLink>
                      </motion.button>
                   </motion.div>
                </div>

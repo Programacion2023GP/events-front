@@ -21,7 +21,7 @@ const Loading: React.FC<LoadingProps> = ({
    animation = "default",
 }): JSX.Element => {
    const { themeActive } = useGlobalContext();
-   console.log("🚀 ~ themeActive:", themeActive);
+   // console.log("🚀 ~ themeActive:", themeActive);
 
    return (
       <>

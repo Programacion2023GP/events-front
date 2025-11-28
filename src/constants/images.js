@@ -9,7 +9,7 @@ import hero2 from "../assets/images/el corazon de la transformacion-02.png";
 import hero3 from "../assets/images/logo-negro-horizontal.png";
 import fondoSplash from "../assets/images/invitacion-escritorio.jpg";
 import fondoSplashMovil from "../assets/images/invitacion-movil.jpg";
-import fondoInvitacion from "../assets/images/portada.jpg";
+import fondoInvitacion from "../assets/images/fondo-invitacion.jpg";
 import floral from "../assets/images/floral.jpg";
 import icecream from "../assets/images/icecream.png";
 import weddingDress from "../assets/images/wedding-dress.png";
