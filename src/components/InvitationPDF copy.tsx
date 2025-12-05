@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
    textMuted: {
       fontSize: 14,
       margin: 5,
-      // color: "#fff",
-      color: "#130D0E",
+      color: "#fff",
+      // color: "#130D0E",
    },
    textContainer: {
       display: "flex",

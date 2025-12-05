@@ -157,7 +157,7 @@ const DetailsEvent = ({
                   <h3 className="text-xl font-bold font-zapf-roman mb-0">
                      Código de Vestimenta
                   </h3>
-                  <p className="font-avenir-roman mb-1">Formal</p>
+                  <p className="font-avenir-roman mb-1">Casual</p>
                </motion.div>
 
                {/* Recomendaciones */}

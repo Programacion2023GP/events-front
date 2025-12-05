@@ -1,15 +1,17 @@
 import faviconLight from "../../favicon-light.ico";
 import faviconDark from "../../favicon-dark.ico";
 import logo from "../assets/images/logo.png";
+import logo_oficial from "../assets/images/logo-oficial.png";
+import logo_oficial_negro from "../assets/images/logo-oficial-negro.png";
 // import logoLight from "../assets/images/logoLight.png";
 // import logoDark from "../assets/images/logoDark.png";
-import portada from "../assets/images/portada.jpg";
+import portada from "../assets/images/portada.png";
 import hero from "../assets/images/el corazon de la transformacion-01.png";
 import hero2 from "../assets/images/el corazon de la transformacion-02.png";
 import hero3 from "../assets/images/logo-negro-horizontal.png";
-import fondoSplash from "../assets/images/invitacion-escritorio.jpg";
-import fondoSplashMovil from "../assets/images/invitacion-movil.jpg";
-import fondoInvitacion from "../assets/images/fondo-invitacion.jpg";
+import fondoSplash from "../assets/images/invitacion-escritorio.png";
+import fondoSplashMovil from "../assets/images/invitacion-movil.png";
+import fondoInvitacion from "../assets/images/fondo-invitacion.png";
 import floral from "../assets/images/floral.jpg";
 import icecream from "../assets/images/icecream.png";
 import weddingDress from "../assets/images/wedding-dress.png";
@@ -38,6 +40,8 @@ const images = {
    faviconDark,
    portada,
    logo,
+   logo_oficial,
+   logo_oficial_negro,
    // logoLight,
    // logoDark,
    hero,

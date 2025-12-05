@@ -77,8 +77,17 @@ const styles = StyleSheet.create({
    textMuted: {
       fontSize: 14,
       margin: 3,
-      // color: "#fff",
-      color: "#130D0E",
+      // color: "#fff", //Negro
+      // color: "#000", //Blanco
+      color: "#130D0E", //algun tono Negro
+   },
+   textGuestName: {
+      fontFamily: "TTDrugsTrialBold", // Fuente por defecto
+      fontSize: 14,
+      margin: 3,
+      // color: "#fff", //Negro
+      color: "#000", //Blanco
+      // color: "#130D0E", //algun tono Negro
    },
    textContainer: {
       display: "flex",
@@ -199,9 +208,7 @@ const InvitationPDF = ({
                      <PDFQRCode value={formData.guestCode} />
                   </View>
                   <View style={styles.textContainer}>
-                     <Text style={styles.textMuted}>
-                        <Text style={styles.bold}>{formData.nombre}</Text>
-                     </Text>
+                     <Text style={styles.textGuestName}>{formData.nombre}</Text>
                      {/* <Text style={styles.textMuted}>
                      Pase para: <Text style={styles.bold}>{guests}</Text>{" "}
                      {guests > 1 ? "personas" : "persona"}

@@ -74,10 +74,11 @@ export default function App() {
    }, []);
 
    //#region Variables
-   const nameEvent = "Presentación del Plan Municipal de Desarrollo 2025-2028";
-   const weddingDate = new Date("2025-12-01T18:00:00");
-   const weddingPlace = "Salón de eventos Altozano";
-   const location = "ALTOZANO CP 35140, Gómez Palacio, Durango";
+   const nameEvent = "100 Días";
+   const weddingDate = new Date("2025-12-13T13:00:00");
+   const weddingPlace = "Gimnasio Auditorio Centenario";
+   const location =
+      "Ejército Nacional Mexicano, La Feria, 35049 Gómez Palacio, Dgo.";
    const girlfriend =
          "Dirección de Relaciones Públicas, R. Ayuntamiento de Gómez Palacio, Dgo.",
       boyfriend = "";
@@ -107,7 +108,7 @@ export default function App() {
    )},+${location.replace(" ", "+")}&sf=true&output=xml`;
 
    // Crear enlace para Google Maps
-   const googleMapsUrl = "https://maps.app.goo.gl/hXjwuD8yCn4rfRHi9";
+   const googleMapsUrl = "https://maps.app.goo.gl/DG93foPnxdiGsf677";
 
    const giftRegistryUrls = [
       {

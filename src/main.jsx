@@ -12,10 +12,11 @@ createRoot(document.getElementById("root")).render(
          <HashRouter>
             <Routes>
                <Route
-                  path="/plan-municipal-de-desarrollo-2025-2028/:tel"
+                  // path="/plan-municipal-de-desarrollo-2025-2028/:tel"
+                  path="/100-dias/:tel?"
                   element={<HomePage />}
                />
-               <Route path="/validar" element={<ValidateQrPage />} />
+               <Route path="/100-dias/validar" element={<ValidateQrPage />} />
             </Routes>
          </HashRouter>
       </GlobalContextProvider>

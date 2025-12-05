@@ -82,6 +82,14 @@ export default function InvitationCard({
                </AnimatePresence>
             </motion.div>
 
+            <img
+               key={`key-logo-oficial`}
+               src={images.logo_oficial_negro}
+               alt="Foto Principal"
+               className="object-contain absolute right-0 w-[550px] h-[250px] transition-all"
+               style={{}}
+               // style={{ objectPosition: "center right" }}
+            />
             {/* <BokehCircle /> */}
 
             <motion.div
