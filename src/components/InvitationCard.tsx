@@ -17,6 +17,7 @@ interface InvitationCardProps {
    weddingPlace: string;
    location: string;
    option: 1 | 2;
+   imgOficialFlotante?: boolean;
    onConfirmClick?: () => void;
 }
 
@@ -30,6 +31,7 @@ export default function InvitationCard({
    location,
    option = 1,
    onConfirmClick,
+   imgOficialFlotante = false,
 }: InvitationCardProps) {
    const [windowDimensions, setWindowDimensions] = useState({
       width: 0,
@@ -58,7 +60,7 @@ export default function InvitationCard({
          {/* Círculos Bokeh */}
 
          <motion.section
-            className="relative h-screen flex flex-col items-center justify-start text-center p-6"
+            className="relative h-screen flex flex-col items-center justify-start text-center p-6 bg-secondary"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 2 }}>
@@ -82,14 +84,16 @@ export default function InvitationCard({
                </AnimatePresence>
             </motion.div>
 
-            <img
-               key={`key-logo-oficial`}
-               src={images.logo_oficial_negro}
-               alt="Foto Principal"
-               className="object-contain absolute right-0 w-[550px] h-[250px] transition-all"
-               style={{}}
-               // style={{ objectPosition: "center right" }}
-            />
+            {imgOficialFlotante && (
+               <img
+                  key={`key-logo-oficial`}
+                  src={images.logo_oficial_negro}
+                  alt="Foto Principal"
+                  className="object-contain absolute right-0 w-[550px] h-[250px] transition-all"
+                  style={{}}
+                  // style={{ objectPosition: "center right" }}
+               />
+            )}
             {/* <BokehCircle /> */}
 
             <motion.div

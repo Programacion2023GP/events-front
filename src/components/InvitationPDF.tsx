@@ -85,8 +85,8 @@ const styles = StyleSheet.create({
       fontFamily: "TTDrugsTrialBold", // Fuente por defecto
       fontSize: 14,
       margin: 3,
-      // color: "#fff", //Negro
-      color: "#000", //Blanco
+      color: "#fff", //Blanco
+      // color: "#000", //Negro
       // color: "#130D0E", //algun tono Negro
    },
    textContainer: {
