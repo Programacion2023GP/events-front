@@ -167,12 +167,12 @@ function generateQRMatrix(text: string): number[][] {
 const InvitationPDF = ({
    backgroundImage,
    name,
-   weddingInfo,
+   invitationData,
    formData,
 }: {
    backgroundImage: string;
    name: string;
-   weddingInfo: any;
+   invitationData: any;
    formData: IFormData;
 }) => {
    // console.log("🚀 ~ InvitationPDF ~ formData:", formData);
@@ -201,8 +201,8 @@ const InvitationPDF = ({
                   preséntalo el día del evento.
                </Text>*/}
                   <View style={styles.qrContainer}>
-                     {/* <Link href={weddingInfo.mapsUrl}>
-                     ${weddingInfo.weddingPlace}, ${weddingInfo.location}
+                     {/* <Link href={invitationData.mapsUrl}>
+                     ${invitationData.place}, ${invitationData.location}
                   </Link> */}
                      {/* Mostrar el QR como imagen */}
                      <PDFQRCode value={formData.guestCode} />

@@ -4,27 +4,27 @@ interface LinkServiceOptionsProps {
    type: "calendar" | "maps";
    calendarUrl?: string | null;
    mapsUrl?: string | null;
-   weddingDate?: string | "";
-   weddingPlace?: string | "";
+   theDate?: string | "";
+   place?: string | "";
 }
 
 const LinkServiceOptions: React.FC<LinkServiceOptionsProps> = ({
    type,
    calendarUrl = "",
    mapsUrl = "",
-   weddingDate = "",
-   weddingPlace = "",
+   theDate = "",
+   place = "",
 }) => {
    const services = {
       calendar: {
          "Google Calendar": calendarUrl,
          "Apple Calendar": calendarUrl?.replace("https://", "webcal://"),
-         Outlook: `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&subject=Evento&startdt=${weddingDate}&location=${weddingPlace}`,
+         Outlook: `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&subject=Evento&startdt=${theDate}&location=${place}`,
       },
       maps: {
          "Google Maps": mapsUrl,
-         "Apple Maps": `maps://?q=${encodeURIComponent(weddingPlace)}`,
-         Waze: `https://www.waze.com/ul?q=${encodeURIComponent(weddingPlace)}`,
+         "Apple Maps": `maps://?q=${encodeURIComponent(place)}`,
+         Waze: `https://www.waze.com/ul?q=${encodeURIComponent(place)}`,
       },
    };
 

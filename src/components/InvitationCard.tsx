@@ -10,27 +10,31 @@ import { useMobile } from "../hooks/useMobile";
 
 interface InvitationCardProps {
    nameEvent: string;
-   bride: string;
+   organizers: { department: string; email: string };
    groom: string;
-   weddingDate: string;
-   weddingTime: string;
-   weddingPlace: string;
+   theDate: string;
+   time: string;
+   place: string;
    location: string;
    option: 1 | 2;
    imgOficialFlotante?: boolean;
+   imgPortada: string;
+   bgPortada: string;
    onConfirmClick?: () => void;
 }
 
 export default function InvitationCard({
    nameEvent,
-   bride,
+   organizers,
    groom,
-   weddingDate,
-   weddingTime,
-   weddingPlace,
+   theDate,
+   time,
+   place,
    location,
    option = 1,
    onConfirmClick,
+   imgPortada,
+   bgPortada,
    imgOficialFlotante = false,
 }: InvitationCardProps) {
    const [windowDimensions, setWindowDimensions] = useState({
@@ -41,7 +45,7 @@ export default function InvitationCard({
 
    // Carrusel de imágenes de fondo
    const heroImages = [
-      images.portada,
+      imgPortada,
       // images.hero2,
       // isMobile ? images.hero2 : images.hero2,
       // Agrega aquí más imágenes si lo deseas
@@ -60,7 +64,7 @@ export default function InvitationCard({
          {/* Círculos Bokeh */}
 
          <motion.section
-            className="relative h-screen flex flex-col items-center justify-start text-center p-6 bg-secondary"
+            className={`relative h-screen flex flex-col items-center justify-start text-center p-6 ${bgPortada}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 2 }}>
@@ -102,10 +106,10 @@ export default function InvitationCard({
                animate={{ y: 0, opacity: 1 }}
                transition={{ delay: 1, duration: 0.8 }}>
                <h1 className="font-zapf-roman text-2xl md:text-7xl mb-4 text-secondary">
-                  {bride} {groom && `& ${groom}`}
+                  {organizers.department} {groom && `& ${groom}`}
                </h1>
                {/* <h1 className="font-zapf-roman text-3xl md:text-9xl mb-4 text-rose-800 dark:text-rose-300">
-                        {bride} & {groom}
+                        {organizers.department} & {groom}
                      </h1> */}
                <motion.div
                   initial={{ scale: 0 }}
@@ -121,10 +125,10 @@ export default function InvitationCard({
                   {nameEvent}
                </p>
                <p className="font-zapf-roman text-lg text-white">
-                  {weddingDate} - {weddingPlace}, {location}
+                  {theDate} - {place}, {location}
                </p>
                <p className="text-lg md:text-xl font-zapf-roman mb-8 text-white">
-                  {weddingTime} hr
+                  {time} hr
                </p>
                {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                <button
@@ -176,13 +180,13 @@ export default function InvitationCard({
 
          <div className="relative z-10 max-w-xl mx-auto">
             <h1 className="font-zapf-roman text-4xl md:text-6xl text-primary-content mb-4">
-               {bride} {groom && `& ${groom}`}
+               {organizers.department} {groom && `& ${groom}`}
             </h1>
             <p className="font-zapf-roman text-xl md:text-2xl mb-2">
                {nameEvent}
             </p>
             <p className="font-anodina-extrabold text-lg text-base-content/75">
-               {weddingDate} - {location}
+               {theDate} - {location}
             </p>
 
             <div className="mt-8">

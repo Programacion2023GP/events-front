@@ -4,7 +4,7 @@ import { MapPin, Mail, Phone } from "lucide-react";
 import { useMobile } from "../hooks/useMobile";
 import LinkServiceOptions from "./LinkServiceOptions";
 
-const ContactSection = () => {
+const ContactSection = ({ invitationData }) => {
    const isMobile = useMobile();
 
    return (
@@ -40,7 +40,7 @@ const ContactSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="font-anodina-bold text-xl md:text-2xl text-primary mb-1">
-                  Dirección de Relaciones Públicas
+                  {invitationData.organizers.department}
                </motion.h2>
 
                <motion.h3
@@ -76,7 +76,7 @@ const ContactSection = () => {
                      </motion.div>
                      <div>
                         <div className="font-avenir-roman text-base md:text-lg leading-relaxed text-base-content/90">
-                           Piso 1, Presidencia Municipal
+                           {invitationData.organizers.direction}
                            <motion.div
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}>
@@ -84,11 +84,11 @@ const ContactSection = () => {
                                  className="btn btn-outline rounded-full btn-secondary mx-1 mb-1"
                                  onClick={() =>
                                     window.open(
-                                       "https://maps.app.goo.gl/wvHPmVAH3js23qEg7",
+                                       invitationData.organizers.link,
                                        "_blank",
                                     )
                                  }>
-                                 Ubicacion de Presidencia
+                                 Ubicacion de {invitationData.organizers.sede}
                               </button>
                            </motion.div>
                            {/* <br />
@@ -116,10 +116,10 @@ const ContactSection = () => {
                      </motion.div>
                      <div className="flex flex-col gap-1">
                         <p className="font-avenir-roman text-base md:text-lg text-base-content/90">
-                           87 11 75 10 00
+                           {invitationData.organizers.tel}
                         </p>
                         <p className="font-avenir-roman text-base md:text-base text-base-content/90">
-                           Ext. 125 / Ext. 360
+                           {invitationData.organizers.ext}
                         </p>
                      </div>
                   </div>
@@ -141,7 +141,7 @@ const ContactSection = () => {
                         </motion.div>
                         <div>
                            <p className="font-avenir-roman text-base md:text-lg text-base-content/90 break-all">
-                              relaciones.publicas@gomezpalacio.gob.mx
+                              {invitationData.organizers.email}
                            </p>
                         </div>
                      </div>

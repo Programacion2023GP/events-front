@@ -52,7 +52,7 @@ export default function ValidarQR() {
       setLoading(true);
       try {
          const res = await fetch(
-            `https://script.google.com/macros/s/${env.ID_MACRO_SCRIPT}/exec?guestCode=${guestCode}&action=validateGuest`,
+            `${env.API_MACRO}?guestCode=${guestCode}&action=validateGuest`,
          );
          const data = await res.json();
          // console.log("aqui el json", data);
@@ -281,9 +281,7 @@ export default function ValidarQR() {
 
    const handleRefresh = async () => {
       setDisabledButtonRefresh(true);
-      const res = await fetch(
-         `https://script.google.com/macros/s/${env.ID_MACRO_SCRIPT}/exec?action=getConfirmCount`,
-      );
+      const res = await fetch(`${env.API_MACRO}?action=getConfirmCount`);
       const data = await res.json();
       setDataAsistencia(data);
       setDisabledButtonRefresh(false);
@@ -291,9 +289,7 @@ export default function ValidarQR() {
 
    const handleGetListaInvitados = async () => {
       setDataInvitados([]);
-      const res = await fetch(
-         `https://script.google.com/macros/s/${env.ID_MACRO_SCRIPT}/exec?action=getList`,
-      );
+      const res = await fetch(`${env.API_MACRO}?action=getList`);
       const data = await res.json();
       // Asumimos que data.list es un array de objetos con la estructura de Invitado
       setDataInvitados(data.list);

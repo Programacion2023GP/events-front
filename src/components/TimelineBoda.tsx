@@ -9,7 +9,7 @@ import { image } from "motion/react-client";
 import { useMobile } from "../hooks/useMobile";
 import { Pointer } from "lucide-react";
 
-const TimelineBoda = ({ weddingInfo }) => {
+const TimelineBoda = ({ invitationData }) => {
    // const { themeActive } = useGlobalContext();
    const isMobile = useMobile();
 
@@ -124,7 +124,7 @@ const TimelineBoda = ({ weddingInfo }) => {
                   ¿Lo mejor? ¡No necesitarás moverte de lugar! Hemos preparado
                   todo en{" "}
                   <span className="font-bold">
-                     {weddingInfo.place}, {weddingInfo.location}
+                     {invitationData.place}, {invitationData.location}
                   </span>{" "}
                   para que disfrutes la velada sin complicaciones. Ceremonia y
                   fiesta... ¡todo en el mismo sitio! .

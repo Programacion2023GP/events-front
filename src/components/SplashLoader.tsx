@@ -16,7 +16,7 @@ import Loading from "./Loading";
 import { useGlobalContext } from "../contexts/GlobalContext";
 
 export default function SplashLoader({
-   weddingInfo,
+   invitationData,
    show,
    setShow,
    setIsPlaying,
@@ -46,7 +46,7 @@ export default function SplashLoader({
          setIsLoading(true);
          setIsSubmitting(true);
          const res = await fetch(
-            `${env.API_MACRO}?telefono=${formData.telefono}&action=getGuest`,
+            `${invitationData.API_MACRO}?telefono=${formData.telefono}&action=getGuest`,
          );
          const data = await res.json();
          console.log("🚀 ~ checkPhone ~ data:", data);
@@ -176,7 +176,7 @@ export default function SplashLoader({
                            <button
                               className="btn btn-primary btn-wide rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                               // disabled={isSubmitting || maxGuests === null}
-                              >
+                           >
                               {isSubmitting &&
                               formData.asistencia == "confirmed" &&
                               formData.guests > 0 ? (

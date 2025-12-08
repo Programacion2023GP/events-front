@@ -7,13 +7,15 @@ import { useMobile } from "../hooks/useMobile";
 import images from "../constants/images";
 
 const DetailsEvent = ({
-   formattedDate,
-   formattedTime,
+   date,
+   time,
    googleCalendarUrl,
-   weddingPlace,
-   weddingDate,
+   place,
+   theDate,
    location,
    googleMapsUrl,
+   dressCode,
+   recomendacion,
 }) => {
    const isMobile = useMobile();
 
@@ -72,8 +74,8 @@ const DetailsEvent = ({
                   <h3 className="text-xl font-bold font-zapf-roman mb-0">
                      Fecha y Hora
                   </h3>
-                  <p className="font-avenir-roman">{formattedDate}</p>
-                  <p className="mb-1 font-avenir-roman">{formattedTime} hr</p>
+                  <p className="font-avenir-roman">{date}</p>
+                  <p className="mb-1 font-avenir-roman">{time} hr</p>
                   <motion.div
                      whileHover={{ scale: 1.05 }}
                      whileTap={{ scale: 0.95 }}>
@@ -82,8 +84,8 @@ const DetailsEvent = ({
                         type={"calendar"}
                         calendarUrl={googleCalendarUrl}
                         mapsUrl={googleMapsUrl}
-                        weddingDate={weddingDate}
-                        weddingPlace={weddingPlace}
+                        theDate={theDate}
+                        place={place}
                      />
 
                      {/* <button
@@ -115,7 +117,7 @@ const DetailsEvent = ({
                   <h3 className="text-xl font-bold font-zapf-roman mb-0">
                      Ubicación
                   </h3>
-                  <p className="font-avenir-roman">{weddingPlace}</p>
+                  <p className="font-avenir-roman">{place}</p>
                   <p className="font-avenir-roman mb-1">{location}</p>
                   <motion.div
                      whileHover={{ scale: 1.05 }}
@@ -125,8 +127,8 @@ const DetailsEvent = ({
                         type={"maps"}
                         calendarUrl={googleCalendarUrl}
                         mapsUrl={googleMapsUrl}
-                        weddingDate={weddingDate}
-                        weddingPlace={weddingPlace}
+                        theDate={theDate}
+                        place={place}
                      />
                      {/* <button
                      // variant="outline"
@@ -157,7 +159,7 @@ const DetailsEvent = ({
                   <h3 className="text-xl font-bold font-zapf-roman mb-0">
                      Código de Vestimenta
                   </h3>
-                  <p className="font-avenir-roman mb-1">Casual</p>
+                  <p className="font-avenir-roman mb-1">{dressCode}</p>
                </motion.div>
 
                {/* Recomendaciones */}
@@ -176,10 +178,7 @@ const DetailsEvent = ({
                   <h3 className="text-xl font-bold font-zapf-roman mb-0">
                      Recomendaciones
                   </h3>
-                  <p className="font-avenir-roman mb-1">
-                     Le recomendamos llegar 30 minutos antes de la hora
-                     señalada.
-                  </p>
+                  <p className="font-avenir-roman mb-1">{recomendacion}</p>
                </motion.div>
             </div>
          </div>

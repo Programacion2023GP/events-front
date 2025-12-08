@@ -33,6 +33,7 @@ export interface IFormData {
 interface ConfirmationFormProps {
    eventName: string;
    formData: IFormData;
+   API_MACRO: string;
    setFormData: (updater: (prev: IFormData) => IFormData) => void;
    onSubmit?: (data: IFormData) => void;
 }
@@ -42,6 +43,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
    formData,
    setFormData,
    onSubmit,
+   API_MACRO,
 }) => {
    const isMobile = useMobile();
    const { setIsLoading } = useGlobalContext();
@@ -79,7 +81,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
          setIsSubmitting(true);
 
          const res = await fetch(
-            `${env.API_MACRO}?telefono=${
+            `${API_MACRO}?telefono=${
                formData.telefono
             }&action=${"registerRequest"}&nombre=${encodeURIComponent(
                formData.nombre,
@@ -92,11 +94,6 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
             )}&asiento=${encodeURIComponent(formData.asiento)}`,
          );
 
-         // const res = await fetch(
-         //    `${env.API_MACRO}?telefono=${formData.telefono}
-
-         //    &action=registerRequest`,
-         // );
          const data = await res.json();
          // console.log("🚀 ~ checktelefono ~ data:", data);
          if (data.success) {
@@ -159,7 +156,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                                  document={
                                     <InvitationPDF
                                        name={"formData.name"}
-                                       weddingInfo={"weddingInfo"}
+                                       invitationData={"invitationData"}
                                        formData={formData}
                                        // table={"formData?.asistencia == "no" ? 0 : table"}
                                        backgroundImage={images.fondoInvitacion}
@@ -263,7 +260,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                            document={
                               <InvitationPDF
                                  name={"formData.name"}
-                                 weddingInfo={"weddingInfo"}
+                                 invitationData={"invitationData"}
                                  formData={formData}
                                  // table={"formData?.asistencia == "no" ? 0 : table"}
                                  backgroundImage={images.fondoInvitacion}

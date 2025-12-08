@@ -6,6 +6,7 @@ import logo_oficial_negro from "../assets/images/logo-oficial-negro.png";
 // import logoLight from "../assets/images/logoLight.png";
 // import logoDark from "../assets/images/logoDark.png";
 import portada from "../assets/images/portada.png";
+import portadaCadi from "../assets/images/cadi/portada.png";
 import hero from "../assets/images/el corazon de la transformacion-01.png";
 import hero2 from "../assets/images/el corazon de la transformacion-02.png";
 import hero3 from "../assets/images/logo-negro-horizontal.png";
@@ -36,6 +37,9 @@ import bgTableLove from "../assets/images/bgTableLove.png";
 import cimaco from "../assets/images/cimaco.png";
 
 const images = {
+   CADI: {
+      portada: portadaCadi,
+   },
    faviconLight,
    faviconDark,
    portada,

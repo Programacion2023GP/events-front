@@ -1,10 +1,11 @@
 import images from "../constants/images";
 import { formatDatetime } from "../utils/formats";
 
-const nameEvent = "Presentación del Plan Municipal de Desarrollo 2025-2028";
-const weddingDate = new Date("2025-12-01T18:00:00");
-const weddingPlace = "Salón de eventos Altozano";
-const location = "ALTOZANO CP 35140, Gómez Palacio, Durango";
+const nameEvent = "100 Días";
+const weddingDate = new Date("2025-12-13T13:00:00");
+const weddingPlace = "Gimnasio Auditorio Centenario";
+const location =
+   "Ejército Nacional Mexicano, La Feria, 35049 Gómez Palacio, Dgo.";
 const organizers =
       "Dirección de Relaciones Públicas, R. Ayuntamiento de Gómez Palacio, Dgo.",
    boyfriend = "";
@@ -34,7 +35,7 @@ const googleCalendarUrl = `${calendarUrl}render?action=TEMPLATE&text=Evento+de+$
 )},+${location.replace(" ", "+")}&sf=true&output=xml`;
 
 // Crear enlace para Google Maps
-const googleMapsUrl = "https://maps.app.goo.gl/hXjwuD8yCn4rfRHi9";
+const googleMapsUrl = "https://maps.app.goo.gl/DG93foPnxdiGsf677";
 
 const giftRegistryUrls = [
    {
@@ -57,9 +58,23 @@ const giftRegistryUrls = [
    },
 ];
 
-export const invitationData_planDeDesarrollo = {
+/**
+ *
+ */
+export const invitationData_100Dias = {
+   imgPortada: images.portada,
+   bgPortada: "bg-secondary",
    nameEvent: nameEvent,
-   organizers: organizers,
+   // bride: organizers,
+   organizers: {
+      department: "Dirección de Relaciones Públicas",
+      email: "relaciones.publicas@gomezpalacio.gob.mx",
+      direction: "Piso 1, Presidencia Municipal",
+      link: "https://maps.app.goo.gl/wvHPmVAH3js23qEg7",
+      sede: "Precidencia",
+      tel: "87 11 75 10 00",
+      ext: "Ext. 125 / Ext. 360",
+   },
    groom: boyfriend,
    date: formattedDate,
    time: formattedTime,
@@ -70,6 +85,10 @@ export const invitationData_planDeDesarrollo = {
    calendarUrl: googleCalendarUrl,
    mapsUrl: googleMapsUrl,
    giftTable: giftRegistryUrls,
+   dressCode: "Casual",
+   recomendacion:
+      "Le recomendamos llegar 30 minutos antes de la hora señalada.",
+   showConfirmaionForm: true,
    API_MACRO:
       "https://script.google.com/macros/s/AKfycbxhzrCgMN_zMUke7Tpf9bh1nD3nl9YCrL6gze8F_JgcZ5jN7iHcpippv89yoF5x1X1kRA/exec",
 };

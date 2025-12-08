@@ -36,7 +36,7 @@ import InvitationHeader from "./components/InvitationHeader";
 import ConfirmationForm from "./components/confirmationForm";
 import { Shield, AlertCircle, Home, Mail } from "lucide-react";
 
-export default function App() {
+export default function App({ invitationData }) {
    const { themeActive } = useGlobalContext();
    useDynamicFavicon();
 
@@ -74,77 +74,7 @@ export default function App() {
    }, []);
 
    //#region Variables
-   const nameEvent = "100 Días";
-   const weddingDate = new Date("2025-12-13T13:00:00");
-   const weddingPlace = "Gimnasio Auditorio Centenario";
-   const location =
-      "Ejército Nacional Mexicano, La Feria, 35049 Gómez Palacio, Dgo.";
-   const girlfriend =
-         "Dirección de Relaciones Públicas, R. Ayuntamiento de Gómez Palacio, Dgo.",
-      boyfriend = "";
 
-   const formattedDate = formatDatetime(
-      weddingDate,
-      true,
-      "dddd DD [de] MMMM [de] YYYY",
-   );
-
-   const formattedTime = formatDatetime(weddingDate, false, "HH:mm");
-
-   // Crear enlace para Google Calendar
-   const calendarUrl = `https://calendar.google.com/calendar/`;
-   const googleCalendarUrl = `${calendarUrl}render?action=TEMPLATE&text=Evento+de+${girlfriend}+&dates=${weddingDate
-      .toISOString()
-      .replace(/-|:|\.\d+/g, "")
-      .slice(0, 15)}00Z/${weddingDate
-      .toISOString()
-      .replace(/-|:|\.\d+/g, "")
-      .slice(
-         0,
-         15,
-      )}00Z&details=¡Estamos+emocionados+de+contar+contigo!&location=${weddingPlace.replace(
-      " ",
-      "+",
-   )},+${location.replace(" ", "+")}&sf=true&output=xml`;
-
-   // Crear enlace para Google Maps
-   const googleMapsUrl = "https://maps.app.goo.gl/DG93foPnxdiGsf677";
-
-   const giftRegistryUrls = [
-      {
-         site: "Cimaco",
-         link: "https://www.cimaco.com.mx/mesa-regalo/45392",
-         image: images.cimaco,
-         color: "white",
-         type: "link",
-      },
-      {
-         type: "transferencia",
-         bankData: {
-            banco: "BBVA",
-            nombre: "Néstor Josue Puentes Inchaurregui",
-            numeroTarjeta: "4152 3139 8353 6074",
-            clabe: "012 078 02895772494 9",
-            concepto: "Regalo boda de [Tu Nombre]",
-            linkCobro: null,
-         },
-      },
-   ];
-
-   const weddingInfo = {
-      nameEvent: nameEvent,
-      bride: girlfriend,
-      groom: boyfriend,
-      date: formattedDate,
-      time: formattedTime,
-      theDate: weddingDate,
-      fullDate: formatDatetime,
-      place: weddingPlace,
-      location: location,
-      calendarUrl: googleCalendarUrl,
-      mapsUrl: googleMapsUrl,
-      giftTable: giftRegistryUrls,
-   };
    //#endregion
 
    const handleClickConfirm = () => {
@@ -171,7 +101,7 @@ export default function App() {
       try {
          setIsLoading(true);
          const res = await fetch(
-            `${env.API_MACRO}?telefono=${tel}&action=getGuest`,
+            `${invitationData.API_MACRO}?telefono=${tel}&action=getGuest`,
          );
          const data = await res.json();
 
@@ -248,10 +178,10 @@ export default function App() {
                   Contacto
                </h3>
                <p className="font-avenir-roman text-base-content/75">
-                  {girlfriend}
+                  {invitationData.organizers.department}
                </p>
                <p className="font-avenir-light text-base-content/60 text-sm mt-2">
-                  relacionespublicas@coahuila.gob.mx
+                  {invitationData.organizers.email}
                </p>
             </motion.div>
 
@@ -292,6 +222,19 @@ export default function App() {
    // Mostrar loading mientras se valida
    if (isLoading || !validationChecked) {
       return <Loading open={true} animation="bounce" />;
+      // <InvitationCard
+      //    nameEvent={invitationData.nameEvent}
+      //    organizers={invitationData.organizers}
+      //    groom={invitationData.groom}
+      //    theDate={invitationData.date}
+      //    time={invitationData.time}
+      //    place={invitationData.place}
+      //    location={invitationData.location}
+      //    imgPortada={invitationData.imgPortada}
+      //    bgPortada={invitationData.bgPortada}
+      //    option={1}
+      //    onConfirmClick={handleClickConfirm}
+      // />
    }
 
    // Mostrar pantalla de no autorizado
@@ -321,20 +264,22 @@ export default function App() {
                      animate={{ opacity: 1, scale: 1, x: 0 }}
                      exit={{ opacity: 0, scale: 0.8, x: -100 }}
                      className="fixed top-4 left-4 z-50">
-                     <CountdownTimer targetDate={weddingDate} isSticky={true} />
+                     <CountdownTimer targetDate={theDate} isSticky={true} />
                   </motion.div>
                )}
             </AnimatePresence> */}
 
             {/* Encabezado */}
             <InvitationCard
-               nameEvent={nameEvent}
-               bride={girlfriend}
-               groom={boyfriend}
-               weddingDate={formattedDate}
-               weddingTime={formattedTime}
-               weddingPlace={weddingPlace}
-               location={location}
+               nameEvent={invitationData.nameEvent}
+               organizers={invitationData.organizers}
+               groom={invitationData.groom}
+               theDate={invitationData.date}
+               time={invitationData.time}
+               place={invitationData.place}
+               location={invitationData.location}
+               imgPortada={invitationData.imgPortada}
+               bgPortada={invitationData.bgPortada}
                option={1}
                onConfirmClick={handleClickConfirm}
             />
@@ -344,7 +289,7 @@ export default function App() {
                <InvitationHeader
                   guestName={formData.nombre}
                   relationship={formData.puesto}
-                  eventName={weddingInfo.nameEvent}
+                  eventName={invitationData.nameEvent}
                   backgroundImage={images.hero}
                   decorativeElements={false}
                />
@@ -353,31 +298,35 @@ export default function App() {
             {/* Sección de detalles */}
             <section className="py-5 px-6 bg-base-100 relative">
                <DetailsEvent
-                  formattedDate={formattedDate}
-                  formattedTime={formattedTime}
-                  googleCalendarUrl={googleCalendarUrl}
-                  weddingPlace={weddingPlace}
-                  weddingDate={weddingDate}
-                  location={location}
-                  googleMapsUrl={googleMapsUrl}
+                  date={invitationData.date}
+                  time={invitationData.time}
+                  googleCalendarUrl={invitationData.googleCalendarUrl}
+                  place={invitationData.place}
+                  theDate={invitationData.theDate}
+                  location={invitationData.location}
+                  googleMapsUrl={invitationData.googleMapsUrl}
+                  dressCode={invitationData.dressCode}
+                  recomendacion={invitationData.recomendacion}
                />
             </section>
 
             {/* Sección de Confirmación */}
-            <section className="py-5 px-6 relative" ref={rsvpRef}>
-               <ConfirmationForm
-                  eventName={weddingInfo.nameEvent}
-                  formData={formData}
-                  setFormData={setFormData}
-                  // onSubmit={(data) => {
-                  //    console.log("Datos confirmados:", data);
-                  // }}
-               />
-            </section>
+            {invitationData.showConfirmationForm && (
+               <section className="py-5 px-6 relative" ref={rsvpRef}>
+                  <ConfirmationForm
+                     eventName={invitationData.nameEvent}
+                     formData={formData}
+                     setFormData={setFormData}
+                     // onSubmit={(data) => {
+                     //    console.log("Datos confirmados:", data);
+                     // }}
+                  />
+               </section>
+            )}
 
             {/* Sección de Contacto */}
             <section className="py-5 px-6 bg-base-200/50 relative">
-               <ContactSection weddingInfo={weddingInfo} />
+               <ContactSection invitationData={invitationData} />
             </section>
 
             {/* Footer */}

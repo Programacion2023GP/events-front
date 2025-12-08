@@ -12,7 +12,7 @@ import { useMobile } from "../hooks/useMobile";
 import { useGlobalContext } from "../contexts/GlobalContext";
 
 interface RsvpFormProps {
-   weddingInfo: {
+   invitationData: {
       bride: string;
       groom: string;
       date: string;
@@ -24,11 +24,15 @@ interface RsvpFormProps {
       calendarUrl: string;
       mapsUrl: string;
       giftTable: string;
+      API_MACRO: string;
    };
    onComplete?: () => void;
 }
 
-export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
+export default function RsvpForm({
+   invitationData,
+   onComplete,
+}: RsvpFormProps) {
    const { setIsLoading } = useGlobalContext();
    const isMobile = useMobile();
 
@@ -51,7 +55,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
    const [showButtonDownload, setShowButtonDownload] = useState(false);
 
    useEffect(() => {
-      // console.log("32 days", dayjs(weddingInfo.theDate).subtract(72, "days"));
+      // console.log("32 days", dayjs(invitationData.theDate).subtract(72, "days"));
 
       if (formData.phone.length < 10) {
          setFormData({
@@ -70,7 +74,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
             setIsLoading(true);
             setIsSubmitting(true);
             const res = await fetch(
-               `${env.API_MACRO}?telefono=${formData.phone}&action=getGuest`,
+               `${invitationData.API_MACRO}?telefono=${formData.phone}&action=getGuest`,
             );
             const data = await res.json();
             // console.log("🚀 ~ checkPhone ~ data:", data);
@@ -135,7 +139,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
          //    mode: "no-cors", // obligatorio para evitar CORS
          // });
          const res = await fetch(
-            `${env.API_MACRO}?telefono=${body.phone}&action=${
+            `${invitationData.API_MACRO}?telefono=${body.phone}&action=${
                body.action
             }&name=${encodeURIComponent(body.name)}&phone=${encodeURIComponent(
                body.phone,
@@ -224,7 +228,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                      document={
                         <InvitationPDF
                            name={formData.name}
-                           weddingInfo={weddingInfo}
+                           invitationData={invitationData}
                            qrValue={guestCode}
                            guests={guests}
                            table={formData.asistencia == "no" ? 0 : table}
@@ -275,7 +279,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
             </motion.div>
             <p className="font-zapf-roman leading-relaxed max-w-3xl mx-auto">
                Por favor, confirma tu asistencia antes del{" "}
-               {dayjs(weddingInfo.theDate)
+               {dayjs(invitationData.theDate)
                   .subtract(32, "days")
                   .format("dddd DD [de] MMMM [de] YYYY")}
                .
@@ -331,12 +335,13 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
 
                            <div className="space-y-2">
                               <p className="font-zapf-roman text-md mb-8 text-primary">
-                                 {weddingInfo.bride}{" "}
-                                 {weddingInfo.groom && `& ${weddingInfo.groom}`}
+                                 {invitationData.bride}{" "}
+                                 {invitationData.groom &&
+                                    `& ${invitationData.groom}`}
                               </p>
                               <p className="font-anodina-extrabold text-secondary text-sm">
-                                 {weddingInfo.date} <br />
-                                 {weddingInfo.time} hrs
+                                 {invitationData.date} <br />
+                                 {invitationData.time} hrs
                               </p>
                            </div>
 
@@ -344,10 +349,10 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
 
                            <div className="space-y-1">
                               <p className="text-xs font-zapf-roman font-medium">
-                                 {weddingInfo.place.toUpperCase()}
+                                 {invitationData.place.toUpperCase()}
                               </p>
                               <p className="text-xs font-zapf-roman opacity-60">
-                                 {weddingInfo.location}
+                                 {invitationData.location}
                               </p>
                            </div>
 
@@ -366,7 +371,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
 
                      {/* Sección derecha - Formulario */}
                      {/* {dayjs().isAfter(
-                        dayjs(weddingInfo.theDate).subtract(32, "days"),
+                        dayjs(invitationData.theDate).subtract(32, "days"),
                         "D",
                      ) ? (
                         <div className="flex flex-col items-center justify-center h-full text-center p-8">
@@ -460,7 +465,7 @@ export default function RsvpForm({ weddingInfo, onComplete }: RsvpFormProps) {
                                     document={
                                        <InvitationPDF
                                           name={formData.name}
-                                          weddingInfo={weddingInfo}
+                                          invitationData={invitationData}
                                           qrValue={guestCode}
                                           guests={guests}
                                           table={
