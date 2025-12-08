@@ -317,6 +317,7 @@ export default function App({ invitationData }) {
                      eventName={invitationData.nameEvent}
                      formData={formData}
                      setFormData={setFormData}
+                     API_MACRO={invitationData.API_MACRO}
                      // onSubmit={(data) => {
                      //    console.log("Datos confirmados:", data);
                      // }}

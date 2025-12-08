@@ -88,7 +88,7 @@ export const invitationData_100Dias = {
    dressCode: "Casual",
    recomendacion:
       "Le recomendamos llegar 30 minutos antes de la hora señalada.",
-   showConfirmaionForm: true,
+   showConfirmationForm: true,
    API_MACRO:
       "https://script.google.com/macros/s/AKfycbxhzrCgMN_zMUke7Tpf9bh1nD3nl9YCrL6gze8F_JgcZ5jN7iHcpippv89yoF5x1X1kRA/exec",
 };

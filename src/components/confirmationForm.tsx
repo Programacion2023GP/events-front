@@ -150,7 +150,7 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                   <p className="font-avenir-light text-sm text-base-content/50 mt-2">
                      {formData?.asistencia === "confirmed" ? (
                         <>
-                           <p>Asistencia confirmada</p>
+                           <div>Asistencia confirmada</div>
                            <div className="text-center animate-pulse">
                               <PDFDownloadLink
                                  document={

@@ -83,7 +83,7 @@ export const invitationData_cadi = {
    giftTable: giftRegistryUrls,
    dressCode: "Formal-Casual",
    recomendacion: "Le recomendamos llegar 1 hora antes de la hora señalada.",
-   showConfirmaionForm: false,
+   showConfirmationForm: false,
    API_MACRO:
       "https://script.google.com/macros/s/AKfycbwDZseKZopchrSQcnc-MEmuN5gZurKpRLxr0AzrPJgsT8ajZmW3czANT2mmlVJZ0UyjqA/exec",
 };
