@@ -8,6 +8,7 @@ interface InvitationHeaderProps {
    relationship?: string;
    backgroundImage?: string;
    decorativeElements?: boolean;
+   bannerLema: "antes" | "despues";
 }
 
 const InvitationHeader: React.FC<InvitationHeaderProps> = ({
@@ -16,11 +17,39 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
    relationship = "Estimado(a)",
    backgroundImage,
    decorativeElements = true,
+   bannerLema = "despues",
 }) => {
    const isMobile = useMobile();
 
    return (
       <div className="relative w-full flex flex-col">
+         {/* Sección de imagen a lo largo */}
+         {bannerLema === "antes" && (
+            <motion.div
+               initial={{ opacity: 0 }}
+               whileInView={{ opacity: 1 }}
+               transition={{ duration: 1.2, delay: 0.5 }}
+               viewport={{ once: true }}
+               className="w-full  relative overflow-hidden">
+               {backgroundImage ? (
+                  <img
+                     src={backgroundImage}
+                     alt="Evento"
+                     className="w-full h-full object-contain"
+                  />
+               ) : (
+                  <div className="w-full h-full bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
+                     <p className="font-avenir-roman text-base-content/50 text-lg">
+                        Imagen
+                     </p>
+                  </div>
+               )}
+
+               {/* Overlay para mejor legibilidad del texto que pueda ir encima */}
+               <div className="absolute inset-0 bg-gradient-to-t from-base-100/10 to-transparent"></div>
+            </motion.div>
+         )}
+
          {/* Sección del encabezado de invitación */}
          <div className="flex-1 flex items-center justify-center px-4 relative overflow-hidden">
             {/* Fondo con efecto granulado */}
@@ -118,30 +147,31 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
             </motion.div>
          </div>
 
-         {/* Sección de imagen a lo largo */}
-         <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="w-full  relative overflow-hidden">
-            {backgroundImage ? (
-               <img
-                  src={backgroundImage}
-                  alt="Evento"
-                  className="w-full h-full object-contain"
-               />
-            ) : (
-               <div className="w-full h-full bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
-                  <p className="font-avenir-roman text-base-content/50 text-lg">
-                     Imagen
-                  </p>
-               </div>
-            )}
+         {bannerLema === "despues" && (
+            <motion.div
+               initial={{ opacity: 0 }}
+               whileInView={{ opacity: 1 }}
+               transition={{ duration: 1.2, delay: 0.5 }}
+               viewport={{ once: true }}
+               className="w-full  relative overflow-hidden">
+               {backgroundImage ? (
+                  <img
+                     src={backgroundImage}
+                     alt="Evento"
+                     className="w-full h-full object-contain"
+                  />
+               ) : (
+                  <div className="w-full h-full bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
+                     <p className="font-avenir-roman text-base-content/50 text-lg">
+                        Imagen
+                     </p>
+                  </div>
+               )}
 
-            {/* Overlay para mejor legibilidad del texto que pueda ir encima */}
-            <div className="absolute inset-0 bg-gradient-to-t from-base-100/10 to-transparent"></div>
-         </motion.div>
+               {/* Overlay para mejor legibilidad del texto que pueda ir encima */}
+               <div className="absolute inset-0 bg-gradient-to-t from-base-100/10 to-transparent"></div>
+            </motion.div>
+         )}
       </div>
    );
 };

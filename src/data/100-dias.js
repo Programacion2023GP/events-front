@@ -65,6 +65,7 @@ export const invitationData_100Dias = {
    imgPortada: images.portada,
    bgPortada: "bg-secondary",
    nameEvent: nameEvent,
+   bannerLema: "despues",
    // bride: organizers,
    organizers: {
       department: "Dirección de Relaciones Públicas",

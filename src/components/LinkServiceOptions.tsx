@@ -45,18 +45,21 @@ const LinkServiceOptions: React.FC<LinkServiceOptionsProps> = ({
             <div className="modal-box">
                <h3 className="font-bold text-lg">Selecciona una aplicación</h3>
                <p className="py-4">
-                  {Object.entries(services[type]).map(([name, link]) => (
-                     <button
-                        className="btn btn-outline rounded-full btn-secondary mx-1 mb-1"
-                        key={name}
-                        onClick={() => {
-                           if (link) {
-                              window.open(link, "_blank");
-                           }
-                        }}>
-                        {name}
-                     </button>
-                  ))}
+                  {Object.entries(services[type]).map(([name, link]) => {
+                     console.log("🚀 ~ LinkServiceOptions ~ name:", name, link);
+                     return (
+                        <button
+                           className="btn btn-outline rounded-full btn-secondary mx-1 mb-1"
+                           key={name}
+                           onClick={() => {
+                              if (link) {
+                                 window.open(link, "_blank");
+                              }
+                           }}>
+                           {name}
+                        </button>
+                     );
+                  })}
                </p>
             </div>
             <form method="dialog" className="modal-backdrop">

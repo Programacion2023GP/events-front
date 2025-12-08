@@ -292,6 +292,7 @@ export default function App({ invitationData }) {
                   eventName={invitationData.nameEvent}
                   backgroundImage={images.hero}
                   decorativeElements={false}
+                  bannerLema={invitationData.bannerLema}
                />
             </section>
 
@@ -304,7 +305,7 @@ export default function App({ invitationData }) {
                   place={invitationData.place}
                   theDate={invitationData.theDate}
                   location={invitationData.location}
-                  googleMapsUrl={invitationData.googleMapsUrl}
+                  googleMapsUrl={invitationData.mapsUrl}
                   dressCode={invitationData.dressCode}
                   recomendacion={invitationData.recomendacion}
                />

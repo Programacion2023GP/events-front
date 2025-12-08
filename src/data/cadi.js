@@ -62,6 +62,7 @@ export const invitationData_cadi = {
    imgPortada: images.CADI.portada,
    bgPortada: "",
    nameEvent: nameEvent,
+   bannerLema: "antes",
    organizers: {
       department: "Dirección de Desarrollo Económico",
       email: "desarrollo.economico@gomezpalacio.gob.mx",
@@ -82,7 +83,8 @@ export const invitationData_cadi = {
    mapsUrl: googleMapsUrl,
    giftTable: giftRegistryUrls,
    dressCode: "Formal-Casual",
-   recomendacion: "Le recomendamos llegar 1 hora antes de la hora señalada.",
+   recomendacion:
+      "Le recomendamos llegar 30 minutos antes de la hora señalada.",
    showConfirmationForm: false,
    API_MACRO:
       "https://script.google.com/macros/s/AKfycbwDZseKZopchrSQcnc-MEmuN5gZurKpRLxr0AzrPJgsT8ajZmW3czANT2mmlVJZ0UyjqA/exec",
