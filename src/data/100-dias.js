@@ -72,7 +72,7 @@ export const invitationData_100Dias = {
       email: "relaciones.publicas@gomezpalacio.gob.mx",
       direction: "Piso 1, Presidencia Municipal",
       link: "https://maps.app.goo.gl/wvHPmVAH3js23qEg7",
-      sede: "Precidencia",
+      sede: "Presidencia",
       tel: "87 11 75 10 00",
       ext: "Ext. 125 / Ext. 360",
    },
