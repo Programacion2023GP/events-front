@@ -3,7 +3,7 @@ import { formatDatetime } from "../utils/formats";
 
 const nameEvent = "Posada";
 const weddingDate = new Date("2025-12-20T14:30:00");
-const weddingPlace = "Centro de Conveciones Expo Feria";
+const weddingPlace = "Centro de Convenciones Expo Feria";
 const location =
   "Ejército Nacional Mexicano, La Feria, 35049 Gómez Palacio, Dgo.";
 const organizers = "",
