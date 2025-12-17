@@ -3,7 +3,7 @@ import { formatDatetime } from "../utils/formats";
 
 const nameEvent = "Posada";
 const weddingDate = new Date("2025-12-20T14:30:00");
-const weddingPlace = "Gimnasio Auditorio Centenario";
+const weddingPlace = "Centro de Conveciones Expo Feria";
 const location =
   "Ejército Nacional Mexicano, La Feria, 35049 Gómez Palacio, Dgo.";
 const organizers = "",
@@ -34,7 +34,7 @@ const googleCalendarUrl = `${calendarUrl}render?action=TEMPLATE&text=Evento+de+$
 )},+${location.replace(" ", "+")}&sf=true&output=xml`;
 
 // Crear enlace para Google Maps
-const googleMapsUrl = "https://maps.app.goo.gl/DG93foPnxdiGsf677";
+const googleMapsUrl = "https://maps.app.goo.gl/E2CW3w9h8GNeHHmr9";
 
 const giftRegistryUrls = [
   {
