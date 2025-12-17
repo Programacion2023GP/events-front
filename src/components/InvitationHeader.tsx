@@ -9,6 +9,7 @@ interface InvitationHeaderProps {
    backgroundImage?: string;
    decorativeElements?: boolean;
    bannerLema: "antes" | "despues";
+   showCaption: boolean
 }
 
 const InvitationHeader: React.FC<InvitationHeaderProps> = ({
@@ -18,6 +19,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
    backgroundImage,
    decorativeElements = true,
    bannerLema = "despues",
+   showCaption=true
 }) => {
    const isMobile = useMobile();
 
@@ -69,7 +71,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
 
             {/* Contenido principal */}
             <motion.div
-               initial={{ opacity: 0, y: 50 }}
+               initial={{ opacity: 1, y: 0 }}
                whileInView={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.8 }}
                viewport={{ once: false, margin: isMobile ? "0px" : "-25% 0px" }}
@@ -107,7 +109,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
                />
 
                {/* Mensaje de invitación */}
-               <motion.div
+               {showCaption && <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 1 }}
@@ -115,7 +117,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
                   <p className="font-avenir-light text-lg md:text-xl text-base-content/80 mb-0">
                      Es un honor para nosotros invitarle a asistir al evento
                   </p>
-               </motion.div>
+               </motion.div>}
 
                {/* Nombre del evento */}
                {/* <motion.h2
@@ -127,12 +129,12 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
                </motion.h2> */}
 
                {/* Línea decorativa inferior */}
-               <motion.div
+              { showCaption && <motion.div
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   transition={{ duration: 1, delay: 1.4 }}
                   className="h-px bg-primary/30 mx-auto mt-0 max-w-xs"
-               />
+               />}
 
                {/* Elemento decorativo central */}
                {/* <motion.div

@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage.jsx";
 import ValidateQrPage from "./pages/ValidateQrPage.jsx";
 import { invitationData_100Dias } from "./data/100-dias";
 import { invitationData_cadi } from "./data/cadi.js";
+import { invitationData_posada } from "./data/posada.js";
 
 createRoot(document.getElementById("root")).render(
    <StrictMode>
@@ -26,6 +27,10 @@ createRoot(document.getElementById("root")).render(
                <Route
                   path="/cadi/:tel?"
                   element={<HomePage invitationData={invitationData_cadi} />}
+               />
+                <Route
+                  path="/posada/:tel?"
+                  element={<HomePage invitationData={invitationData_posada} />}
                />
             </Routes>
          </HashRouter>

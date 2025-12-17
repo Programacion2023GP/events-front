@@ -86,6 +86,7 @@ export const invitationData_cadi = {
    recomendacion:
       "Le recomendamos llegar 30 minutos antes de la hora señalada.",
    showConfirmationForm: false,
+   showContactSection: true,
    API_MACRO:
       "https://script.google.com/macros/s/AKfycbwDZseKZopchrSQcnc-MEmuN5gZurKpRLxr0AzrPJgsT8ajZmW3czANT2mmlVJZ0UyjqA/exec",
 };
