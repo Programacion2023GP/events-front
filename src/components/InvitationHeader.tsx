@@ -11,6 +11,7 @@ interface InvitationHeaderProps {
    bannerLema: "antes" | "despues";
    bannerInvitado: "antes" | "despues";
    showCaption: boolean;
+   leyend?: string;
 }
 
 const InvitationHeader: React.FC<InvitationHeaderProps> = ({
@@ -22,6 +23,7 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
    bannerLema = "despues",
    bannerInvitado = "antes",
    showCaption = true,
+   leyend,
 }) => {
    const isMobile = useMobile();
 
@@ -120,9 +122,13 @@ const InvitationHeader: React.FC<InvitationHeaderProps> = ({
                      whileInView={{ opacity: 1 }}
                      transition={{ duration: 0.8, delay: 1 }}
                      className="mb-3">
-                     <p className="font-avenir-light text-lg md:text-xl text-base-content/80 mb-0">
-                        Es un honor para nosotros invitarle a asistir al evento
-                     </p>
+                     <p
+                        className="font-avenir-light text-lg md:text-xl text-base-content/80 mb-0"
+                        dangerouslySetInnerHTML={{
+                           __html: leyend ||
+                              "Es un honor para nosotros invitarle a asistir al evento",
+                        }}
+                     />
                   </motion.div>
                )}
 

@@ -9,6 +9,7 @@ import { invitationData_100Dias } from "./data/100-dias";
 import { invitationData_cadi } from "./data/cadi.js";
 import { invitationData_posada } from "./data/posada.js";
 import invitationData_sesionSolemne from "./data/sesion-solemne-de-cabildo.js";
+import invitationData_primerInforme from "./data/primer-informe.js";
 
 createRoot(document.getElementById("root")).render(
    <StrictMode>
@@ -37,6 +38,12 @@ createRoot(document.getElementById("root")).render(
                   path="/sesion-solemne-de-cabildo/:tel?"
                   element={
                      <HomePage invitationData={invitationData_sesionSolemne} />
+                  }
+               />
+               <Route
+                  path="/primer-informe/:tel?"
+                  element={
+                     <HomePage invitationData={invitationData_primerInforme} />
                   }
                />
             </Routes>

@@ -53,6 +53,7 @@ export default function ValidarQR() {
       try {
          const res = await fetch(
             `${env.API_MACRO}?guestCode=${guestCode}&action=validateGuest`,
+            // `${env.API_MACRO}?guestCode=${guestCode}&action=validateGuest`,
          );
          const data = await res.json();
          // console.log("aqui el json", data);

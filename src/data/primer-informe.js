@@ -1,8 +1,8 @@
 import images from "../constants/images";
 import { formatDatetime } from "../utils/formats";
 
-const nameEvent = "Sesión Solemne de Cabildo";
-const weddingDate = new Date("2026-08-25T13:00:00");
+const nameEvent = "1er Informe de Gobierno";
+const weddingDate = new Date("2026-08-26T13:00:00");
 const weddingPlace = "Altozano";
 const location =
    "Nueva Laguna, Carreteta la Unión Km 1.5, 35140 Gómez Palacio, Dgo.";
@@ -66,8 +66,8 @@ const invitationData = {
    imgPortadaMovil: images.portadaSesionSolemneMovil,
    bgPortada: "bg-[#A0163D]",
    nameEvent: nameEvent,
-   leyend: `El R. Ayuntamiento de Gómez Palacio, Dgo., tiene el honor de invitarle a la <br/>
-      <strong>SESIÓN SOLEMNE DE CABILDO</strong>.`,
+   leyend: `El R. Ayuntamiento de Gómez Palacio, Dgo., tiene el honor de invitarle al evento del <br/>
+      <strong>1er Informe de Gobierno</strong>.`,
    bannerLema: null,
    bannerInvitado: "despues", //antes o despues de la imagen de portada
    // bride: organizers,
@@ -96,6 +96,6 @@ const invitationData = {
    showConfirmationForm: true,
    showContactSection: true,
    API_MACRO:
-      "https://script.google.com/macros/s/AKfycbxYo1sXabr1hMgQ2KKJUC4lWwnfH3v8EwyjsJ54QAQ6ORCtOHommXz7YhIZWeHhXfyh/exec",
+      "https://script.google.com/macros/s/AKfycbzAURtnAHjI0LBOCsrwC0V1uA0k-ZiHTwE2xvhA3A1XKKwrpUGUj44fxFs--BYsiyyTwQ/exec",
 };
 export default invitationData;

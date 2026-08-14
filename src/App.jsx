@@ -35,6 +35,7 @@ import ContactSection from "./components/ContactSecction";
 import InvitationHeader from "./components/InvitationHeader";
 import ConfirmationForm from "./components/confirmationForm";
 import { Shield, AlertCircle, Home, Mail } from "lucide-react";
+import invitationData from "./data/sesion-solemne-de-cabildo";
 
 export default function App({ invitationData }) {
    const { themeActive } = useGlobalContext();
@@ -212,7 +213,8 @@ export default function App({ invitationData }) {
                transition={{ delay: 1.1 }}
                className="mt-8 pt-6 border-t border-base-300/30">
                <p className="text-sm font-zapf-roman text-base-content/50">
-                  &copy; 2025 | R. Ayuntamiento de Gómez Palacio
+                  &copy; {formatDatetime(invitationData.theDate, false, "YYYY")}{" "}
+                  | R. Ayuntamiento de Gómez Palacio
                </p>
             </motion.div>
          </motion.div>
@@ -281,6 +283,7 @@ export default function App({ invitationData }) {
                      bannerLema={invitationData.bannerLema}
                      bannerInvitado={invitationData.bannerInvitado}
                      showCaption={invitationData.showCaption}
+                     leyend={invitationData.leyend}
                   />
                </section>
             )}
@@ -316,6 +319,7 @@ export default function App({ invitationData }) {
                      bannerLema={invitationData.bannerLema}
                      bannerInvitado={invitationData.bannerInvitado}
                      showCaption={invitationData.showCaption}
+                     leyend={invitationData.leyend}
                   />
                </section>
             )}
@@ -360,7 +364,7 @@ export default function App({ invitationData }) {
             {/* Footer */}
             <footer className="py-2 px-6 text-center font-zapf-roman bg-base-200">
                <p className="text-sm font-zapf-roman">
-                  &copy; 2025{" "}
+                  &copy; {formatDatetime(invitationData.theDate, false, "YYYY")}{" "}
                   {invitationData.showFooter &&
                      `| Diseñado con ♥ | R. Ayuntamiento de Gómez
                   Palacio`}{" "}
