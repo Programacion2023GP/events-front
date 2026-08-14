@@ -8,6 +8,7 @@ import ValidateQrPage from "./pages/ValidateQrPage.jsx";
 import { invitationData_100Dias } from "./data/100-dias";
 import { invitationData_cadi } from "./data/cadi.js";
 import { invitationData_posada } from "./data/posada.js";
+import invitationData_sesionSolemne from "./data/sesion-solemne-de-cabildo.js";
 
 createRoot(document.getElementById("root")).render(
    <StrictMode>
@@ -22,15 +23,21 @@ createRoot(document.getElementById("root")).render(
                   path="/100-dias/:tel?"
                   element={<HomePage invitationData={invitationData_100Dias} />}
                />
-               <Route path="/100-dias/validar" element={<ValidateQrPage  />} />
-               
+               <Route path="/100-dias/validar" element={<ValidateQrPage />} />
+
                <Route
                   path="/cadi/:tel?"
                   element={<HomePage invitationData={invitationData_cadi} />}
                />
-                <Route
+               <Route
                   path="/posada/:tel?"
                   element={<HomePage invitationData={invitationData_posada} />}
+               />
+               <Route
+                  path="/sesion-solemne-de-cabildo/:tel?"
+                  element={
+                     <HomePage invitationData={invitationData_sesionSolemne} />
+                  }
                />
             </Routes>
          </HashRouter>

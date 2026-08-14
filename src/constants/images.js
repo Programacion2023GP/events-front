@@ -1,5 +1,6 @@
-import faviconLight from "../../favicon-light.ico";
-import faviconDark from "../../favicon-dark.ico";
+import favicon from "../../favicon.ico";
+// import faviconLight from "../../favicon-light.ico";
+// import faviconDark from "../../favicon-dark.ico";
 import logo from "../assets/images/logo.png";
 import logo_oficial from "../assets/images/logo-oficial.png";
 import logo_oficial_negro from "../assets/images/logo-oficial-negro.png";
@@ -13,6 +14,11 @@ import hero3 from "../assets/images/logo-negro-horizontal.png";
 import fondoSplash from "../assets/images/invitacion-escritorio.png";
 import fondoSplashMovil from "../assets/images/invitacion-movil.png";
 import fondoInvitacion from "../assets/images/fondo-invitacion.png";
+
+//SESION SOLEMNE DE CABILDO
+import portadaSesionSolemne from "../assets/images/sesion-solemne-de-cabildo/foto-horizontal.jpeg";
+import portadaSesionSolemneMovil from "../assets/images/sesion-solemne-de-cabildo/foto-vertical.jpeg";
+
 import floral from "../assets/images/floral.jpg";
 import icecream from "../assets/images/icecream.png";
 import weddingDress from "../assets/images/wedding-dress.png";
@@ -40,8 +46,9 @@ const images = {
    CADI: {
       portada: portadaCadi,
    },
-   faviconLight,
-   faviconDark,
+   favicon,
+   // faviconLight,
+   // faviconDark,
    portada,
    logo,
    logo_oficial,
@@ -54,6 +61,10 @@ const images = {
    fondoSplash,
    fondoSplashMovil,
    fondoInvitacion,
+
+   portadaSesionSolemne,
+   portadaSesionSolemneMovil,
+
    floral,
    icecream,
    weddingDress,

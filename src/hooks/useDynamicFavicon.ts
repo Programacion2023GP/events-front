@@ -11,7 +11,7 @@ export const useDynamicFavicon = () => {
 
          if (!favicon) return;
 
-         favicon.href = isDark ? images.faviconDark : images.faviconLight;
+         favicon.href = images.favicon; //isDark ? images.faviconDark : images.faviconLight;
       };
 
       const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
