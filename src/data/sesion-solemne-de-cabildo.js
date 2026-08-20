@@ -16,7 +16,7 @@ const formattedDate = formatDatetime(
    "dddd DD [de] MMMM [de] YYYY",
 );
 
-const formattedTime = formatDatetime(weddingDate, false, "HH:mm");
+const formattedTime = formatDatetime(weddingDate, false, "HH:mm [h]");
 
 // Crear enlace para Google Calendar
 const calendarUrl = `https://calendar.google.com/calendar/`;
@@ -67,7 +67,7 @@ const invitationData = {
    bgPortada: "bg-[#A0163D]",
    nameEvent: nameEvent,
    leyend: `El R. Ayuntamiento de Gómez Palacio, Dgo., tiene el honor de invitarle a la <br/>
-      <strong>SESIÓN SOLEMNE DE CABILDO</strong>.`,
+      <div class="text-primary font-zapf-bold font-black text-2xl">SESIÓN SOLEMNE DE CABILDO</div>`,
    bannerLema: null,
    bannerInvitado: "despues", //antes o despues de la imagen de portada
    // bride: organizers,
@@ -91,9 +91,9 @@ const invitationData = {
    mapsUrl: googleMapsUrl,
    giftTable: giftRegistryUrls,
    dressCode: "Formal",
-   recomendacion:
-      "Le recomendamos llegar 30 minutos antes de la hora señalada.",
+   recomendacion: "Llegar 30 minutos antes de la hora señalada.",
    showConfirmationForm: true,
+   showDownloadTicket: false,
    showContactSection: true,
    API_MACRO:
       "https://script.google.com/macros/s/AKfycbxYo1sXabr1hMgQ2KKJUC4lWwnfH3v8EwyjsJ54QAQ6ORCtOHommXz7YhIZWeHhXfyh/exec",

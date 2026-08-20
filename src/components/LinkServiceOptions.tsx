@@ -39,7 +39,7 @@ const LinkServiceOptions: React.FC<LinkServiceOptionsProps> = ({
                ) as HTMLDialogElement | null;
                if (dialog instanceof HTMLDialogElement) dialog.showModal();
             }}>
-            {type === "calendar" ? "Agregar al calendario" : "Como llegar"}
+            {type === "calendar" ? "Agregar al calendario" : "Cómo llegar"}
          </button>
          <dialog id={`my_modal_2_${type}`} className="modal">
             <div className="modal-box">

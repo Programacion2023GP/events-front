@@ -35,7 +35,6 @@ import ContactSection from "./components/ContactSecction";
 import InvitationHeader from "./components/InvitationHeader";
 import ConfirmationForm from "./components/confirmationForm";
 import { Shield, AlertCircle, Home, Mail } from "lucide-react";
-import invitationData from "./data/sesion-solemne-de-cabildo";
 
 export default function App({ invitationData }) {
    const { themeActive } = useGlobalContext();
@@ -90,17 +89,36 @@ export default function App({ invitationData }) {
    const { isLoading, setIsLoading } = useGlobalContext();
    const [authorized, setAuthorized] = useState(false);
    const [validationChecked, setValidationChecked] = useState(false);
+   const [demo, setDemo] = useState(false);
 
    const { tel } = useParams();
+
+   useEffect(() => {
+      const baseTitle = "Invitación GPD";
+      const eventName = invitationData?.nameEvent;
+      document.title = eventName ? `${baseTitle} | ${eventName}` : baseTitle;
+   }, [invitationData?.nameEvent]);
 
    const checkPhone = async (tel) => {
       if (!tel || tel.length < 10) {
          setValidationChecked(true);
+         if (tel === "8700000000") setDemo(true);
          return;
       }
 
       try {
          setIsLoading(true);
+         if (demo) {
+            setAuthorized(true);
+            setFormData(...formData, {
+               autorizado: true,
+               guestCode: "000",
+               nombre: "A QUIEN CORRESPONDA",
+               puesto: "Director General",
+               telefono: "8700000000",
+            });
+            return;
+         }
          const res = await fetch(
             `${invitationData.API_MACRO}?telefono=${tel}&action=getGuest`,
          );
@@ -326,6 +344,11 @@ export default function App({ invitationData }) {
 
             {/* Sección de detalles */}
             <section className="py-5 px-6 bg-base-100 relative">
+               <img
+                  src={images.logoGris}
+                  alt="Logo Gris"
+                  className={`absolute ${isMobile ? "h-6/12" : "h-15/12 translate-y-[-25%]"} -translate-y-4 translate-x-[-50%] opacity-25`}
+               />
                <DetailsEvent
                   date={invitationData.date}
                   time={invitationData.time}
@@ -337,6 +360,11 @@ export default function App({ invitationData }) {
                   dressCode={invitationData.dressCode}
                   recomendacion={invitationData.recomendacion}
                />
+               <img
+                  src={images.logoPrimerInforme}
+                  alt="Logo 1 Informe"
+                  className={`absolute right-0 ${isMobile ? "h-6/12 translate-y-[-83%]" : "h-15/12 "}  translate-x-[8%] opacity-10`}
+               />
             </section>
 
             {/* Sección de Confirmación */}
@@ -344,6 +372,9 @@ export default function App({ invitationData }) {
                <section className="py-5 px-6 relative" ref={rsvpRef}>
                   <ConfirmationForm
                      eventName={invitationData.nameEvent}
+                     showDownloadTicket={
+                        invitationData.showDownloadTicket ?? false
+                     }
                      formData={formData}
                      setFormData={setFormData}
                      API_MACRO={invitationData.API_MACRO}

@@ -78,7 +78,7 @@ const DetailsEvent = ({
               Fecha y Hora
             </h3>
             <p className="font-avenir-roman">{date}</p>
-            <p className="mb-1 font-avenir-roman">{time} hr</p>
+            <p className="mb-1 font-avenir-roman">{time}</p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <LinkServiceOptions
                 key={"caldendar"}

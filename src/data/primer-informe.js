@@ -16,7 +16,7 @@ const formattedDate = formatDatetime(
    "dddd DD [de] MMMM [de] YYYY",
 );
 
-const formattedTime = formatDatetime(weddingDate, false, "HH:mm");
+const formattedTime = formatDatetime(weddingDate, false, "HH:mm [h]");
 
 // Crear enlace para Google Calendar
 const calendarUrl = `https://calendar.google.com/calendar/`;
@@ -62,12 +62,13 @@ const giftRegistryUrls = [
  *
  */
 const invitationData = {
-   imgPortada: images.portadaSesionSolemne,
-   imgPortadaMovil: images.portadaSesionSolemneMovil,
+   imgPortada: images.portadaPrimerInforme,
+   imgPortadaMovil: images.portadaPrimerInformeMovil,
    bgPortada: "bg-[#A0163D]",
    nameEvent: nameEvent,
-   leyend: `El R. Ayuntamiento de Gómez Palacio, Dgo., tiene el honor de invitarle al evento del <br/>
-      <strong>1er Informe de Gobierno</strong>.`,
+   leyend: `El R. Ayuntamiento de Gómez Palacio, Dgo., tiene el honor de invitarle al evento.`,
+   // leyend: `El R. Ayuntamiento de Gómez Palacio, Dgo., tiene el honor de invitarle al evento del <br/>
+   //    <div class="text-primary font-zapf-bold font-black text-2xl">1er INFORME</div>.`,
    bannerLema: null,
    bannerInvitado: "despues", //antes o despues de la imagen de portada
    // bride: organizers,
@@ -91,9 +92,9 @@ const invitationData = {
    mapsUrl: googleMapsUrl,
    giftTable: giftRegistryUrls,
    dressCode: "Formal",
-   recomendacion:
-      "Le recomendamos llegar 30 minutos antes de la hora señalada.",
+   recomendacion: "Llegar 30 minutos antes de la hora señalada.",
    showConfirmationForm: true,
+   showDownloadTicket: false,
    showContactSection: true,
    API_MACRO:
       "https://script.google.com/macros/s/AKfycbzAURtnAHjI0LBOCsrwC0V1uA0k-ZiHTwE2xvhA3A1XKKwrpUGUj44fxFs--BYsiyyTwQ/exec",

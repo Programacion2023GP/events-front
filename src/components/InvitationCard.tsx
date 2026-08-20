@@ -149,7 +149,7 @@ export default function InvitationCard({
             {theDate} - {place}, {location}
           </p>
           <p className="text-lg md:text-xl font-zapf-roman mb-8 text-white">
-            {time} hr
+            {time}
           </p>
           {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                <button

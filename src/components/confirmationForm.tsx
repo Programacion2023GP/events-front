@@ -5,7 +5,6 @@ import {
    User,
    Users,
    Mail,
-   telefono,
    MessageSquare,
    Download,
    Edit,
@@ -32,6 +31,7 @@ export interface IFormData {
 }
 interface ConfirmationFormProps {
    eventName: string;
+   showDownloadTicket: boolean;
    formData: IFormData;
    API_MACRO: string;
    setFormData: (updater: (prev: IFormData) => IFormData) => void;
@@ -40,13 +40,14 @@ interface ConfirmationFormProps {
 
 const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
    eventName,
+   showDownloadTicket,
    formData,
    setFormData,
    onSubmit,
    API_MACRO,
 }) => {
    const isMobile = useMobile();
-   const { setIsLoading } = useGlobalContext();
+   // const { setIsLoading } = useGlobalContext();
    const [showButtonDownload, setShowButtonDownload] = useState(false);
    const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -151,28 +152,32 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                      {formData?.asistencia === "confirmed" ? (
                         <>
                            <div>Asistencia confirmada</div>
-                           <div className="text-center animate-pulse">
-                              <PDFDownloadLink
-                                 document={
-                                    <InvitationPDF
-                                       name={"formData.name"}
-                                       invitationData={"invitationData"}
-                                       formData={formData}
-                                       // table={"formData?.asistencia == "no" ? 0 : table"}
-                                       backgroundImage={images.fondoInvitacion}
-                                    />
-                                 }
-                                 fileName={`Invitacion_${formData.nombre
-                                    .toString()
-                                    .replaceAll(" ", "_")}.pdf`}
-                                 className="btn btn-outline btn-primary btn-xl font-zapf-bold">
-                                 {({ loading }) =>
-                                    loading
-                                       ? "Generando invitación..."
-                                       : "🎟️ DESCARGAR INVITACIÓN"
-                                 }
-                              </PDFDownloadLink>
-                           </div>
+                           {showDownloadTicket ?? (
+                              <div className="text-center animate-pulse">
+                                 <PDFDownloadLink
+                                    document={
+                                       <InvitationPDF
+                                          name={"formData.name"}
+                                          invitationData={"invitationData"}
+                                          formData={formData}
+                                          // table={"formData?.asistencia == "no" ? 0 : table"}
+                                          backgroundImage={
+                                             images.fondoInvitacion
+                                          }
+                                       />
+                                    }
+                                    fileName={`Invitacion_${formData.nombre
+                                       .toString()
+                                       .replaceAll(" ", "_")}.pdf`}
+                                    className="btn btn-outline btn-primary btn-xl font-zapf-bold">
+                                    {({ loading }) =>
+                                       loading
+                                          ? "Generando invitación..."
+                                          : "🎟️ DESCARGAR INVITACIÓN"
+                                    }
+                                 </PDFDownloadLink>
+                              </div>
+                           )}
                         </>
                      ) : (
                         "Lamentamos que no pueda asistir"
@@ -228,61 +233,64 @@ const ConfirmationForm: React.FC<ConfirmationFormProps> = ({
                   </div>
 
                   {/* Recordatorio importante del pase */}
-                  <motion.div
-                     initial={{ opacity: 0, y: 20 }}
-                     animate={{ opacity: 1, y: 0 }}
-                     transition={{ delay: 0.3 }}
-                     className="bg-warning/10 rounded-xl p-6 border border-warning/20">
-                     <div className="flex items-center gap-3 mb-3">
-                        <Download className="h-6 w-6 text-secondary" />
-                        <h4 className="font-anodina-bold text-secondary text-lg">
-                           Recordatorio Importante
-                        </h4>
-                     </div>
+                  {showDownloadTicket ?? (
+                     <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="bg-warning/10 rounded-xl p-6 border border-warning/20">
+                        <div className="flex items-center gap-3 mb-3">
+                           <Download className="h-6 w-6 text-secondary" />
+                           <h4 className="font-anodina-bold text-secondary text-lg">
+                              Recordatorio Importante
+                           </h4>
+                        </div>
 
-                     <p className="font-avenir-roman text-base-content/80 mb-3">
-                        <strong>
-                           No olvide descargar y llevar su pase de acceso
-                        </strong>{" "}
-                        el día del evento.
-                     </p>
+                        <p className="font-avenir-roman text-base-content/80 mb-3">
+                           <strong>
+                              No olvide descargar y llevar su pase de acceso
+                           </strong>{" "}
+                           el día del evento.
+                        </p>
 
-                     <p className="font-avenir-light text-base-content/70 text-sm mb-4">
-                        El pase será requerido para ingresar al recinto. Puede
-                        descargarlo desde el enlace que se le proporcionó.
-                     </p>
+                        <p className="font-avenir-light text-base-content/70 text-sm mb-4">
+                           El pase será requerido para ingresar al recinto.
+                           Puede descargarlo desde el enlace que se le
+                           proporcionó.
+                        </p>
 
-                     <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="btn btn-secondary btn-outline rounded-full">
-                        <PDFDownloadLink
-                           document={
-                              <InvitationPDF
-                                 name={"formData.name"}
-                                 invitationData={"invitationData"}
-                                 formData={formData}
-                                 // table={"formData?.asistencia == "no" ? 0 : table"}
-                                 backgroundImage={images.fondoInvitacion}
-                              />
-                           }
-                           className="flex"
-                           fileName={`Invitacion_${formData.nombre
-                              .toString()
-                              .replaceAll(" ", "_")}.pdf`}>
-                           {({ loading }) =>
-                              loading ? (
-                                 "Generando invitación..."
-                              ) : (
-                                 <>
-                                    <Download className="h-4 w-4 mr-2" />
-                                    Descargar Mi Pase
-                                 </>
-                              )
-                           }
-                        </PDFDownloadLink>
-                     </motion.button>
-                  </motion.div>
+                        <motion.button
+                           whileHover={{ scale: 1.05 }}
+                           whileTap={{ scale: 0.95 }}
+                           className="btn btn-secondary btn-outline rounded-full">
+                           <PDFDownloadLink
+                              document={
+                                 <InvitationPDF
+                                    name={"formData.name"}
+                                    invitationData={"invitationData"}
+                                    formData={formData}
+                                    // table={"formData?.asistencia == "no" ? 0 : table"}
+                                    backgroundImage={images.fondoInvitacion}
+                                 />
+                              }
+                              className="flex"
+                              fileName={`Invitacion_${formData.nombre
+                                 .toString()
+                                 .replaceAll(" ", "_")}.pdf`}>
+                              {({ loading }) =>
+                                 loading ? (
+                                    "Generando invitación..."
+                                 ) : (
+                                    <>
+                                       <Download className="h-4 w-4 mr-2" />
+                                       Descargar Mi Pase
+                                    </>
+                                 )
+                              }
+                           </PDFDownloadLink>
+                        </motion.button>
+                     </motion.div>
+                  )}
                </div>
 
                {/* Botón para modificar confirmación */}

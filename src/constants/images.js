@@ -14,11 +14,18 @@ import hero3 from "../assets/images/logo-negro-horizontal.png";
 import fondoSplash from "../assets/images/invitacion-escritorio.png";
 import fondoSplashMovil from "../assets/images/invitacion-movil.png";
 import fondoInvitacion from "../assets/images/fondo-invitacion.png";
-
-//SESION SOLEMNE DE CABILDO
+//#region SESION SOLEMNE DE CABILDO
 import portadaSesionSolemne from "../assets/images/sesion-solemne-de-cabildo/foto-horizontal.jpeg";
 import portadaSesionSolemneMovil from "../assets/images/sesion-solemne-de-cabildo/foto-vertical.jpeg";
+import portadaPrimerInforme from "../assets/images/sesion-solemne-de-cabildo/portada-horizontal-primer-informe.jpeg";
+import portadaPrimerInformeMovil from "../assets/images/sesion-solemne-de-cabildo/portada-vertical-primer-informe.jpeg";
+import logoGris from "../assets/images/sesion-solemne-de-cabildo/logo.png";
+import logoPrimerInforme from "../assets/images/sesion-solemne-de-cabildo/logo-evento.PNG";
+import primerInforme from "../assets/images/sesion-solemne-de-cabildo/logo-informe.PNG";
+import grecaPicuda from "../assets/images/sesion-solemne-de-cabildo/greca-picuda.PNG";
+//#endregion SESION SOLEMNE DE CABILDO
 
+//#region BODA
 import floral from "../assets/images/floral.jpg";
 import icecream from "../assets/images/icecream.png";
 import weddingDress from "../assets/images/wedding-dress.png";
@@ -39,8 +46,8 @@ import coche from "../assets/images/coche-de-boda.png";
 import bgTable from "../assets/images/bgTable.jpg";
 import bgTable2 from "../assets/images/bgTable2.jpg";
 import bgTableLove from "../assets/images/bgTableLove.png";
-
 import cimaco from "../assets/images/cimaco.png";
+//#endregion BODA
 
 const images = {
    CADI: {
@@ -55,6 +62,10 @@ const images = {
    logo_oficial_negro,
    // logoLight,
    // logoDark,
+   logoGris,
+   logoPrimerInforme,
+   primerInforme,
+
    hero,
    hero2,
    hero3,
@@ -64,6 +75,8 @@ const images = {
 
    portadaSesionSolemne,
    portadaSesionSolemneMovil,
+   portadaPrimerInforme,
+   portadaPrimerInformeMovil,
 
    floral,
    icecream,

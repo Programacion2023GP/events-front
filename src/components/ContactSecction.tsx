@@ -88,7 +88,7 @@ const ContactSection = ({ invitationData }) => {
                                        "_blank",
                                     )
                                  }>
-                                 Ubicacion de {invitationData.organizers.sede}
+                                 Ubicación de {invitationData.organizers.sede}
                               </button>
                            </motion.div>
                            {/* <br />
@@ -141,7 +141,16 @@ const ContactSection = ({ invitationData }) => {
                         </motion.div>
                         <div>
                            <p className="font-avenir-roman text-base md:text-lg text-base-content/90 break-all">
-                              {invitationData.organizers.email}
+                              <motion.div
+                                 whileHover={{ scale: 1.05 }}
+                                 whileTap={{ scale: 0.95 }}>
+                                 <a
+                                    className="btn btn-outline rounded-full btn-secondary mx-1 mb-1"
+                                    href={`mailto:${invitationData.organizers.email}`}
+                                    target="_blank">
+                                    Enviar correo electrónico
+                                 </a>
+                              </motion.div>
                            </p>
                         </div>
                      </div>
